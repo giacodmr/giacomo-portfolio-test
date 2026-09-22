@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Hero, ThemeProvider } from '@primer/react-brand';
+import { Button, Hero, ThemeProvider } from '@primer/react-brand/esm';
 
 export default function PrimerHero() {
   return (

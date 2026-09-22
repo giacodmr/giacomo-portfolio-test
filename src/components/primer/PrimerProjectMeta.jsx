@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Label, Statistic, ThemeProvider } from '@primer/react-brand';
+import { Button, Label, Statistic, ThemeProvider } from '@primer/react-brand/esm';
 
 export default function PrimerProjectMeta({
   tags = [],

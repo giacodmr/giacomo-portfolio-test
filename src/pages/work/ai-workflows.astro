@@ -1,4 +1,5 @@
 ---
+import '../../styles/design-tokens.css';
 import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
 import AIWorkflow from '../../components/AIWorkflow.astro';
 ---
@@ -10,7 +11,7 @@ import AIWorkflow from '../../components/AIWorkflow.astro';
   question="How can recurring consulting workflows be redesigned using AI without losing business judgement?"
   summary="The approach positions AI as one layer in a controlled workflow: structured inputs, AI-supported analysis, consultant validation and decision-ready output."
 >
-  <div slot="visual" style="padding:22px;border-radius:16px;background:#0d2119;">
+  <div slot="visual" style="padding:22px;border:1px solid var(--ds-graphite-70);border-radius:12px;background:var(--ds-graphite-100);">
     <AIWorkflow />
   </div>
 

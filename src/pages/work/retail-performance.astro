@@ -1,35 +1,254 @@
 ---
-import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
-import RetailBars from '../../components/RetailBars.astro';
+import '../../styles/design-tokens.css';
+import '../../styles/global.css';
+import '../../styles/retail-performance.css';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import RetailPerformanceVisual from '../../components/RetailPerformanceVisual.astro';
+
+const approach = [
+  { number: '01', icon: '▦', title: 'Build the performance base', copy: 'Create a consistent store- and customer-level analytical view across the network.' },
+  { number: '02', icon: '∑', title: 'Define the KPI framework', copy: 'Structure revenue, ticket, frequency, profitability and customer-behaviour signals.' },
+  { number: '03', icon: '◉', title: 'Cluster the network', copy: 'Group stores into comparable performance profiles rather than reading outlets in isolation.' },
+  { number: '04', icon: '⇄', title: 'Compare performance drivers', copy: 'Separate network-wide patterns from local outliers and commercial context.' },
+  { number: '05', icon: '→', title: 'Translate into decisions', copy: 'Turn the analytical view into clearer commercial and network decision support.' },
+];
+
+const contribution = [
+  'Analysed store- and customer-level performance across 700k+ records and approximately 150 stores.',
+  'Structured KPI interpretation around revenue, average ticket, purchase frequency, profitability and customer behaviour.',
+  'Supported store clustering and comparison of performance patterns across the network.',
+  'Translated analytical findings into management-ready outputs for commercial and trade-marketing stakeholders.',
+];
+
+const decisions = [
+  'Compare stores and clusters on a consistent performance basis',
+  'Identify high-performing patterns and relevant outliers',
+  'Connect customer behaviour with store-level economics',
+  'Support commercial focus and network-level follow-up decisions',
+];
 ---
 
-<CaseStudyLayout
-  title="Retail Performance Intelligence"
-  eyebrow="02 / 03 · Retail Analytics"
-  client="Leading consumer brand"
-  question="How can retail performance patterns inform better network and commercial decisions?"
-  summary="The analysis combined store- and customer-level performance signals to identify patterns across the network and support more structured commercial interpretation."
->
-  <div slot="visual">
-    <RetailBars />
-  </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f1e9" />
+    <meta name="description" content="Retail performance intelligence case study by Giacomo Di Muro." />
+    <title>Retail Performance Intelligence — Giacomo Di Muro</title>
+  </head>
 
-  <section class="case-block">
-    <h3>Analytical themes</h3>
-    <p>Store performance, average ticket, purchase frequency, profitability, customer behaviour, clustering and network dynamics.</p>
-  </section>
+  <body class="retail-page">
+    <Navigation />
 
-  <section class="case-block">
-    <h3>My contribution</h3>
-    <ul>
-      <li>Analysed store- and customer-level performance.</li>
-      <li>Supported KPI interpretation and store clustering.</li>
-      <li>Translated analytical findings into business insights.</li>
-    </ul>
-  </section>
+    <main class="rp-page">
+      <section class="container case-hero">
+        <div class="hero-copy">
+          <p class="rp-kicker">02 / 03 · Retail Analytics</p>
+          <h1>Retail Performance Intelligence</h1>
+          <p class="hero-client">Leading consumer brand</p>
+          <p class="hero-summary">
+            A structured performance view translating large-scale store and customer data into clearer
+            performance clusters, commercial patterns and network decision support.
+          </p>
 
-  <section class="case-block">
-    <h3>Evidence</h3>
-    <p><strong>700k+</strong> records analysed across <strong>150+</strong> stores. Preview chart values are synthetic reconstructions.</p>
-  </section>
-</CaseStudyLayout>
+          <div class="hero-tags" aria-label="Capabilities">
+            <span>Retail strategy</span>
+            <span>Customer analytics</span>
+            <span>Network strategy</span>
+            <span>Commercial performance</span>
+          </div>
+        </div>
+
+        <aside class="hero-evidence" aria-label="Project evidence">
+          <div class="hero-kpi">
+            <strong>700k+</strong>
+            <span>records analysed</span>
+          </div>
+
+          <dl class="fact-list">
+            <div>
+              <dt>Network</dt>
+              <dd>150+ stores</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>Store + customer performance</dd>
+            </div>
+            <div>
+              <dt>Output</dt>
+              <dd>Decision-support view for commercial interpretation</dd>
+            </div>
+          </dl>
+
+          <p class="hero-note">Client identity and visual values are adapted for confidentiality.</p>
+        </aside>
+      </section>
+
+      <section class="container challenge-section">
+        <div class="challenge-question">
+          <p class="section-kicker">Business question</p>
+          <h2>How can retail performance patterns inform better network and commercial decisions?</h2>
+        </div>
+
+        <div class="challenge-context">
+          <p class="section-kicker">Context</p>
+          <h3>Store results alone do not explain why performance differs across a network.</h3>
+          <p>
+            The analysis connected store economics and customer behaviour to create a more comparable view
+            of performance, helping distinguish structural patterns from local effects and isolated outliers.
+          </p>
+        </div>
+      </section>
+
+      <section class="container approach-section">
+        <div class="section-head">
+          <p class="section-kicker">Approach</p>
+          <p>A five-step analytical logic moved the work from fragmented store metrics to comparable performance profiles and decision-ready interpretation.</p>
+        </div>
+
+        <div class="approach-grid">
+          {approach.map((step) => (
+            <article class="approach-step">
+              <span class="step-number">{step.number}</span>
+              <div class="step-icon" aria-hidden="true">{step.icon}</div>
+              <h3>{step.title}</h3>
+              <p>{step.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="container analysis-section">
+        <div class="analysis-heading">
+          <div>
+            <p class="section-kicker">Analytical work</p>
+            <h2>From raw performance data to a sharper view of the network.</h2>
+          </div>
+          <p>
+            Store-level economics and customer signals were combined into a common analytical layer,
+            making it easier to compare outlets, understand clusters and identify patterns worth deeper commercial attention.
+          </p>
+        </div>
+
+        <RetailPerformanceVisual />
+
+        <div class="artifact-grid">
+          <article class="artifact-card distribution-card">
+            <div class="artifact-header">
+              <div>
+                <span>Performance distribution</span>
+                <h3>See where stores sit relative to the network baseline.</h3>
+              </div>
+              <small>Synthetic values</small>
+            </div>
+
+            <div class="histogram-wrap" role="img" aria-label="Illustrative distribution of store performance with higher-performing stores highlighted">
+              <div class="histogram" aria-hidden="true">
+                <i style="--h:22%"></i>
+                <i style="--h:36%"></i>
+                <i style="--h:54%"></i>
+                <i style="--h:73%"></i>
+                <i style="--h:91%"></i>
+                <i style="--h:100%"></i>
+                <i style="--h:86%"></i>
+                <i style="--h:67%"></i>
+                <i style="--h:48%"></i>
+                <i class="focus" style="--h:31%"></i>
+                <i class="focus-strong" style="--h:18%"></i>
+              </div>
+              <div class="histogram-axis"><span>Lower performance</span><span>Network core</span><span>Top performers</span></div>
+              <p class="histogram-note"><strong>Distribution first:</strong> identify meaningful performance bands before investigating what differentiates them.</p>
+            </div>
+          </article>
+
+          <article class="artifact-card dark">
+            <div class="artifact-header">
+              <div>
+                <span>Performance logic</span>
+                <h3>Multiple signals, one comparable store-performance view.</h3>
+              </div>
+              <small>Framework</small>
+            </div>
+
+            <div class="logic-flow">
+              <div class="logic-signals">
+                <div class="logic-signal"><span>01</span><p><strong>Store economics</strong><small>Revenue · profitability · ticket</small></p></div>
+                <div class="logic-signal"><span>02</span><p><strong>Customer behaviour</strong><small>Frequency · retention · churn signals</small></p></div>
+                <div class="logic-signal"><span>03</span><p><strong>Network context</strong><small>Clusters · local effects · overlap</small></p></div>
+              </div>
+              <div class="logic-arrow" aria-hidden="true"><span>→</span></div>
+              <div class="logic-output">
+                <span>Decision view</span>
+                <strong>comparable performance clusters</strong>
+                <p>A clearer basis for commercial interpretation and network follow-up.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="container contribution-section">
+        <div class="contribution-copy">
+          <p class="section-kicker">My contribution</p>
+          <h2>Turning analytical patterns into commercial decision support.</h2>
+          <p>
+            My role focused on structuring the analysis, interpreting performance patterns and translating findings
+            into clear outputs within the broader project team.
+          </p>
+        </div>
+
+        <ol class="contribution-list">
+          {contribution.map((item, index) => (
+            <li><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="decision-band">
+        <div class="container decision-inner">
+          <div class="decision-copy">
+            <p class="section-kicker">Decision enabled</p>
+            <h2>A clearer basis for understanding where performance is structural — and where it needs attention.</h2>
+            <p>
+              The analysis created a common language for reading performance across the network rather than evaluating stores through isolated KPIs.
+            </p>
+          </div>
+
+          <ul class="decision-list">
+            {decisions.map((item) => (
+              <li><span aria-hidden="true">✓</span>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="container evidence-section">
+        <div class="evidence-head">
+          <p class="section-kicker">Evidence</p>
+          <p>Selected factual project indicators that can be shared publicly.</p>
+        </div>
+
+        <div class="evidence-grid">
+          <div class="evidence-item key"><strong>700k+</strong><span>records analysed</span></div>
+          <div class="evidence-item"><strong>150+</strong><span>stores in the network analysis</span></div>
+          <div class="evidence-item text"><strong>Store + customer</strong><span>performance signals analysed together</span></div>
+          <div class="evidence-item text"><strong>Decision support</strong><span>management-ready commercial interpretation</span></div>
+        </div>
+
+        <p class="confidentiality">Illustrative reconstruction with synthetic visual values. Client identity and sensitive commercial details are withheld for confidentiality.</p>
+      </section>
+
+      <section class="container next-project">
+        <span>Next project</span>
+        <a href="/work/ai-workflows">
+          <strong>AI-enabled Consulting Workflows</strong>
+          <i aria-hidden="true">→</i>
+        </a>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

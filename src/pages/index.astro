@@ -3,8 +3,7 @@ import '../styles/design-tokens.css';
 import '../styles/global.css';
 import '../styles/home.css';
 import Navigation from '../components/Navigation.astro';
-import ArchitecturalVisual from '../components/ArchitecturalVisual.astro';
-import HomeOpportunityMap from '../components/HomeOpportunityMap.astro';
+import FeaturedCase from '../components/FeaturedCase.astro';
 import HomeRetailPreview from '../components/HomeRetailPreview.astro';
 import AIWorkflow from '../components/AIWorkflow.astro';
 import ExperienceStrip from '../components/ExperienceStrip.astro';
@@ -30,43 +29,28 @@ const description = 'Business strategy, analytics and applied AI for structured 
     <Navigation />
 
     <main>
-      <section class="hero-section">
+      <section class="hero-section" aria-label="Introduction and featured work">
         <div class="container hero-shell">
           <div class="hero-copy">
             <PrimerHero />
+            <div class="hero-proof">
+              <span>Current role</span>
+              <strong>Business Consultant · Client Strategy</strong>
+              <p>Strategy, analytics and transformation work across consumer and commercial topics.</p>
+            </div>
           </div>
-          <div class="hero-visual" aria-label="Analytical portfolio preview">
-            <ArchitecturalVisual />
-          </div>
+
+          <FeaturedCase />
         </div>
       </section>
 
-      <section id="work" class="work-section">
+      <section class="work-section" aria-labelledby="more-work-title">
         <div class="container">
           <header class="section-intro">
-            <p class="eyebrow">Selected work</p>
-            <h2>Evidence of how I approach business problems.</h2>
-            <p>Three anonymised case studies showing the path from business question to analysis, decision and execution.</p>
+            <p class="eyebrow">More selected work</p>
+            <h2 id="more-work-title">Different problems. The same evidence-led approach.</h2>
+            <p>Each project is anonymised or reconstructed to preserve confidentiality while showing the analytical logic and decision context.</p>
           </header>
-
-          <article class="case-river case-river-featured">
-            <div class="case-copy">
-              <p class="case-number">01 / 03 · Commercial strategy</p>
-              <h3>Commercial Opportunity Prioritisation</h3>
-              <p class="case-client">Global beverage company</p>
-              <p class="case-question">Which commercial opportunities should be prioritised?</p>
-              <p class="case-body">A large opportunity universe translated into a structured, data-driven prioritisation view for commercial focus and decision support.</p>
-              <PrimerProjectMeta
-                tags={['Commercial Strategy', 'Market Analytics', 'GTM']}
-                stats={[{ value: '12k+', label: 'locations analysed' }]}
-                href="/work/commercial-opportunity"
-              />
-            </div>
-            <div class="case-visual map-visual">
-              <HomeOpportunityMap />
-              <p class="visual-note">Visual reconstruction using synthetic data for confidentiality.</p>
-            </div>
-          </article>
 
           <article class="case-river case-river-reverse">
             <div class="case-copy">

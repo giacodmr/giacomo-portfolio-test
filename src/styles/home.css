@@ -1,0 +1,52 @@
+/*
+ * Homepage implementation layer for DESIGN_SYSTEM.md.
+ * Keeps the shared global stylesheet untouched while applying portfolio tokens
+ * to homepage-only components and patterns.
+ */
+
+body.home-page {
+  --bg: var(--ds-canvas);
+  --surface: var(--ds-surface);
+  --surface-soft: var(--ds-surface-soft);
+  --text: var(--ds-ink);
+  --text-secondary: var(--ds-muted);
+  --text-tertiary: var(--ds-subtle);
+  --border: var(--ds-border);
+  --border-light: var(--ds-border-light);
+  --accent: var(--ds-forest-800);
+  --accent-medium: var(--ds-forest-500);
+  --accent-soft: var(--ds-forest-100);
+  --dark: var(--ds-forest-900);
+  --light: var(--ds-light);
+  --font-sans: var(--ds-font-sans);
+  --font-serif: var(--ds-font-serif);
+  --max-width: var(--ds-max-width);
+  --page-x: var(--ds-page-x);
+  --radius: var(--ds-radius-md);
+  --ease: var(--ds-ease);
+  background: var(--ds-canvas);
+  color: var(--ds-ink);
+}
+
+.home-page .project-card { border-color: var(--ds-border-light); border-radius: var(--ds-radius-md); background: var(--ds-surface); box-shadow: none; }
+.home-page .project-stat-panel { border-color: var(--ds-border-light); }
+.home-page .tag-list { gap: var(--ds-space-2); }
+.home-page .tag-list span { padding: 7px 12px; border: 1px solid transparent; border-radius: var(--ds-radius-pill); background: var(--ds-tag-bg); color: var(--ds-tag-text); font-size: .61rem; font-weight: 600; letter-spacing: .005em; line-height: 1.15; }
+.home-page .project-link { position: relative; padding-bottom: 3px; }
+.home-page .project-link::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: currentColor; opacity: 0; transform: scaleX(.72); transform-origin: left; transition: opacity var(--ds-motion-fast) ease, transform var(--ds-motion-fast) var(--ds-ease); }
+.home-page .project-link:hover::after, .home-page .project-link:focus-visible::after { opacity: .34; transform: scaleX(1); }
+.home-page .project-link:focus-visible { outline-color: var(--ds-focus-ring); }
+.home-page .compact-stats > div { border-color: var(--ds-border-light); }
+.home-page .legend-dot.high { background: var(--ds-data-focus); }
+.home-page .legend-dot.medium { background: var(--ds-data-secondary); }
+.home-page .legend-dot.low { background: var(--ds-data-context); }
+.home-page .ai-card { border-color: color-mix(in srgb, var(--ds-light) 12%, transparent); background: radial-gradient(circle at 83% 78%, rgba(111, 154, 130, .14), transparent 30%), var(--ds-forest-900); }
+
+@media (max-width: 760px) {
+  body.home-page { --page-x: var(--ds-page-x); --radius: var(--ds-radius-md); }
+  .home-page .tag-list span { padding: 6px 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .project-link::after { transition: none; }
+}

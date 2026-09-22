@@ -1,10 +1,12 @@
 ---
+import '../styles/design-tokens.css';
 import '../styles/global.css';
+import '../styles/home.css';
 import Navigation from '../components/Navigation.astro';
 import HeroIntro from '../components/HeroIntro.astro';
 import ArchitecturalVisual from '../components/ArchitecturalVisual.astro';
-import OpportunityMap from '../components/OpportunityMap.astro';
-import RetailBars from '../components/RetailBars.astro';
+import HomeOpportunityMap from '../components/HomeOpportunityMap.astro';
+import HomeRetailPreview from '../components/HomeRetailPreview.astro';
 import AIWorkflow from '../components/AIWorkflow.astro';
 import ExperienceStrip from '../components/ExperienceStrip.astro';
 import Footer from '../components/Footer.astro';
@@ -23,7 +25,7 @@ const description = 'Business strategy, analytics and applied AI for structured 
     <title>{title}</title>
   </head>
 
-  <body>
+  <body class="home-page">
     <Navigation />
 
     <main>
@@ -58,7 +60,7 @@ const description = 'Business strategy, analytics and applied AI for structured 
             </div>
 
             <div class="featured-map">
-              <OpportunityMap />
+              <HomeOpportunityMap />
             </div>
 
             <aside class="project-stat-panel" aria-label="Project evidence">
@@ -97,7 +99,7 @@ const description = 'Business strategy, analytics and applied AI for structured 
                 Store- and customer-level performance patterns translated into network and commercial insights.
               </p>
 
-              <RetailBars />
+              <HomeRetailPreview />
 
               <div class="card-footer-row">
                 <div class="tag-list" aria-label="Capabilities">

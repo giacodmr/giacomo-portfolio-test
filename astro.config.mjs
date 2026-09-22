@@ -6,7 +6,9 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     ssr: {
-      noExternal: [/^@primer\/react-brand/]
+      // Primer Brand's ESM build imports component CSS internally.
+      // Bundle dependencies during prerender so Vite transforms those CSS imports.
+      noExternal: true
     }
   }
 });

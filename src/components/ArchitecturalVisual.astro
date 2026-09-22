@@ -1,0 +1,153 @@
+<div class="architecture-panel" role="img" aria-label="Abstract modern business architecture">
+  <div class="architecture-copy">
+    <span>People</span>
+    <span>Insights</span>
+    <span>Technology</span>
+    <span>Impact</span>
+  </div>
+
+  <div class="tower tower-a"></div>
+  <div class="tower tower-b"></div>
+  <div class="tower tower-c"></div>
+  <div class="bridge"></div>
+  <div class="terrace"></div>
+
+  <div class="architecture-note">
+    <span>Complexity</span>
+    <span>into progress</span>
+  </div>
+</div>
+
+<style>
+  .architecture-panel {
+    position: relative;
+    min-height: 560px;
+    overflow: hidden;
+    border-radius: 0 0 0 24px;
+    background:
+      radial-gradient(circle at 24% 18%, rgba(255,255,255,.92), transparent 31%),
+      linear-gradient(135deg, #edf0ed 0%, #cfd8d4 50%, #879a91 100%);
+    isolation: isolate;
+  }
+
+  .architecture-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,.48), transparent 38%),
+      linear-gradient(180deg, transparent 58%, rgba(20,32,26,.16));
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .tower {
+    position: absolute;
+    bottom: -1%;
+    border: 1px solid rgba(230,238,234,.32);
+    background:
+      repeating-linear-gradient(90deg, rgba(235,242,238,.18) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(180deg, rgba(235,242,238,.14) 0 1px, transparent 1px 30px),
+      linear-gradient(145deg, rgba(51,77,67,.62), rgba(16,35,28,.88));
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.04),
+      inset -35px 0 70px rgba(7,20,14,.18);
+  }
+
+  .tower-a {
+    right: -3%;
+    width: 39%;
+    height: 86%;
+    clip-path: polygon(11% 0, 100% 7%, 100% 100%, 0 100%, 0 13%);
+  }
+
+  .tower-b {
+    right: 33%;
+    width: 30%;
+    height: 67%;
+    clip-path: polygon(18% 4%, 100% 0, 100% 100%, 0 100%, 0 19%);
+    background:
+      repeating-linear-gradient(90deg, rgba(235,242,238,.18) 0 1px, transparent 1px 32px),
+      repeating-linear-gradient(180deg, rgba(235,242,238,.13) 0 1px, transparent 1px 27px),
+      linear-gradient(160deg, rgba(104,128,117,.68), rgba(26,52,42,.83));
+  }
+
+  .tower-c {
+    left: 3%;
+    width: 35%;
+    height: 45%;
+    clip-path: polygon(6% 11%, 100% 0, 100% 100%, 0 100%, 0 18%);
+    background:
+      repeating-linear-gradient(90deg, rgba(241,245,242,.19) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(180deg, rgba(241,245,242,.13) 0 1px, transparent 1px 26px),
+      linear-gradient(145deg, rgba(90,115,104,.6), rgba(24,49,39,.8));
+  }
+
+  .bridge {
+    position: absolute;
+    left: 16%;
+    right: 7%;
+    bottom: 18%;
+    height: 9%;
+    background:
+      repeating-linear-gradient(90deg, rgba(239,243,240,.1) 0 1px, transparent 1px 30px),
+      linear-gradient(180deg, rgba(36,59,49,.9), rgba(16,31,25,.96));
+    clip-path: polygon(3% 8%, 100% 0, 99% 76%, 0 100%);
+    z-index: 3;
+  }
+
+  .terrace {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 17%;
+    background:
+      linear-gradient(180deg, rgba(205,215,209,.5), rgba(73,91,82,.75));
+    z-index: 2;
+  }
+
+  .architecture-copy {
+    position: absolute;
+    z-index: 7;
+    left: 7%;
+    top: 10%;
+    display: grid;
+    gap: 4px;
+    color: rgba(25,42,34,.76);
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  .architecture-copy::after {
+    content: "";
+    width: 34px;
+    height: 1px;
+    margin-top: 12px;
+    background: rgba(25,42,34,.42);
+  }
+
+  .architecture-note {
+    position: absolute;
+    z-index: 7;
+    right: 6%;
+    bottom: 7%;
+    display: grid;
+    gap: 2px;
+    color: rgba(248,249,246,.84);
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  @media (max-width: 980px) {
+    .architecture-panel {
+      min-height: 430px;
+      border-radius: 20px;
+    }
+  }
+</style>

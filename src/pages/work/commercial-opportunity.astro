@@ -34,8 +34,7 @@ const decisions = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f4f1e9" />
-    <meta name="description" content="Commercial opportunity prioritisation case study by Giacomo Di Muro." />
+    <meta name="theme-color" content="#f6f8fa" />
     <title>Commercial Opportunity Prioritisation — Giacomo Di Muro</title>
   </head>
 
@@ -68,18 +67,9 @@ const decisions = [
           </div>
 
           <dl class="fact-list">
-            <div>
-              <dt>Market</dt>
-              <dd>Italy · 9 markets</dd>
-            </div>
-            <div>
-              <dt>Focus</dt>
-              <dd>Commercial opportunity prioritisation</dd>
-            </div>
-            <div>
-              <dt>Output</dt>
-              <dd>Decision-support view for commercial focus</dd>
-            </div>
+            <div><dt>Market</dt><dd>Italy · 9 markets</dd></div>
+            <div><dt>Focus</dt><dd>Commercial opportunity prioritisation</dd></div>
+            <div><dt>Output</dt><dd>Decision-support view for commercial focus</dd></div>
           </dl>
 
           <p class="hero-note">Client identity and visual scoring values are adapted for confidentiality.</p>
@@ -141,39 +131,21 @@ const decisions = [
                 <span>Opportunity matrix</span>
                 <h3>Compare markets on two commercial dimensions.</h3>
               </div>
-              <small>Synthetic values</small>
+              <em>Illustrative reconstruction</em>
             </div>
 
-            <svg class="matrix" viewBox="0 0 620 330" role="img" aria-label="Illustrative opportunity matrix comparing market attractiveness and ease of execution">
-              <rect class="priority-zone" x="344" y="36" width="228" height="112" />
-              <text class="zone-label" x="360" y="57">PRIORITY OPPORTUNITIES</text>
-
-              <line class="axis" x1="72" y1="278" x2="572" y2="278" />
-              <line class="axis" x1="72" y1="278" x2="72" y2="36" />
-              <line class="gridline" x1="72" y1="158" x2="572" y2="158" />
-              <line class="gridline" x1="322" y1="36" x2="322" y2="278" />
-
-              <g class="matrix-context" aria-hidden="true">
-                <circle cx="118" cy="244" r="5"/><circle cx="147" cy="220" r="5"/><circle cx="186" cy="235" r="5"/>
-                <circle cx="213" cy="194" r="5"/><circle cx="251" cy="208" r="5"/><circle cx="279" cy="174" r="5"/>
-                <circle cx="305" cy="218" r="5"/><circle cx="347" cy="181" r="5"/><circle cx="382" cy="194" r="5"/>
-                <circle cx="419" cy="164" r="5"/><circle cx="456" cy="173" r="5"/>
-              </g>
-
-              <g class="matrix-focus">
-                <circle cx="515" cy="76" r="7"/><text x="528" y="80">Milan</text>
-                <circle cx="463" cy="112" r="7"/><text x="476" y="116">Rome</text>
-                <circle class="secondary" cx="432" cy="139" r="6"/><text x="445" y="143">Bari</text>
-                <circle class="secondary" cx="390" cy="128" r="6"/><text x="403" y="132">Bologna</text>
-                <circle class="context" cx="306" cy="171" r="6"/><text x="319" y="175">Florence</text>
-              </g>
-
-              <text class="axis-label" x="322" y="318" text-anchor="middle">Ease of execution</text>
-              <text class="axis-label" x="24" y="158" text-anchor="middle" transform="rotate(-90 24 158)">Market attractiveness</text>
-              <text class="axis-end" x="72" y="298">Low</text>
-              <text class="axis-end" x="572" y="298" text-anchor="end">High</text>
-              <text class="axis-end" x="54" y="278" text-anchor="end">Low</text>
-              <text class="axis-end" x="54" y="42" text-anchor="end">High</text>
+            <svg class="opportunity-matrix" viewBox="0 0 520 310" role="img" aria-label="Illustrative opportunity matrix">
+              <line class="axis" x1="56" y1="256" x2="484" y2="256" />
+              <line class="axis" x1="56" y1="256" x2="56" y2="38" />
+              <line class="grid" x1="56" y1="147" x2="484" y2="147" />
+              <line class="grid" x1="270" y1="256" x2="270" y2="38" />
+              <text class="axis-label" x="270" y="294">Commercial potential →</text>
+              <text class="axis-label vertical" x="18" y="150">Market attractiveness →</text>
+              <circle class="matrix-dot context" cx="145" cy="205" r="8" />
+              <circle class="matrix-dot secondary" cx="224" cy="176" r="10" />
+              <circle class="matrix-dot secondary" cx="325" cy="118" r="11" />
+              <circle class="matrix-dot focus" cx="402" cy="82" r="13" />
+              <text class="dot-label" x="420" y="78">Priority cluster</text>
             </svg>
           </article>
 
@@ -183,7 +155,7 @@ const decisions = [
                 <span>Prioritisation logic</span>
                 <h3>Multiple signals, one decision-support view.</h3>
               </div>
-              <small>Framework</small>
+              <em>Conceptual view</em>
             </div>
 
             <div class="logic-flow">
@@ -211,9 +183,7 @@ const decisions = [
         </div>
 
         <ol class="contribution-list">
-          {contribution.map((item, index) => (
-            <li><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>
-          ))}
+          {contribution.map((item) => <li>{item}</li>)}
         </ol>
       </section>
 
@@ -225,11 +195,11 @@ const decisions = [
             <p>The analysis created a structured way to move from thousands of locations to a more focused set of commercial priorities.</p>
           </div>
 
-          <ul class="decision-list">
-            {decisions.map((item) => (
-              <li><span aria-hidden="true">✓</span>{item}</li>
+          <div class="decision-list">
+            {decisions.map((item, index) => (
+              <div><span>0{index + 1}</span><p>{item}</p></div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
@@ -240,21 +210,10 @@ const decisions = [
         </div>
 
         <div class="evidence-grid">
-          <div class="evidence-item key"><strong>12k+</strong><span>locations analysed</span></div>
-          <div class="evidence-item"><strong>9</strong><span>Italian markets</span></div>
-          <div class="evidence-item"><strong>4</strong><span>capability areas</span><small>Commercial Strategy · Market Analytics · GTM · Prioritisation</small></div>
-          <div class="evidence-item text"><strong>Decision support</strong><span>Structured basis for commercial prioritisation</span></div>
+          <div><strong>12k+</strong><span>locations analysed</span></div>
+          <div><strong>9</strong><span>Italian markets in scope</span></div>
+          <div><strong>Market + commercial</strong><span>signals combined for prioritisation</span></div>
         </div>
-
-        <p class="confidentiality">Illustrative reconstruction with synthetic visual values. Client identity and sensitive commercial details are withheld for confidentiality.</p>
-      </section>
-
-      <section class="container next-project">
-        <span>Next project</span>
-        <a href="/work/retail-performance">
-          <strong>Retail Performance Intelligence</strong>
-          <i aria-hidden="true">→</i>
-        </a>
       </section>
     </main>
 

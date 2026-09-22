@@ -37,37 +37,37 @@
 </div>
 
 <style>
-  .retail-report { display: grid; grid-template-columns: 1.05fr 1fr 1.05fr; gap: 0; margin-top: 22px; border-top: 1px solid var(--ds-border-light, rgba(20, 26, 22, .08)); border-bottom: 1px solid var(--ds-border-light, rgba(20, 26, 22, .08)); }
-  .viz-panel { min-width: 0; padding: 18px 20px 17px; border-right: 1px solid var(--ds-border-light, rgba(20, 26, 22, .08)); }
+  .retail-report { display: grid; grid-template-columns: 1.05fr 1fr 1.05fr; gap: 0; margin-top: 22px; border-top: 1px solid var(--ds-border-light, #eaeef2); border-bottom: 1px solid var(--ds-border-light, #eaeef2); }
+  .viz-panel { min-width: 0; padding: 18px 20px 17px; border-right: 1px solid var(--ds-border-light, #eaeef2); }
   .viz-panel:first-child { padding-left: 0; }
   .viz-panel:nth-child(3) { padding-right: 0; border-right: 0; }
   .viz-panel header { display: flex; align-items: baseline; gap: 8px; min-height: 34px; }
-  .viz-panel header span { color: var(--ds-subtle, #8b928c); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .55rem; font-weight: 600; letter-spacing: .12em; }
-  .viz-panel header strong { color: var(--ds-muted, #626a63); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .68rem; font-weight: 600; line-height: 1.25; }
-  .viz-panel > p { min-height: 30px; margin: 12px 0 0; color: var(--ds-subtle, #8b928c); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .55rem; line-height: 1.35; }
-  .viz-panel > p b { color: var(--ds-ink, #141a16); font-weight: 600; }
+  .viz-panel header span { color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .55rem; font-weight: 600; letter-spacing: .12em; }
+  .viz-panel header strong { color: var(--ds-muted, #57606a); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .68rem; font-weight: 600; line-height: 1.25; }
+  .viz-panel > p { min-height: 30px; margin: 12px 0 0; color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .55rem; line-height: 1.35; }
+  .viz-panel > p b { color: var(--ds-ink, #1f2328); font-weight: 600; }
   .histogram { height: 110px; display: flex; align-items: end; gap: 4px; padding-top: 13px; }
-  .histogram i { flex: 1; height: var(--h); min-height: 10px; background: var(--ds-data-context, #bdc9c0); border-radius: 2px 2px 0 0; }
-  .histogram i:nth-child(4), .histogram i:nth-child(5), .histogram i:nth-child(6) { background: color-mix(in srgb, var(--ds-data-secondary, #6f9a82) 55%, var(--ds-data-context, #bdc9c0)); }
-  .histogram i.focus { background: var(--ds-data-secondary, #6f9a82); }
-  .histogram i.focus-strong { background: var(--ds-data-focus, #0e563f); }
-  .distribution-axis, .dotplot-axis { display: flex; justify-content: space-between; margin-top: 7px; color: var(--ds-subtle, #8b928c); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .5rem; }
+  .histogram i { flex: 1; height: var(--h); min-height: 10px; background: var(--ds-data-context, #c1c7cd); border-radius: 2px 2px 0 0; }
+  .histogram i:nth-child(4), .histogram i:nth-child(5), .histogram i:nth-child(6) { background: color-mix(in srgb, var(--ds-data-secondary, #78a9ff) 55%, var(--ds-data-context, #c1c7cd)); }
+  .histogram i.focus { background: var(--ds-data-secondary, #78a9ff); }
+  .histogram i.focus-strong { background: var(--ds-data-focus, #0f62fe); }
+  .distribution-axis, .dotplot-axis { display: flex; justify-content: space-between; margin-top: 7px; color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .5rem; }
   .horizontal-bars { display: grid; gap: 9px; padding-top: 16px; min-height: 117px; }
   .hbar-row { display: grid; grid-template-columns: 29px 1fr 24px; align-items: center; gap: 7px; min-width: 0; }
-  .hbar-row > span, .hbar-row > strong { color: var(--ds-subtle, #8b928c); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .52rem; font-weight: 500; }
-  .hbar-row > strong { color: var(--ds-ink, #141a16); text-align: right; font-weight: 600; }
-  .hbar-row > i { position: relative; height: 8px; overflow: hidden; border-radius: 2px; background: var(--ds-surface-soft, #f0eee7); }
-  .hbar-row > i > b { display: block; width: var(--w); height: 100%; border-radius: inherit; background: var(--ds-data-context, #bdc9c0); }
-  .hbar-row > i > b.accent { background: var(--ds-data-secondary, #6f9a82); }
-  .hbar-row > i > b.focus { background: var(--ds-data-focus, #0e563f); }
+  .hbar-row > span, .hbar-row > strong { color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .52rem; font-weight: 500; }
+  .hbar-row > strong { color: var(--ds-ink, #1f2328); text-align: right; font-weight: 600; }
+  .hbar-row > i { position: relative; height: 8px; overflow: hidden; border-radius: 2px; background: var(--ds-surface-soft, #f4f4f4); }
+  .hbar-row > i > b { display: block; width: var(--w); height: 100%; border-radius: inherit; background: var(--ds-data-context, #c1c7cd); }
+  .hbar-row > i > b.accent { background: var(--ds-data-secondary, #78a9ff); }
+  .hbar-row > i > b.focus { background: var(--ds-data-focus, #0f62fe); }
   .dotplot-wrap { padding-top: 8px; }
   .dotplot-wrap svg { display: block; width: 100%; height: 112px; overflow: visible; }
-  .grid-lines line { stroke: var(--ds-border-light, rgba(20, 26, 22, .08)); stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .trend-line { fill: none; stroke: var(--ds-data-secondary, #6f9a82); stroke-width: 1.7; vector-effect: non-scaling-stroke; }
-  .dot { stroke: var(--ds-surface, #fbfaf6); stroke-width: 2; vector-effect: non-scaling-stroke; }
-  .dot.neutral { fill: var(--ds-data-context, #bdc9c0); } .dot.accent { fill: var(--ds-data-secondary, #6f9a82); } .dot.focus { fill: var(--ds-data-focus, #0e563f); }
-  .dotplot-wrap text { fill: var(--ds-ink, #141a16); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: 9px; font-weight: 600; text-anchor: middle; }
+  .grid-lines line { stroke: var(--ds-border-light, #eaeef2); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .trend-line { fill: none; stroke: var(--ds-data-secondary, #78a9ff); stroke-width: 1.7; vector-effect: non-scaling-stroke; }
+  .dot { stroke: var(--ds-surface, #ffffff); stroke-width: 2; vector-effect: non-scaling-stroke; }
+  .dot.neutral { fill: var(--ds-data-context, #c1c7cd); } .dot.accent { fill: var(--ds-data-secondary, #78a9ff); } .dot.focus { fill: var(--ds-data-focus, #0f62fe); }
+  .dotplot-wrap text { fill: var(--ds-ink, #1f2328); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: 9px; font-weight: 600; text-anchor: middle; }
   .dotplot-axis { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; margin-top: 0; }
-  .report-note { grid-column: 1 / -1; margin: 0; padding: 9px 0; border-top: 1px solid var(--ds-border-light, rgba(20, 26, 22, .08)); color: var(--ds-subtle, #8b928c); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .53rem; }
-  @media (max-width: 760px) { .retail-report { grid-template-columns: 1fr; border-bottom: 0; } .viz-panel, .viz-panel:first-child, .viz-panel:nth-child(3) { padding: 18px 0; border-right: 0; border-bottom: 1px solid var(--ds-border-light, rgba(20, 26, 22, .08)); } .report-note { padding-block: 10px; } }
+  .report-note { grid-column: 1 / -1; margin: 0; padding: 9px 0; border-top: 1px solid var(--ds-border-light, #eaeef2); color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .53rem; }
+  @media (max-width: 760px) { .retail-report { grid-template-columns: 1fr; border-bottom: 0; } .viz-panel, .viz-panel:first-child, .viz-panel:nth-child(3) { padding: 18px 0; border-right: 0; border-bottom: 1px solid var(--ds-border-light, #eaeef2); } .report-note { padding-block: 10px; } }
 </style>

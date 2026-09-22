@@ -1,174 +1,144 @@
-<div class="map-wrap">
-  <svg
-    viewBox="0 0 760 420"
-    role="img"
-    aria-labelledby="map-title map-desc"
-    preserveAspectRatio="xMidYMid meet"
-  >
+<div class="opportunity-map" data-opportunity-map>
+  <div class="map-controls" aria-label="Opportunity filters">
+    <button type="button" class="is-active" data-filter="all">All</button>
+    <button type="button" data-filter="high">High</button>
+    <button type="button" data-filter="medium">Medium</button>
+    <button type="button" data-filter="low">Context</button>
+  </div>
+
+  <svg viewBox="0 0 900 650" role="img" aria-labelledby="map-title map-desc" preserveAspectRatio="xMidYMid meet">
     <title id="map-title">Synthetic commercial opportunity map</title>
-    <desc id="map-desc">
-      Abstracted map of Italy with synthetic commercial locations shown at low, medium and high opportunity levels.
-    </desc>
+    <desc id="map-desc">Abstracted Italy map with synthetic commercial opportunity points. Hover or focus highlighted locations for details.</desc>
+
+    <defs>
+      <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <g class="grid-lines" aria-hidden="true">
+      <path d="M70 130H830M70 260H830M70 390H830M70 520H830" />
+      <path d="M180 70V590M360 70V590M540 70V590M720 70V590" />
+    </g>
 
     <g class="territory" aria-hidden="true">
-      <path d="M390 38c22 24 31 52 27 77-3 21 10 38 30 52 20 13 33 32 35 51 2 18 17 34 40 47 28 15 43 36 37 56-5 18-29 23-47 10-15-11-26-7-31 7-4 12 8 29 23 43-16 6-31 5-45-3-18-10-32-24-47-38-13-13-29-16-47-8-22 10-36 3-41-17-6-24-18-46-35-63-18-18-31-42-30-67 1-21 7-42 17-63z" />
-      <path d="M315 304c17 11 30 30 30 49-1 22-18 37-39 33-18-4-29-21-25-40 4-18 16-34 34-42z" />
-      <path d="M535 349c27 1 54 10 70 27-18 15-40 24-64 26-19 2-36-5-48-19 9-17 24-28 42-34z" />
+      <path d="M441 72c37 38 46 76 35 110-10 30 10 60 42 82 32 22 47 50 42 77-4 24 14 48 53 72 48 29 69 57 55 83-11 22-43 21-67-5-20-21-40-14-46 5-7 22 13 49 38 68-27 15-54 12-80-8-29-22-49-49-70-71-18-19-43-24-68-11-30 17-53 8-63-22-10-35-28-67-51-91-24-25-42-60-39-95 2-32 11-63 26-94z" />
+      <path d="M330 454c29 16 47 47 43 75-4 32-31 50-61 39-26-10-38-39-24-65 11-23 24-39 42-49z" />
+      <path d="M632 492c36-1 70 12 91 34-24 22-53 34-85 36-27 2-51-8-66-28 12-22 32-36 60-42z" />
     </g>
 
-    <g class="points low" aria-hidden="true">
-      <circle cx="349" cy="101" r="4" />
-      <circle cx="403" cy="91" r="4" />
-      <circle cx="448" cy="148" r="4" />
-      <circle cx="372" cy="177" r="4" />
-      <circle cx="427" cy="213" r="4" />
-      <circle cx="455" cy="251" r="4" />
-      <circle cx="492" cy="289" r="4" />
-      <circle cx="460" cy="331" r="4" />
-      <circle cx="518" cy="355" r="4" />
-      <circle cx="318" cy="343" r="4" />
-      <circle cx="401" cy="252" r="4" />
-      <circle cx="382" cy="301" r="4" />
-      <circle cx="478" cy="189" r="4" />
-      <circle cx="360" cy="228" r="4" />
-      <circle cx="423" cy="132" r="4" />
+    <g class="points">
+      <circle class="point low" cx="365" cy="151" r="5" data-level="low" />
+      <circle class="point low" cx="399" cy="126" r="4" data-level="low" />
+      <circle class="point low" cx="478" cy="128" r="5" data-level="low" />
+      <circle class="point low" cx="505" cy="180" r="4" data-level="low" />
+      <circle class="point low" cx="409" cy="205" r="5" data-level="low" />
+      <circle class="point low" cx="462" cy="234" r="5" data-level="low" />
+      <circle class="point low" cx="508" cy="279" r="5" data-level="low" />
+      <circle class="point low" cx="535" cy="324" r="4" data-level="low" />
+      <circle class="point low" cx="571" cy="369" r="5" data-level="low" />
+      <circle class="point low" cx="606" cy="416" r="5" data-level="low" />
+      <circle class="point low" cx="643" cy="459" r="4" data-level="low" />
+      <circle class="point low" cx="690" cy="520" r="5" data-level="low" />
+      <circle class="point low" cx="344" cy="508" r="5" data-level="low" />
+      <circle class="point low" cx="424" cy="287" r="4" data-level="low" />
+      <circle class="point low" cx="491" cy="355" r="4" data-level="low" />
+
+      <circle class="point medium" cx="389" cy="167" r="7" data-level="medium" />
+      <circle class="point medium" cx="432" cy="152" r="7" data-level="medium" />
+      <circle class="point medium" cx="449" cy="225" r="7" data-level="medium" />
+      <circle class="point medium" cx="485" cy="264" r="7" data-level="medium" />
+      <circle class="point medium" cx="520" cy="310" r="7" data-level="medium" />
+      <circle class="point medium" cx="552" cy="353" r="7" data-level="medium" />
+      <circle class="point medium" cx="588" cy="397" r="7" data-level="medium" />
+      <circle class="point medium" cx="621" cy="445" r="7" data-level="medium" />
+
+      <circle class="point high interactive" tabindex="0" role="button" aria-label="Milan, high opportunity, score 92" cx="420" cy="143" r="10" data-level="high" data-city="Milan, IT" data-score="92" data-cluster="A" />
+      <circle class="point high interactive" tabindex="0" role="button" aria-label="Bologna, high opportunity, score 86" cx="472" cy="250" r="10" data-level="high" data-city="Bologna, IT" data-score="86" data-cluster="A" />
+      <circle class="point high interactive" tabindex="0" role="button" aria-label="Rome, high opportunity, score 89" cx="570" cy="383" r="11" data-level="high" data-city="Rome, IT" data-score="89" data-cluster="A" />
+      <circle class="point high interactive" tabindex="0" role="button" aria-label="Bari, high opportunity, score 81" cx="648" cy="470" r="9" data-level="high" data-city="Bari, IT" data-score="81" data-cluster="B" />
     </g>
 
-    <g class="points medium" aria-hidden="true">
-      <circle cx="376" cy="119" r="5" />
-      <circle cx="420" cy="168" r="5" />
-      <circle cx="400" cy="206" r="5" />
-      <circle cx="438" cy="240" r="5" />
-      <circle cx="466" cy="280" r="5" />
-      <circle cx="490" cy="321" r="5" />
-      <circle cx="443" cy="304" r="5" />
-    </g>
-
-    <g class="points high" aria-hidden="true">
-      <circle cx="395" cy="112" r="7" />
-      <circle cx="414" cy="195" r="7" />
-      <circle cx="454" cy="271" r="7" />
-      <circle cx="500" cy="343" r="7" />
-    </g>
-
-    <g class="labels" aria-hidden="true">
-      <text x="332" y="109">Turin</text>
-      <text x="408" y="103">Milan</text>
-      <text x="430" y="188">Bologna</text>
-      <text x="465" y="264">Rome</text>
-      <text x="516" y="338">Bari</text>
-    </g>
-
-    <g class="callout" aria-hidden="true">
-      <line x1="395" y1="112" x2="548" y2="84" />
-      <rect x="548" y="50" width="156" height="72" rx="8" />
-      <text class="callout-city" x="564" y="73">MILAN, IT</text>
-      <text x="564" y="94">Opportunity: High</text>
-      <text x="564" y="111">Priority cluster: A</text>
+    <g class="city-labels" aria-hidden="true">
+      <text x="328" y="148">Turin</text>
+      <text x="435" y="132">Milan</text>
+      <text x="488" y="243">Bologna</text>
+      <text x="588" y="379">Rome</text>
+      <text x="664" y="466">Bari</text>
     </g>
   </svg>
 
-  <div class="legend" aria-hidden="true">
-    <span><i class="dot low-dot"></i>Low</span>
-    <span><i class="dot medium-dot"></i>Medium</span>
-    <span><i class="dot high-dot"></i>High</span>
+  <div class="map-tooltip" data-tooltip aria-live="polite">
+    <span data-tooltip-city>Milan, IT</span>
+    <strong><b data-tooltip-score>92</b> opportunity score</strong>
+    <small>Priority cluster <b data-tooltip-cluster>A</b></small>
   </div>
+
+  <div class="map-caption" aria-hidden="true">Synthetic opportunity landscape · Italy</div>
 </div>
 
+<script>
+  document.querySelectorAll('[data-opportunity-map]').forEach((map) => {
+    const buttons = map.querySelectorAll('[data-filter]');
+    const points = map.querySelectorAll('.point');
+    const interactives = map.querySelectorAll('.interactive');
+    const tooltip = map.querySelector('[data-tooltip]');
+    const city = map.querySelector('[data-tooltip-city]');
+    const score = map.querySelector('[data-tooltip-score]');
+    const cluster = map.querySelector('[data-tooltip-cluster]');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        buttons.forEach((b) => b.classList.remove('is-active'));
+        button.classList.add('is-active');
+        points.forEach((point) => {
+          const matches = filter === 'all' || point.getAttribute('data-level') === filter;
+          point.classList.toggle('is-muted', !matches);
+        });
+      });
+    });
+
+    const show = (point) => {
+      interactives.forEach((p) => p.classList.toggle('is-selected', p === point));
+      if (city) city.textContent = point.getAttribute('data-city') || '';
+      if (score) score.textContent = point.getAttribute('data-score') || '';
+      if (cluster) cluster.textContent = point.getAttribute('data-cluster') || '';
+      tooltip?.classList.add('is-visible');
+    };
+
+    interactives.forEach((point) => {
+      point.addEventListener('mouseenter', () => show(point));
+      point.addEventListener('focus', () => show(point));
+    });
+  });
+</script>
+
 <style>
-  .map-wrap {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    padding: 26px 20px 22px;
-  }
-
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .territory path {
-    fill: rgba(255, 255, 255, 0.45);
-    stroke: var(--border);
-    stroke-width: 1.4;
-  }
-
-  .points circle {
-    stroke: rgba(247, 247, 243, 0.95);
-    stroke-width: 2;
-  }
-
-  .low circle {
-    fill: #c5cec7;
-  }
-
-  .medium circle {
-    fill: #799785;
-  }
-
-  .high circle {
-    fill: #245c45;
-  }
-
-  .labels text,
-  .callout text {
-    font-family: inherit;
-    fill: var(--text-secondary);
-    font-size: 12px;
-  }
-
-  .callout line {
-    stroke: var(--accent-medium);
-    stroke-width: 1;
-  }
-
-  .callout rect {
-    fill: rgba(255, 255, 255, 0.94);
-    stroke: var(--border);
-  }
-
-  .callout .callout-city {
-    fill: var(--text);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-  }
-
-  .legend {
-    position: absolute;
-    left: 24px;
-    bottom: 18px;
-    display: flex;
-    gap: 14px;
-    color: var(--text-secondary);
-    font-size: 11px;
-  }
-
-  .legend span {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-  }
-
-  .low-dot { background: #c5cec7; }
-  .medium-dot { background: #799785; }
-  .high-dot { background: #245c45; }
-
-  @media (max-width: 600px) {
-    .callout {
-      display: none;
-    }
-
-    .labels text {
-      font-size: 10px;
-    }
+  .opportunity-map { position:absolute; inset:0; overflow:hidden; }
+  svg { width:100%; height:100%; padding:38px 18px 14px; }
+  .grid-lines path { fill:none; stroke:rgba(23,63,48,.08); stroke-width:1; }
+  .territory path { fill:rgba(250,250,244,.42); stroke:rgba(23,63,48,.22); stroke-width:1.2; }
+  .point { transform-box:fill-box; transform-origin:center; transition:opacity .24s ease, transform .24s ease, filter .24s ease; }
+  .point.low { fill:#bbc6bd; opacity:.62; }
+  .point.medium { fill:#6f927b; opacity:.82; }
+  .point.high { fill:#173f30; stroke:#edf1ea; stroke-width:3; cursor:pointer; }
+  .point.interactive:hover, .point.interactive:focus, .point.is-selected { transform:scale(1.45); filter:url(#soft-glow); opacity:1; }
+  .point.is-muted { opacity:.09; }
+  .city-labels text { fill:#647067; font:500 12px Inter, sans-serif; letter-spacing:.02em; }
+  .map-controls { position:absolute; z-index:6; left:28px; top:28px; display:flex; gap:6px; padding:6px; border:1px solid rgba(16,20,16,.1); border-radius:999px; background:rgba(248,246,240,.72); backdrop-filter:blur(12px); }
+  .map-controls button { border:0; background:transparent; color:#667067; padding:7px 11px; border-radius:999px; font-size:11px; cursor:pointer; transition:.2s ease; }
+  .map-controls button.is-active { background:#173f30; color:#f4f2ec; }
+  .map-tooltip { position:absolute; z-index:6; left:clamp(22px,4vw,56px); bottom:clamp(52px,6vw,78px); display:grid; gap:4px; min-width:190px; padding:17px 18px; border:1px solid rgba(16,20,16,.1); border-radius:14px; background:rgba(248,246,240,.88); backdrop-filter:blur(14px); box-shadow:0 18px 50px rgba(16,20,16,.08); opacity:.88; transition:transform .24s ease, opacity .24s ease; }
+  .map-tooltip.is-visible { opacity:1; transform:translateY(-3px); }
+  .map-tooltip span { font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#657067; }
+  .map-tooltip strong { font-size:16px; font-weight:500; }
+  .map-tooltip small { color:#657067; }
+  .map-caption { position:absolute; right:28px; bottom:22px; color:#7a847b; font-size:10px; letter-spacing:.08em; text-transform:uppercase; }
+  @media (max-width:700px) {
+    .map-controls { top:18px; left:18px; }
+    .map-tooltip { left:18px; bottom:46px; min-width:168px; }
+    .city-labels { display:none; }
   }
 </style>

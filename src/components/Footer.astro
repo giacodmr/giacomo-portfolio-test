@@ -44,7 +44,7 @@
   .footer-brand i {
     width: 30px;
     height: 1px;
-    background: var(--text-tertiary);
+    background: var(--border);
   }
 
   .footer-brand small {
@@ -60,6 +60,12 @@
   nav a {
     color: var(--text-secondary);
     font-size: .66rem;
+    transition: color .16s ease;
+  }
+
+  nav a:hover,
+  nav a:focus-visible {
+    color: var(--accent);
   }
 
   @media (max-width: 700px) {

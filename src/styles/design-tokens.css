@@ -2,38 +2,43 @@
  * Giacomo Portfolio Design Tokens
  * Canonical visual token reference for DESIGN_SYSTEM.md.
  *
- * NOTE:
- * - This file is intentionally not imported automatically yet.
- * - Existing homepage/global styles may still use legacy variable names.
- * - Future refactors should migrate toward these semantic tokens without
- *   changing shared files casually while parallel work is in progress.
+ * Carbon x GitHub palette:
+ * - Primer-inspired neutral surfaces and text
+ * - Carbon blue for primary interaction and analytical emphasis
+ * - Carbon graphite for dark surfaces
  */
 
 :root {
   /* Core surfaces */
-  --ds-canvas: #f4f1e9;
-  --ds-surface: #fbfaf6;
-  --ds-surface-soft: #f0eee7;
+  --ds-canvas: #f6f8fa;
+  --ds-surface: #ffffff;
+  --ds-surface-soft: #f4f4f4;
 
   /* Text */
-  --ds-ink: #141a16;
-  --ds-muted: #626a63;
-  --ds-subtle: #8b928c;
+  --ds-ink: #1f2328;
+  --ds-muted: #57606a;
+  --ds-subtle: #6e7781;
 
-  /* Forest accent */
-  --ds-forest-900: #0d2119;
-  --ds-forest-800: #0e563f;
-  --ds-forest-500: #6f9a82;
-  --ds-forest-100: #dce7de;
+  /* Carbon blue */
+  --ds-blue-800: #002d9c;
+  --ds-blue-700: #0043ce;
+  --ds-blue-600: #0f62fe;
+  --ds-blue-300: #78a9ff;
+  --ds-blue-100: #d0e2ff;
+
+  /* Carbon graphite */
+  --ds-graphite-100: #161616;
+  --ds-graphite-90: #262626;
+  --ds-graphite-70: #525252;
 
   /* Data / neutral */
-  --ds-data-low: #bdc9c0;
-  --ds-light: #f4f7f3;
+  --ds-data-low: #c1c7cd;
+  --ds-light: #f4f4f4;
   --ds-white: #ffffff;
 
   /* Borders */
-  --ds-border: rgba(20, 26, 22, 0.14);
-  --ds-border-light: rgba(20, 26, 22, 0.08);
+  --ds-border: #d0d7de;
+  --ds-border-light: #eaeef2;
 
   /* Typography */
   --ds-font-sans: 'IBM Plex Sans', Arial, sans-serif;
@@ -69,17 +74,31 @@
   --ds-motion-reveal: 360ms;
 
   /* Data visualisation semantic aliases */
-  --ds-data-focus: var(--ds-forest-800);
-  --ds-data-secondary: var(--ds-forest-500);
+  --ds-data-focus: var(--ds-blue-600);
+  --ds-data-secondary: var(--ds-blue-300);
   --ds-data-context: var(--ds-data-low);
-  --ds-data-fill-soft: var(--ds-forest-100);
+  --ds-data-fill-soft: var(--ds-blue-100);
 
   /* Component semantic aliases */
-  --ds-tag-bg: var(--ds-forest-800);
+  --ds-accent: var(--ds-blue-600);
+  --ds-accent-hover: var(--ds-blue-700);
+  --ds-accent-strong: var(--ds-blue-800);
+  --ds-accent-soft: var(--ds-blue-100);
+  --ds-dark: var(--ds-graphite-100);
+  --ds-dark-elevated: var(--ds-graphite-90);
+  --ds-tag-bg: var(--ds-blue-600);
   --ds-tag-text: var(--ds-white);
   --ds-tag-neutral-bg: var(--ds-surface-soft);
   --ds-tag-neutral-text: var(--ds-muted);
-  --ds-focus-ring: var(--ds-forest-800);
+  --ds-focus-ring: var(--ds-blue-600);
+
+  /* Backward-compatible aliases for existing components.
+     These intentionally map old forest names to Carbon blue / graphite so
+     legacy selectors no longer render green while the codebase is migrated. */
+  --ds-forest-900: var(--ds-graphite-100);
+  --ds-forest-800: var(--ds-blue-600);
+  --ds-forest-500: var(--ds-blue-300);
+  --ds-forest-100: var(--ds-blue-100);
 }
 
 @media (max-width: 760px) {

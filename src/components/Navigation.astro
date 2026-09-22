@@ -1,0 +1,82 @@
+<header class="site-header">
+  <div class="container nav-inner">
+    <a class="wordmark" href="/">Giacomo Di Muro</a>
+    <nav aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#experience">About</a>
+      <a href="#" aria-label="CV link placeholder">CV ↗</a>
+      <a href="#" aria-label="LinkedIn link placeholder">LinkedIn ↗</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    height: 76px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .wordmark {
+    font-size: 0.9rem;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+
+  nav {
+    display: flex;
+    gap: clamp(16px, 2.5vw, 34px);
+  }
+
+  nav a {
+    position: relative;
+    color: var(--text-secondary);
+    font-size: 0.86rem;
+    font-weight: 520;
+    transition: color 180ms var(--ease-standard);
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -5px;
+    height: 1px;
+    background: currentColor;
+    transition: right 180ms var(--ease-standard);
+  }
+
+  nav a:hover {
+    color: var(--text);
+  }
+
+  nav a:hover::after {
+    right: 0;
+  }
+
+  @media (max-width: 620px) {
+    .site-header {
+      height: auto;
+      padding-block: 18px;
+    }
+
+    .nav-inner {
+      align-items: flex-start;
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 8px 18px;
+      justify-items: end;
+    }
+  }
+</style>

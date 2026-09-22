@@ -28,6 +28,7 @@ body.home-page {
   color: var(--ds-ink);
 }
 
+/* Core homepage surfaces */
 .home-page .project-card { border-color: var(--ds-border-light); border-radius: var(--ds-radius-md); background: var(--ds-surface); box-shadow: none; }
 .home-page .project-stat-panel { border-color: var(--ds-border-light); }
 .home-page .tag-list { gap: var(--ds-space-2); }
@@ -40,11 +41,79 @@ body.home-page {
 .home-page .legend-dot.high { background: var(--ds-data-focus); }
 .home-page .legend-dot.medium { background: var(--ds-data-secondary); }
 .home-page .legend-dot.low { background: var(--ds-data-context); }
-.home-page .ai-card { border-color: color-mix(in srgb, var(--ds-light) 12%, transparent); background: radial-gradient(circle at 83% 78%, rgba(111, 154, 130, .14), transparent 30%), var(--ds-forest-900); }
+
+/* Hero refinement: less poster-like, more business/editorial. */
+@media (min-width: 761px) {
+  .home-page .hero-title {
+    max-width: 690px;
+    font-size: clamp(3.35rem, 5.15vw, 5.45rem);
+    line-height: .95;
+    letter-spacing: -.045em;
+  }
+}
+
+@media (min-width: 1121px) {
+  .home-page .hero-grid {
+    grid-template-columns: minmax(0, 5.6fr) minmax(0, 6.4fr);
+  }
+
+  .home-page .hero-intro {
+    padding-right: clamp(32px, 4vw, 56px);
+  }
+}
+
+/* Featured opportunity map: stronger geography, quieter background network. */
+.home-page .home-opportunity-map .country-shape path {
+  stroke: color-mix(in srgb, var(--ds-forest-800) 40%, transparent);
+  stroke-width: 1.4;
+}
+
+.home-page .home-opportunity-map .network-dot.low { opacity: .42; }
+.home-page .home-opportunity-map .network-dot.medium { opacity: .68; }
+.home-page .home-opportunity-map .network-dot.high { opacity: .8; }
+.home-page .home-opportunity-map .city-labels text {
+  fill: color-mix(in srgb, var(--ds-ink) 78%, transparent);
+  font-weight: 500;
+}
+.home-page .home-opportunity-map .city-marker.is-active .marker-core { filter: saturate(1.08); }
+
+/* Retail preview: keep Carbon-like density but improve recruiter-readable labels. */
+.home-page .retail-report .viz-panel header span { font-size: .59rem; }
+.home-page .retail-report .viz-panel header strong { font-size: .74rem; }
+.home-page .retail-report .viz-panel > p { font-size: .61rem; line-height: 1.42; }
+.home-page .retail-report .distribution-axis,
+.home-page .retail-report .dotplot-axis { font-size: .56rem; }
+.home-page .retail-report .hbar-row > span,
+.home-page .retail-report .hbar-row > strong { font-size: .58rem; }
+.home-page .retail-report .dotplot-wrap text { font-size: 10.5px; }
+.home-page .retail-report .report-note { font-size: .58rem; }
+
+/* AI preview: preserve the dark contrast card while improving secondary-text legibility. */
+.home-page .ai-card {
+  border-color: color-mix(in srgb, var(--ds-light) 14%, transparent);
+  background: radial-gradient(circle at 83% 78%, rgba(111, 154, 130, .14), transparent 30%), var(--ds-forest-900);
+}
+.home-page .ai-card .project-client,
+.home-page .ai-card .project-description { color: rgba(244, 247, 243, .72); }
+.home-page .ai-card .workflow-step {
+  border-color: rgba(241, 246, 242, .23);
+  background: rgba(255, 255, 255, .035);
+}
+.home-page .ai-card .workflow-step span { color: rgba(240, 245, 241, .58); }
+.home-page .ai-card .workflow-step small { color: rgba(240, 245, 241, .68); }
+.home-page .ai-card .workflow-step-accent {
+  border-color: rgba(151, 206, 170, .76);
+  background: rgba(91, 145, 111, .17);
+}
+.home-page .ai-card .workflow-arrow { color: rgba(240, 245, 241, .82); }
+.home-page .ai-card .ai-card-footer { color: rgba(244, 247, 243, .76); }
 
 @media (max-width: 760px) {
   body.home-page { --page-x: var(--ds-page-x); --radius: var(--ds-radius-md); }
   .home-page .tag-list span { padding: 6px 10px; }
+
+  .home-page .retail-report .viz-panel header strong { font-size: .78rem; }
+  .home-page .retail-report .viz-panel > p { font-size: .66rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

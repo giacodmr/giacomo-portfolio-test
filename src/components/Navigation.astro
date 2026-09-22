@@ -18,7 +18,7 @@
     top: 0;
     height: 68px;
     border-bottom: 1px solid var(--border-light);
-    background: rgba(244, 241, 233, .92);
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
     backdrop-filter: blur(16px);
   }
 
@@ -48,6 +48,7 @@
     color: var(--text);
     font-size: .75rem;
     font-weight: 500;
+    transition: color .16s ease;
   }
 
   nav a::after {
@@ -57,11 +58,17 @@
     right: 100%;
     bottom: -5px;
     height: 1px;
-    background: currentColor;
+    background: var(--accent);
     transition: right .18s ease;
   }
 
-  nav a:hover::after {
+  nav a:hover,
+  nav a:focus-visible {
+    color: var(--accent);
+  }
+
+  nav a:hover::after,
+  nav a:focus-visible::after {
     right: 0;
   }
 

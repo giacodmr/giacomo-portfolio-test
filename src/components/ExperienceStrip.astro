@@ -32,9 +32,9 @@
     align-items: center;
     min-height: 112px;
     padding: 22px 28px;
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: rgba(251, 250, 246, .7);
+    background: var(--surface);
   }
 
   .experience-label {
@@ -79,13 +79,20 @@
     gap: 9px;
     font-size: .75rem;
     font-weight: 600;
+    transition: color .16s ease;
   }
 
   .experience-link span {
     transition: transform .18s var(--ease);
   }
 
-  .experience-link:hover span {
+  .experience-link:hover,
+  .experience-link:focus-visible {
+    color: var(--accent);
+  }
+
+  .experience-link:hover span,
+  .experience-link:focus-visible span {
     transform: translateX(4px);
   }
 

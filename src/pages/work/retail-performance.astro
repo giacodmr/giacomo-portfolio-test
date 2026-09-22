@@ -1,0 +1,35 @@
+---
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import RetailBars from '../../components/RetailBars.astro';
+---
+
+<CaseStudyLayout
+  title="Retail Performance Intelligence"
+  eyebrow="02 / 03 · Retail Analytics"
+  client="Leading consumer brand"
+  question="How can retail performance patterns inform better network and commercial decisions?"
+  summary="The analysis combined store- and customer-level performance signals to identify patterns across the network and support more structured commercial interpretation."
+>
+  <div slot="visual">
+    <RetailBars />
+  </div>
+
+  <section class="case-block">
+    <h3>Analytical themes</h3>
+    <p>Store performance, average ticket, purchase frequency, profitability, customer behaviour, clustering and network dynamics.</p>
+  </section>
+
+  <section class="case-block">
+    <h3>My contribution</h3>
+    <ul>
+      <li>Analysed store- and customer-level performance.</li>
+      <li>Supported KPI interpretation and store clustering.</li>
+      <li>Translated analytical findings into business insights.</li>
+    </ul>
+  </section>
+
+  <section class="case-block">
+    <h3>Evidence</h3>
+    <p><strong>700k+</strong> records analysed across <strong>150+</strong> stores. Preview chart values are synthetic reconstructions.</p>
+  </section>
+</CaseStudyLayout>

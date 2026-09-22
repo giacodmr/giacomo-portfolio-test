@@ -3,13 +3,13 @@ import '../styles/design-tokens.css';
 import '../styles/global.css';
 import '../styles/home.css';
 import Navigation from '../components/Navigation.astro';
-import FeaturedCase from '../components/FeaturedCase.astro';
+import HeroIntro from '../components/HeroIntro.astro';
+import ArchitecturalVisual from '../components/ArchitecturalVisual.astro';
+import HomeOpportunityMap from '../components/HomeOpportunityMap.astro';
 import HomeRetailPreview from '../components/HomeRetailPreview.astro';
 import AIWorkflow from '../components/AIWorkflow.astro';
 import ExperienceStrip from '../components/ExperienceStrip.astro';
 import Footer from '../components/Footer.astro';
-import PrimerHero from '../components/primer/PrimerHero.jsx';
-import PrimerProjectMeta from '../components/primer/PrimerProjectMeta.jsx';
 
 const title = 'Giacomo Di Muro — Business Strategy & Analytics';
 const description = 'Business strategy, analytics and applied AI for structured business decisions.';
@@ -21,7 +21,7 @@ const description = 'Business strategy, analytics and applied AI for structured 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#f6f8fa" />
     <title>{title}</title>
   </head>
 
@@ -29,66 +29,111 @@ const description = 'Business strategy, analytics and applied AI for structured 
     <Navigation />
 
     <main>
-      <section class="hero-section" aria-label="Introduction and featured work">
-        <div class="container hero-shell">
-          <div class="hero-copy">
-            <PrimerHero />
-            <div class="hero-proof">
-              <span>Current role</span>
-              <strong>Business Consultant · Client Strategy</strong>
-              <p>Strategy, analytics and transformation work across consumer and commercial topics.</p>
-            </div>
-          </div>
-
-          <FeaturedCase />
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <HeroIntro />
+          <ArchitecturalVisual />
         </div>
       </section>
 
-      <section class="work-section" aria-labelledby="more-work-title">
+      <section id="work" class="selected-work">
         <div class="container">
-          <header class="section-intro">
-            <p class="eyebrow">More selected work</p>
-            <h2 id="more-work-title">Different problems. The same evidence-led approach.</h2>
-            <p>Each project is anonymised or reconstructed to preserve confidentiality while showing the analytical logic and decision context.</p>
-          </header>
+          <article class="project-card project-featured">
+            <div class="project-copy project-copy-featured">
+              <p class="eyebrow">Featured work · 01 / 03</p>
+              <h2>Commercial Opportunity Prioritisation</h2>
+              <p class="project-client">Global beverage company</p>
+              <p class="project-description">
+                Identified and prioritised commercially attractive locations using market analytics,
+                geospatial analysis and a structured scoring approach.
+              </p>
 
-          <article class="case-river case-river-reverse">
-            <div class="case-copy">
-              <p class="case-number">02 / 03 · Commercial analytics</p>
-              <h3>Retail Performance Intelligence</h3>
-              <p class="case-client">Leading consumer brand</p>
-              <p class="case-question">How can retail performance patterns inform better network and commercial decisions?</p>
-              <p class="case-body">Store- and customer-level performance patterns translated into network, profitability and commercial insights.</p>
-              <PrimerProjectMeta
-                tags={['Retail Strategy', 'Customer Analytics', 'Network Strategy']}
-                stats={[{ value: '700k+', label: 'records analysed' }, { value: '150+', label: 'stores' }]}
-                href="/work/retail-performance"
-              />
+              <div class="tag-list" aria-label="Capabilities">
+                <span>Commercial strategy</span>
+                <span>Market analytics</span>
+                <span>GTM</span>
+              </div>
+
+              <a class="project-link" href="/work/commercial-opportunity">
+                View project <span aria-hidden="true">→</span>
+              </a>
             </div>
-            <div class="case-visual retail-visual">
+
+            <div class="featured-map">
+              <HomeOpportunityMap />
+            </div>
+
+            <aside class="project-stat-panel" aria-label="Project evidence">
+              <p class="project-index">01 / 03</p>
+              <div class="primary-stat">
+                <strong>12k+</strong>
+                <span>locations analysed</span>
+              </div>
+
+              <div class="legend">
+                <span><i class="legend-dot high"></i>High priority</span>
+                <span><i class="legend-dot medium"></i>Medium priority</span>
+                <span><i class="legend-dot low"></i>Lower priority</span>
+              </div>
+
+              <p class="stat-note">From analysis to opportunity across Italy.</p>
+            </aside>
+          </article>
+
+          <div class="secondary-projects">
+            <article class="project-card retail-card">
+              <div class="project-card-head">
+                <div>
+                  <p class="eyebrow">02 / 03 · Retail Analytics</p>
+                  <h2>Retail Performance Intelligence</h2>
+                  <p class="project-client">Leading consumer brand</p>
+                </div>
+
+                <div class="compact-stats">
+                  <div><strong>700k+</strong><span>records analysed</span></div>
+                  <div><strong>150+</strong><span>stores</span></div>
+                </div>
+              </div>
+
+              <p class="project-description compact">
+                Store- and customer-level performance patterns translated into network and commercial insights.
+              </p>
+
               <HomeRetailPreview />
-            </div>
-          </article>
 
-          <article class="case-river ai-river">
-            <div class="case-copy">
-              <p class="case-number">03 / 03 · Applied AI</p>
-              <h3>AI-enabled Consulting Workflows</h3>
-              <p class="case-client">Internal transformation / Consulting organisation</p>
-              <p class="case-question">How can recurring consulting workflows use AI while preserving human judgement?</p>
-              <p class="case-body">A controlled workflow connecting business inputs, AI-supported analysis, consultant review and decision-ready outputs.</p>
-              <PrimerProjectMeta
-                tags={['Applied AI', 'Process Redesign', 'Transformation']}
-                stats={[]}
-                href="/work/ai-workflows"
-                colorMode="dark"
-              />
-              <p class="ai-annotation">Selected as AI Champion — Consumer</p>
-            </div>
-            <div class="case-visual ai-visual">
+              <div class="card-footer-row">
+                <div class="tag-list" aria-label="Capabilities">
+                  <span>Retail strategy</span>
+                  <span>Customer analytics</span>
+                  <span>Network strategy</span>
+                </div>
+
+                <a class="project-link" href="/work/retail-performance">
+                  View project <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card ai-card">
+              <div>
+                <p class="eyebrow">03 / 03 · Applied AI</p>
+                <h2>AI-enabled Consulting Workflows</h2>
+                <p class="project-client">Internal transformation / Consulting organisation</p>
+                <p class="project-description compact">
+                  AI-supported workflows designed around structured analysis, consultant review and decision-ready outputs.
+                </p>
+              </div>
+
               <AIWorkflow />
-            </div>
-          </article>
+
+              <div class="ai-card-footer">
+                <p>Selected as AI Champion — Consumer</p>
+                <a class="project-link project-link-light" href="/work/ai-workflows">
+                  View project <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 

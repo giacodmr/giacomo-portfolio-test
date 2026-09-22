@@ -1,78 +1,117 @@
 <section id="experience" class="experience-section">
-  <div class="container">
-    <div class="experience-strip">
-      <div class="experience-label">
-        <span class="eyebrow">Experience</span>
-        <strong>JAKALA</strong>
-      </div>
-
-      <div class="experience-role">
-        <strong>Business Consultant · Client Strategy</strong>
-        <span>Milan</span>
-      </div>
-
-      <div class="experience-proof">
-        <span>Selected as</span>
-        <strong>AI Champion — Consumer</strong>
-      </div>
-
-      <p class="experience-summary">
-        Strategy, analytics and transformation work across consumer and commercial topics, with applied AI as a practical capability.
-      </p>
-
-      <a class="experience-link" href="/about">
-        About &amp; experience <span aria-hidden="true">→</span>
-      </a>
+  <div class="container experience-strip">
+    <div class="experience-label">
+      <span class="eyebrow">Experience</span>
+      <strong>JAKALA</strong>
     </div>
+
+    <div class="experience-role">
+      <strong>Business Consultant · Client Strategy</strong>
+      <span>Milan</span>
+    </div>
+
+    <p class="experience-summary">
+      Supporting strategy, analytics and transformation work across consumer and commercial topics.
+    </p>
+
+    <a class="experience-link" href="#">
+      More about me <span aria-hidden="true">→</span>
+    </a>
   </div>
 </section>
 
 <style>
-  .experience-section { padding: 0 0 54px; background: var(--surface-soft); }
+  .experience-section {
+    padding: 0 0 22px;
+  }
+
   .experience-strip {
     display: grid;
-    grid-template-columns: 1.1fr 2.1fr 1.65fr 2.7fr auto;
-    gap: 26px;
+    grid-template-columns: 1.6fr 2.8fr 3.2fr auto;
+    gap: 28px;
     align-items: center;
-    min-height: 158px;
-    padding: 30px 32px;
+    min-height: 112px;
+    padding: 22px 28px;
     border: 1px solid var(--border);
+    border-radius: var(--radius);
     background: var(--surface);
   }
-  .experience-label,
-  .experience-role,
-  .experience-proof { display: grid; gap: 8px; }
-  .experience-label strong { font-size: 1.06rem; letter-spacing: .03em; }
-  .experience-role,
-  .experience-proof,
-  .experience-summary {
-    padding-left: 26px;
-    border-left: 1px solid var(--border);
+
+  .experience-label {
+    display: grid;
+    gap: 10px;
   }
-  .experience-role strong,
-  .experience-proof strong { font-size: .94rem; font-weight: 620; line-height: 1.35; }
-  .experience-role span,
-  .experience-proof span,
-  .experience-summary { color: var(--text-secondary); font-size: .84rem; line-height: 1.58; }
-  .experience-summary { margin: 0; }
+
+  .experience-label strong {
+    font-size: 1.12rem;
+    letter-spacing: .03em;
+  }
+
+  .experience-role {
+    display: grid;
+    gap: 4px;
+    padding-left: 24px;
+    border-left: 1px solid var(--border-light);
+  }
+
+  .experience-role strong {
+    font-size: .84rem;
+    font-weight: 500;
+  }
+
+  .experience-role span {
+    color: var(--text-secondary);
+    font-size: .72rem;
+  }
+
+  .experience-summary {
+    margin: 0;
+    padding-left: 24px;
+    border-left: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    font-size: .72rem;
+    line-height: 1.5;
+  }
+
   .experience-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    color: var(--text-secondary);
-    font-size: .88rem;
+    gap: 9px;
+    font-size: .75rem;
     font-weight: 600;
-    white-space: nowrap;
+    transition: color .16s ease;
   }
-  .experience-link:hover { color: var(--accent); }
 
-  @media (max-width: 1050px) {
-    .experience-strip { grid-template-columns: 1fr 1fr; }
-    .experience-summary,
-    .experience-role,
-    .experience-proof { padding-left: 0; border-left: 0; }
+  .experience-link span {
+    transition: transform .18s var(--ease);
   }
+
+  .experience-link:hover,
+  .experience-link:focus-visible {
+    color: var(--accent);
+  }
+
+  .experience-link:hover span,
+  .experience-link:focus-visible span {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 900px) {
+    .experience-strip {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .experience-summary,
+    .experience-role {
+      padding-left: 0;
+      border-left: 0;
+    }
+  }
+
   @media (max-width: 620px) {
-    .experience-strip { grid-template-columns: 1fr; gap: 20px; padding: 26px; }
+    .experience-strip {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
   }
 </style>

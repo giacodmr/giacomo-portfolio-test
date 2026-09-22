@@ -1,0 +1,174 @@
+<div class="map-wrap">
+  <svg
+    viewBox="0 0 760 420"
+    role="img"
+    aria-labelledby="map-title map-desc"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <title id="map-title">Synthetic commercial opportunity map</title>
+    <desc id="map-desc">
+      Abstracted map of Italy with synthetic commercial locations shown at low, medium and high opportunity levels.
+    </desc>
+
+    <g class="territory" aria-hidden="true">
+      <path d="M390 38c22 24 31 52 27 77-3 21 10 38 30 52 20 13 33 32 35 51 2 18 17 34 40 47 28 15 43 36 37 56-5 18-29 23-47 10-15-11-26-7-31 7-4 12 8 29 23 43-16 6-31 5-45-3-18-10-32-24-47-38-13-13-29-16-47-8-22 10-36 3-41-17-6-24-18-46-35-63-18-18-31-42-30-67 1-21 7-42 17-63z" />
+      <path d="M315 304c17 11 30 30 30 49-1 22-18 37-39 33-18-4-29-21-25-40 4-18 16-34 34-42z" />
+      <path d="M535 349c27 1 54 10 70 27-18 15-40 24-64 26-19 2-36-5-48-19 9-17 24-28 42-34z" />
+    </g>
+
+    <g class="points low" aria-hidden="true">
+      <circle cx="349" cy="101" r="4" />
+      <circle cx="403" cy="91" r="4" />
+      <circle cx="448" cy="148" r="4" />
+      <circle cx="372" cy="177" r="4" />
+      <circle cx="427" cy="213" r="4" />
+      <circle cx="455" cy="251" r="4" />
+      <circle cx="492" cy="289" r="4" />
+      <circle cx="460" cy="331" r="4" />
+      <circle cx="518" cy="355" r="4" />
+      <circle cx="318" cy="343" r="4" />
+      <circle cx="401" cy="252" r="4" />
+      <circle cx="382" cy="301" r="4" />
+      <circle cx="478" cy="189" r="4" />
+      <circle cx="360" cy="228" r="4" />
+      <circle cx="423" cy="132" r="4" />
+    </g>
+
+    <g class="points medium" aria-hidden="true">
+      <circle cx="376" cy="119" r="5" />
+      <circle cx="420" cy="168" r="5" />
+      <circle cx="400" cy="206" r="5" />
+      <circle cx="438" cy="240" r="5" />
+      <circle cx="466" cy="280" r="5" />
+      <circle cx="490" cy="321" r="5" />
+      <circle cx="443" cy="304" r="5" />
+    </g>
+
+    <g class="points high" aria-hidden="true">
+      <circle cx="395" cy="112" r="7" />
+      <circle cx="414" cy="195" r="7" />
+      <circle cx="454" cy="271" r="7" />
+      <circle cx="500" cy="343" r="7" />
+    </g>
+
+    <g class="labels" aria-hidden="true">
+      <text x="332" y="109">Turin</text>
+      <text x="408" y="103">Milan</text>
+      <text x="430" y="188">Bologna</text>
+      <text x="465" y="264">Rome</text>
+      <text x="516" y="338">Bari</text>
+    </g>
+
+    <g class="callout" aria-hidden="true">
+      <line x1="395" y1="112" x2="548" y2="84" />
+      <rect x="548" y="50" width="156" height="72" rx="8" />
+      <text class="callout-city" x="564" y="73">MILAN, IT</text>
+      <text x="564" y="94">Opportunity: High</text>
+      <text x="564" y="111">Priority cluster: A</text>
+    </g>
+  </svg>
+
+  <div class="legend" aria-hidden="true">
+    <span><i class="dot low-dot"></i>Low</span>
+    <span><i class="dot medium-dot"></i>Medium</span>
+    <span><i class="dot high-dot"></i>High</span>
+  </div>
+</div>
+
+<style>
+  .map-wrap {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 26px 20px 22px;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .territory path {
+    fill: rgba(255, 255, 255, 0.45);
+    stroke: var(--border);
+    stroke-width: 1.4;
+  }
+
+  .points circle {
+    stroke: rgba(247, 247, 243, 0.95);
+    stroke-width: 2;
+  }
+
+  .low circle {
+    fill: #c5cec7;
+  }
+
+  .medium circle {
+    fill: #799785;
+  }
+
+  .high circle {
+    fill: #245c45;
+  }
+
+  .labels text,
+  .callout text {
+    font-family: inherit;
+    fill: var(--text-secondary);
+    font-size: 12px;
+  }
+
+  .callout line {
+    stroke: var(--accent-medium);
+    stroke-width: 1;
+  }
+
+  .callout rect {
+    fill: rgba(255, 255, 255, 0.94);
+    stroke: var(--border);
+  }
+
+  .callout .callout-city {
+    fill: var(--text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .legend {
+    position: absolute;
+    left: 24px;
+    bottom: 18px;
+    display: flex;
+    gap: 14px;
+    color: var(--text-secondary);
+    font-size: 11px;
+  }
+
+  .legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  .low-dot { background: #c5cec7; }
+  .medium-dot { background: #799785; }
+  .high-dot { background: #245c45; }
+
+  @media (max-width: 600px) {
+    .callout {
+      display: none;
+    }
+
+    .labels text {
+      font-size: 10px;
+    }
+  }
+</style>

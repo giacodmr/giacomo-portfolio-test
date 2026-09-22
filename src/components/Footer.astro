@@ -1,0 +1,69 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-name">Giacomo Di Muro</p>
+      <p class="footer-meta">Business Strategy & Analytics<br />Milan, Italy</p>
+    </div>
+
+    <div class="footer-links">
+      <a class="editorial-link" href="#">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a class="editorial-link" href="#">CV <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© 2026 Giacomo Di Muro</span>
+    <span>Strategy, analytics and technology applied to business decisions.</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 72px 0 28px;
+  }
+
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .footer-name {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 650;
+  }
+
+  .footer-meta {
+    margin: 12px 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 96px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-tertiary);
+    font-size: 0.72rem;
+  }
+
+  @media (max-width: 680px) {
+    .footer-grid,
+    .footer-bottom {
+      flex-direction: column;
+    }
+
+    .footer-bottom {
+      margin-top: 64px;
+    }
+  }
+</style>

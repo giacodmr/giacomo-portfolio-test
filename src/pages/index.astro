@@ -2,14 +2,15 @@
 import '../styles/global.css';
 import Navigation from '../components/Navigation.astro';
 import HeroIntro from '../components/HeroIntro.astro';
+import ArchitecturalVisual from '../components/ArchitecturalVisual.astro';
 import OpportunityMap from '../components/OpportunityMap.astro';
-import RetailScatter from '../components/RetailScatter.astro';
+import RetailBars from '../components/RetailBars.astro';
 import AIWorkflow from '../components/AIWorkflow.astro';
 import ExperienceStrip from '../components/ExperienceStrip.astro';
 import Footer from '../components/Footer.astro';
 
 const title = 'Giacomo Di Muro — Business Strategy & Analytics';
-const description = 'Business strategy, analytics and technology applied to structured decisions and execution.';
+const description = 'Business strategy, analytics and applied AI for structured business decisions.';
 ---
 
 <!doctype html>
@@ -18,91 +19,118 @@ const description = 'Business strategy, analytics and technology applied to stru
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#F3F0E8" />
+    <meta name="theme-color" content="#f4f1e9" />
     <title>{title}</title>
   </head>
+
   <body>
     <Navigation />
 
     <main>
-      <section class="container hero-v2">
-        <HeroIntro />
-
-        <div class="hero-project" id="work">
-          <div class="hero-project-head">
-            <div>
-              <p class="eyebrow">01 / 03 · Commercial Strategy</p>
-              <h2 class="hero-project-title">Commercial Opportunity Prioritisation</h2>
-              <p class="hero-project-meta">Global beverage company · Market Analytics · GTM · Prioritisation</p>
-            </div>
-            <a class="editorial-link hero-project-link" href="#case-01">Explore <span aria-hidden="true">↘</span></a>
-          </div>
-
-          <div class="hero-map-shell" id="case-01">
-            <OpportunityMap />
-            <div class="hero-map-metric">
-              <strong>12k+</strong>
-              <span>locations analysed</span>
-            </div>
-          </div>
-
-          <div class="hero-project-foot">
-            <div>
-              <strong>Business question</strong>
-              <p>Which commercial opportunities should be prioritised?</p>
-            </div>
-            <div>
-              <strong>Decision enabled</strong>
-              <p>Created a structured basis to identify and prioritise commercially attractive opportunities.</p>
-            </div>
-          </div>
-          <p class="confidentiality-note">Visual reconstruction using synthetic data for confidentiality.</p>
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <HeroIntro />
+          <ArchitecturalVisual />
         </div>
       </section>
 
-      <section class="manifesto">
-        <div class="container manifesto-grid">
-          <p class="eyebrow">Selected work</p>
-          <h2>Three examples. One pattern: turning <span>ambiguity into evidence</span> and evidence into decisions.</h2>
-        </div>
-      </section>
+      <section id="work" class="selected-work">
+        <div class="container">
+          <article class="project-card project-featured">
+            <div class="project-copy project-copy-featured">
+              <p class="eyebrow">Featured work · 01 / 03</p>
+              <h2>Commercial Opportunity Prioritisation</h2>
+              <p class="project-client">Global beverage company</p>
+              <p class="project-description">
+                Identified and prioritised commercially attractive locations using market analytics,
+                geospatial analysis and a structured scoring approach.
+              </p>
 
-      <section class="chapter chapter-light" id="retail-performance">
-        <div class="container chapter-grid">
-          <div class="chapter-copy">
-            <p class="eyebrow chapter-number">02 / 03 · Commercial Analytics</p>
-            <h2 class="chapter-title">Retail Performance Intelligence</h2>
-            <p class="chapter-client">Leading consumer brand · Retail Strategy · Profitability · Customer Analytics</p>
+              <div class="tag-list" aria-label="Capabilities">
+                <span>Commercial strategy</span>
+                <span>Market analytics</span>
+                <span>GTM</span>
+              </div>
 
-            <p class="chapter-question">How can retail performance patterns inform better network and commercial decisions?</p>
-            <p class="chapter-output">Translated store- and customer-level performance patterns into structured commercial and network insights.</p>
-          </div>
-
-          <div class="chapter-visual">
-            <RetailScatter />
-            <div class="metrics-row">
-              <div class="metric"><strong>700k+</strong><span>records analysed</span></div>
-              <div class="metric"><strong>150+</strong><span>stores</span></div>
+              <a class="project-link" href="/work/commercial-opportunity">
+                View project <span aria-hidden="true">→</span>
+              </a>
             </div>
-            <p class="confidentiality-note">Visual reconstruction using synthetic data for confidentiality.</p>
-          </div>
-        </div>
-      </section>
 
-      <section class="chapter chapter-dark" id="ai-workflows">
-        <div class="container chapter-grid">
-          <div class="chapter-copy">
-            <p class="eyebrow chapter-number">03 / 03 · Applied AI</p>
-            <h2 class="chapter-title">AI-enabled Consulting Workflows</h2>
-            <p class="chapter-client">Internal transformation / Consulting organisation</p>
+            <div class="featured-map">
+              <OpportunityMap />
+            </div>
 
-            <p class="chapter-question">How can recurring consulting workflows be redesigned using AI without losing business judgement?</p>
-            <p class="chapter-output">AI is positioned as one layer in a controlled process: structured analysis first, consultant validation before decision.</p>
-            <p class="confidentiality-note">Selected as AI Champion — Consumer</p>
-          </div>
+            <aside class="project-stat-panel" aria-label="Project evidence">
+              <p class="project-index">01 / 03</p>
+              <div class="primary-stat">
+                <strong>12k+</strong>
+                <span>locations analysed</span>
+              </div>
 
-          <div class="chapter-visual">
-            <AIWorkflow />
+              <div class="legend">
+                <span><i class="legend-dot high"></i>High priority</span>
+                <span><i class="legend-dot medium"></i>Medium priority</span>
+                <span><i class="legend-dot low"></i>Lower priority</span>
+              </div>
+
+              <p class="stat-note">From analysis to opportunity across Italy.</p>
+            </aside>
+          </article>
+
+          <div class="secondary-projects">
+            <article class="project-card retail-card">
+              <div class="project-card-head">
+                <div>
+                  <p class="eyebrow">02 / 03 · Retail Analytics</p>
+                  <h2>Retail Performance Intelligence</h2>
+                  <p class="project-client">Leading consumer brand</p>
+                </div>
+
+                <div class="compact-stats">
+                  <div><strong>700k+</strong><span>records analysed</span></div>
+                  <div><strong>150+</strong><span>stores</span></div>
+                </div>
+              </div>
+
+              <p class="project-description compact">
+                Store- and customer-level performance patterns translated into network and commercial insights.
+              </p>
+
+              <RetailBars />
+
+              <div class="card-footer-row">
+                <div class="tag-list" aria-label="Capabilities">
+                  <span>Retail strategy</span>
+                  <span>Customer analytics</span>
+                  <span>Network strategy</span>
+                </div>
+
+                <a class="project-link" href="/work/retail-performance">
+                  View project <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card ai-card">
+              <div>
+                <p class="eyebrow">03 / 03 · Applied AI</p>
+                <h2>AI-enabled Consulting Workflows</h2>
+                <p class="project-client">Internal transformation / Consulting organisation</p>
+                <p class="project-description compact">
+                  AI-supported workflows designed around structured analysis, consultant review and decision-ready outputs.
+                </p>
+              </div>
+
+              <AIWorkflow />
+
+              <div class="ai-card-footer">
+                <p>Selected as AI Champion — Consumer</p>
+                <a class="project-link project-link-light" href="/work/ai-workflows">
+                  View project <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
           </div>
         </div>
       </section>

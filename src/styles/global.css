@@ -52,10 +52,10 @@ img, svg { max-width: 100%; }
 .eyebrow {
   margin: 0;
   color: var(--text-secondary);
-  font-size: .72rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  line-height: 1.2;
+  font-size: .76rem;
+  font-weight: 620;
+  letter-spacing: .075em;
+  line-height: 1.25;
   text-transform: uppercase;
 }
 
@@ -63,7 +63,7 @@ img, svg { max-width: 100%; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: .9rem;
+  font-size: .92rem;
   font-weight: 600;
   color: var(--text);
 }

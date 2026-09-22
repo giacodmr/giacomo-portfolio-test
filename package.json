@@ -1,6 +1,6 @@
 {
   "name": "giacomo-portfolio-test",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,9 +9,17 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "7.3.3"
+    "@astrojs/react": "6.0.6",
+    "@primer/react-brand": "0.76.0",
+    "astro": "7.3.3",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5"
   },
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   }
 }

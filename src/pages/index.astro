@@ -18,125 +18,91 @@ const description = 'Business strategy, analytics and technology applied to stru
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#F7F7F3" />
+    <meta name="theme-color" content="#F3F0E8" />
     <title>{title}</title>
   </head>
   <body>
     <Navigation />
 
     <main>
-      <div class="container hero-shell">
+      <section class="container hero-v2">
         <HeroIntro />
 
-        <section class="featured-case" aria-labelledby="featured-title">
-          <div class="case-heading">
-            <p class="eyebrow">01 / 03 · Commercial Strategy</p>
-            <h2 id="featured-title" class="case-title">Commercial Opportunity Prioritisation</h2>
-            <p class="case-client">Global beverage company</p>
-            <p class="case-tags">Commercial Strategy / Market Analytics / GTM / Prioritisation</p>
-          </div>
-
-          <div class="visual-frame">
-            <OpportunityMap />
-          </div>
-
-          <div class="case-evidence">
+        <div class="hero-project" id="work">
+          <div class="hero-project-head">
             <div>
-              <span class="metric-value">12k+</span>
-              <span class="metric-label">locations analysed</span>
+              <p class="eyebrow">01 / 03 · Commercial Strategy</p>
+              <h2 class="hero-project-title">Commercial Opportunity Prioritisation</h2>
+              <p class="hero-project-meta">Global beverage company · Market Analytics · GTM · Prioritisation</p>
             </div>
+            <a class="editorial-link hero-project-link" href="#case-01">Explore <span aria-hidden="true">↘</span></a>
+          </div>
 
-            <div class="business-copy">
-              <div>
-                <strong>Business question</strong>
-                <p>Which commercial opportunities should be prioritised?</p>
-              </div>
-              <div>
-                <strong>Output / decision</strong>
-                <p>Created a structured basis to identify and prioritise commercially attractive opportunities.</p>
-              </div>
+          <div class="hero-map-shell" id="case-01">
+            <OpportunityMap />
+            <div class="hero-map-metric">
+              <strong>12k+</strong>
+              <span>locations analysed</span>
             </div>
           </div>
 
+          <div class="hero-project-foot">
+            <div>
+              <strong>Business question</strong>
+              <p>Which commercial opportunities should be prioritised?</p>
+            </div>
+            <div>
+              <strong>Decision enabled</strong>
+              <p>Created a structured basis to identify and prioritise commercially attractive opportunities.</p>
+            </div>
+          </div>
           <p class="confidentiality-note">Visual reconstruction using synthetic data for confidentiality.</p>
-
-          <div class="case-cta">
-            <a class="editorial-link" href="#commercial-opportunity">
-              View case study <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </section>
-      </div>
-
-      <section id="work" class="work-section">
-        <div class="container">
-          <div class="section-label">
-            <p class="eyebrow">Selected Work</p>
-            <p class="eyebrow">02 — 03</p>
-          </div>
-
-          <article id="retail-performance" class="project-grid" aria-labelledby="retail-title">
-            <div class="project-copy">
-              <p class="eyebrow">02 / 03 · Commercial Analytics</p>
-              <h2 id="retail-title" class="case-title">Retail Performance Intelligence</h2>
-              <p class="case-client">Leading consumer brand</p>
-              <p class="case-tags">Commercial Analytics / Retail Strategy / Profitability / Customer Analytics</p>
-
-              <p class="project-question">How can retail performance patterns inform better network and commercial decisions?</p>
-              <p class="project-output">
-                Translated store- and customer-level performance patterns into structured commercial and network insights.
-              </p>
-
-              <div class="case-cta" style="justify-content:flex-start">
-                <a class="editorial-link" href="#retail-performance">
-                  View case study <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </div>
-
-            <div class="project-visual">
-              <RetailScatter />
-              <div class="metric-strip">
-                <div>
-                  <span class="metric-value">700k+</span>
-                  <span class="metric-label">records analysed</span>
-                </div>
-                <div>
-                  <span class="metric-value">150+</span>
-                  <span class="metric-label">stores</span>
-                </div>
-              </div>
-              <p class="confidentiality-note">Visual reconstruction using synthetic data for confidentiality.</p>
-            </div>
-          </article>
         </div>
       </section>
 
-      <section id="ai-workflows" class="work-section">
-        <div class="container">
-          <div class="project-grid">
-            <div class="project-copy">
-              <p class="eyebrow">03 / 03 · Applied AI</p>
-              <h2 class="case-title">AI-enabled Consulting Workflows</h2>
-              <p class="case-client">Internal transformation / Consulting organisation</p>
-              <p class="case-tags">Applied AI / Process Redesign / Automation / Transformation</p>
+      <section class="manifesto">
+        <div class="container manifesto-grid">
+          <p class="eyebrow">Selected work</p>
+          <h2>Three examples. One pattern: turning <span>ambiguity into evidence</span> and evidence into decisions.</h2>
+        </div>
+      </section>
 
-              <p class="project-question">How can recurring consulting workflows be redesigned using AI to increase structure and quality?</p>
-              <p class="project-output">
-                Designed AI-supported workflows that combine automated analysis with structured consultant review and business context.
-              </p>
-              <p class="confidentiality-note">Selected as AI Champion — Consumer</p>
+      <section class="chapter chapter-light" id="retail-performance">
+        <div class="container chapter-grid">
+          <div class="chapter-copy">
+            <p class="eyebrow chapter-number">02 / 03 · Commercial Analytics</p>
+            <h2 class="chapter-title">Retail Performance Intelligence</h2>
+            <p class="chapter-client">Leading consumer brand · Retail Strategy · Profitability · Customer Analytics</p>
 
-              <div class="case-cta" style="justify-content:flex-start">
-                <a class="editorial-link" href="#ai-workflows">
-                  View case study <span aria-hidden="true">↗</span>
-                </a>
-              </div>
+            <p class="chapter-question">How can retail performance patterns inform better network and commercial decisions?</p>
+            <p class="chapter-output">Translated store- and customer-level performance patterns into structured commercial and network insights.</p>
+          </div>
+
+          <div class="chapter-visual">
+            <RetailScatter />
+            <div class="metrics-row">
+              <div class="metric"><strong>700k+</strong><span>records analysed</span></div>
+              <div class="metric"><strong>150+</strong><span>stores</span></div>
             </div>
+            <p class="confidentiality-note">Visual reconstruction using synthetic data for confidentiality.</p>
+          </div>
+        </div>
+      </section>
 
-            <div class="project-visual">
-              <AIWorkflow />
-            </div>
+      <section class="chapter chapter-dark" id="ai-workflows">
+        <div class="container chapter-grid">
+          <div class="chapter-copy">
+            <p class="eyebrow chapter-number">03 / 03 · Applied AI</p>
+            <h2 class="chapter-title">AI-enabled Consulting Workflows</h2>
+            <p class="chapter-client">Internal transformation / Consulting organisation</p>
+
+            <p class="chapter-question">How can recurring consulting workflows be redesigned using AI without losing business judgement?</p>
+            <p class="chapter-output">AI is positioned as one layer in a controlled process: structured analysis first, consultant validation before decision.</p>
+            <p class="confidentiality-note">Selected as AI Champion — Consumer</p>
+          </div>
+
+          <div class="chapter-visual">
+            <AIWorkflow />
           </div>
         </div>
       </section>

@@ -25,8 +25,8 @@
     overflow: hidden;
     border-radius: 0 0 0 24px;
     background:
-      radial-gradient(circle at 24% 18%, rgba(255,255,255,.92), transparent 31%),
-      linear-gradient(135deg, #edf0ed 0%, #cfd8d4 50%, #879a91 100%);
+      radial-gradient(circle at 24% 18%, color-mix(in srgb, var(--ds-white, #fff) 92%, transparent), transparent 31%),
+      linear-gradient(135deg, var(--ds-surface, #fff) 0%, var(--ds-blue-100, #d0e2ff) 52%, color-mix(in srgb, var(--ds-blue-300, #78a9ff) 52%, var(--ds-surface, #fff)) 100%);
     isolation: isolate;
   }
 
@@ -35,8 +35,8 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(255,255,255,.48), transparent 38%),
-      linear-gradient(180deg, transparent 58%, rgba(20,32,26,.16));
+      linear-gradient(90deg, color-mix(in srgb, var(--ds-white, #fff) 46%, transparent), transparent 38%),
+      linear-gradient(180deg, transparent 58%, color-mix(in srgb, var(--ds-graphite-100, #161616) 18%, transparent));
     z-index: 5;
     pointer-events: none;
   }
@@ -44,14 +44,14 @@
   .tower {
     position: absolute;
     bottom: -1%;
-    border: 1px solid rgba(230,238,234,.32);
+    border: 1px solid color-mix(in srgb, var(--ds-light, #f4f4f4) 28%, transparent);
     background:
-      repeating-linear-gradient(90deg, rgba(235,242,238,.18) 0 1px, transparent 1px 34px),
-      repeating-linear-gradient(180deg, rgba(235,242,238,.14) 0 1px, transparent 1px 30px),
-      linear-gradient(145deg, rgba(51,77,67,.62), rgba(16,35,28,.88));
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light, #f4f4f4) 16%, transparent) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(180deg, color-mix(in srgb, var(--ds-light, #f4f4f4) 13%, transparent) 0 1px, transparent 1px 30px),
+      linear-gradient(145deg, color-mix(in srgb, var(--ds-blue-300, #78a9ff) 58%, var(--ds-graphite-70, #525252)), var(--ds-graphite-100, #161616));
     box-shadow:
-      inset 0 0 0 1px rgba(255,255,255,.04),
-      inset -35px 0 70px rgba(7,20,14,.18);
+      inset 0 0 0 1px color-mix(in srgb, var(--ds-white, #fff) 4%, transparent),
+      inset -35px 0 70px color-mix(in srgb, var(--ds-graphite-100, #161616) 24%, transparent);
   }
 
   .tower-a {
@@ -67,9 +67,9 @@
     height: 67%;
     clip-path: polygon(18% 4%, 100% 0, 100% 100%, 0 100%, 0 19%);
     background:
-      repeating-linear-gradient(90deg, rgba(235,242,238,.18) 0 1px, transparent 1px 32px),
-      repeating-linear-gradient(180deg, rgba(235,242,238,.13) 0 1px, transparent 1px 27px),
-      linear-gradient(160deg, rgba(104,128,117,.68), rgba(26,52,42,.83));
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light, #f4f4f4) 16%, transparent) 0 1px, transparent 1px 32px),
+      repeating-linear-gradient(180deg, color-mix(in srgb, var(--ds-light, #f4f4f4) 13%, transparent) 0 1px, transparent 1px 27px),
+      linear-gradient(160deg, color-mix(in srgb, var(--ds-blue-300, #78a9ff) 68%, var(--ds-graphite-70, #525252)), color-mix(in srgb, var(--ds-blue-800, #002d9c) 42%, var(--ds-graphite-100, #161616)));
   }
 
   .tower-c {
@@ -78,9 +78,9 @@
     height: 45%;
     clip-path: polygon(6% 11%, 100% 0, 100% 100%, 0 100%, 0 18%);
     background:
-      repeating-linear-gradient(90deg, rgba(241,245,242,.19) 0 1px, transparent 1px 28px),
-      repeating-linear-gradient(180deg, rgba(241,245,242,.13) 0 1px, transparent 1px 26px),
-      linear-gradient(145deg, rgba(90,115,104,.6), rgba(24,49,39,.8));
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light, #f4f4f4) 18%, transparent) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(180deg, color-mix(in srgb, var(--ds-light, #f4f4f4) 13%, transparent) 0 1px, transparent 1px 26px),
+      linear-gradient(145deg, color-mix(in srgb, var(--ds-blue-300, #78a9ff) 52%, var(--ds-data-low, #c1c7cd)), color-mix(in srgb, var(--ds-blue-800, #002d9c) 34%, var(--ds-graphite-100, #161616)));
   }
 
   .bridge {
@@ -90,8 +90,8 @@
     bottom: 18%;
     height: 9%;
     background:
-      repeating-linear-gradient(90deg, rgba(239,243,240,.1) 0 1px, transparent 1px 30px),
-      linear-gradient(180deg, rgba(36,59,49,.9), rgba(16,31,25,.96));
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light, #f4f4f4) 9%, transparent) 0 1px, transparent 1px 30px),
+      linear-gradient(180deg, var(--ds-blue-800, #002d9c), var(--ds-graphite-100, #161616));
     clip-path: polygon(3% 8%, 100% 0, 99% 76%, 0 100%);
     z-index: 3;
   }
@@ -102,8 +102,7 @@
     right: 0;
     bottom: 0;
     height: 17%;
-    background:
-      linear-gradient(180deg, rgba(205,215,209,.5), rgba(73,91,82,.75));
+    background: linear-gradient(180deg, color-mix(in srgb, var(--ds-blue-100, #d0e2ff) 62%, var(--ds-surface, #fff)), color-mix(in srgb, var(--ds-graphite-70, #525252) 70%, var(--ds-blue-300, #78a9ff)));
     z-index: 2;
   }
 
@@ -114,7 +113,7 @@
     top: 10%;
     display: grid;
     gap: 4px;
-    color: rgba(25,42,34,.76);
+    color: var(--ds-blue-800, #002d9c);
     font-size: .68rem;
     font-weight: 600;
     letter-spacing: .2em;
@@ -126,7 +125,7 @@
     width: 34px;
     height: 1px;
     margin-top: 12px;
-    background: rgba(25,42,34,.42);
+    background: color-mix(in srgb, var(--ds-blue-800, #002d9c) 46%, transparent);
   }
 
   .architecture-note {
@@ -136,7 +135,7 @@
     bottom: 7%;
     display: grid;
     gap: 2px;
-    color: rgba(248,249,246,.84);
+    color: color-mix(in srgb, var(--ds-white, #fff) 90%, transparent);
     font-size: .68rem;
     font-weight: 600;
     letter-spacing: .2em;

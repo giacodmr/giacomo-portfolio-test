@@ -1,7 +1,7 @@
 /*
  * Homepage implementation layer for DESIGN_SYSTEM.md.
- * Carbon analytical discipline + Primer web polish, expressed only through
- * the canonical portfolio design tokens. Shared component files stay untouched.
+ * Carbon analytical discipline + Primer web polish.
+ * All colour decisions route through canonical design tokens.
  */
 
 body.home-page {
@@ -13,10 +13,10 @@ body.home-page {
   --text-tertiary: var(--ds-subtle);
   --border: var(--ds-border);
   --border-light: var(--ds-border-light);
-  --accent: var(--ds-forest-800);
-  --accent-medium: var(--ds-forest-500);
-  --accent-soft: var(--ds-forest-100);
-  --dark: var(--ds-forest-900);
+  --accent: var(--ds-accent);
+  --accent-medium: var(--ds-data-secondary);
+  --accent-soft: var(--ds-accent-soft);
+  --dark: var(--ds-dark);
   --light: var(--ds-light);
   --font-sans: var(--ds-font-sans);
   --font-serif: var(--ds-font-serif);
@@ -29,90 +29,45 @@ body.home-page {
 }
 
 body.home-page ::selection {
-  background: var(--ds-forest-100);
-  color: var(--ds-forest-900);
+  background: var(--ds-blue-100);
+  color: var(--ds-blue-800);
 }
 
-/* ---------------------------------------------------------
-   GLOBAL HOMEPAGE COLOUR ARCHITECTURE
-   canvas -> soft analytical band -> surface cards -> dark AI
-   --------------------------------------------------------- */
-
+/* Global homepage colour architecture */
 body.home-page .site-header {
   border-color: var(--ds-border-light);
   background: color-mix(in srgb, var(--ds-canvas) 94%, transparent);
 }
-
 body.home-page .site-header .wordmark,
-body.home-page .site-header nav a {
-  color: var(--ds-ink);
-}
-
+body.home-page .site-header nav a { color: var(--ds-ink); }
 body.home-page .site-header nav a:hover,
-body.home-page .site-header nav a:focus-visible {
-  color: var(--ds-forest-800);
-}
-
-body.home-page .hero-section {
-  border-color: var(--ds-border-light);
-  background: var(--ds-canvas);
-}
-
+body.home-page .site-header nav a:focus-visible { color: var(--ds-accent); }
+body.home-page .hero-section { border-color: var(--ds-border-light); background: var(--ds-canvas); }
 body.home-page .selected-work {
   border-top: 1px solid var(--ds-border-light);
   border-bottom: 1px solid var(--ds-border-light);
   background: var(--ds-surface-soft);
 }
-
 body.home-page .experience-section,
-body.home-page .site-footer {
-  background: var(--ds-canvas);
-}
+body.home-page .site-footer { background: var(--ds-canvas); }
 
-/* ---------------------------------------------------------
-   TYPOGRAPHIC COLOUR HIERARCHY
-   --------------------------------------------------------- */
-
-body.home-page .eyebrow {
-  color: var(--ds-forest-800);
-}
-
+/* Typography / actions */
+body.home-page .eyebrow { color: var(--ds-accent); }
 body.home-page .hero-copy,
 body.home-page .project-client,
 body.home-page .project-description,
 body.home-page .legend,
-body.home-page .primary-stat span {
-  color: var(--ds-muted);
-}
-
-body.home-page .hero-principles {
-  color: var(--ds-subtle);
-}
-
-body.home-page .hero-principles i {
-  color: var(--ds-data-context);
-}
-
-body.home-page .primary-cta {
-  background: var(--ds-forest-800);
-  color: var(--ds-white);
-}
-
+body.home-page .primary-stat span { color: var(--ds-muted); }
+body.home-page .hero-principles { color: var(--ds-subtle); }
+body.home-page .hero-principles i { color: var(--ds-data-context); }
+body.home-page .hero-title em { color: var(--ds-accent); }
+body.home-page .primary-cta { background: var(--ds-accent); color: var(--ds-white); }
 body.home-page .primary-cta:hover,
-body.home-page .primary-cta:focus-visible {
-  background: var(--ds-forest-900);
-}
-
-body.home-page .text-cta {
-  color: var(--ds-muted);
-}
-
+body.home-page .primary-cta:focus-visible { background: var(--ds-accent-hover); }
+body.home-page .text-cta { color: var(--ds-muted); }
 body.home-page .text-cta:hover,
-body.home-page .text-cta:focus-visible {
-  color: var(--ds-forest-800);
-}
+body.home-page .text-cta:focus-visible { color: var(--ds-accent); }
 
-/* Hero refinement: less poster-like, more business/editorial. */
 @media (min-width: 761px) {
   body.home-page .hero-title {
     max-width: 690px;
@@ -121,146 +76,64 @@ body.home-page .text-cta:focus-visible {
     letter-spacing: -.045em;
   }
 }
-
 @media (min-width: 1121px) {
-  body.home-page .hero-grid {
-    grid-template-columns: minmax(0, 5.6fr) minmax(0, 6.4fr);
-  }
-
-  body.home-page .hero-intro {
-    padding-right: clamp(32px, 4vw, 56px);
-  }
+  body.home-page .hero-grid { grid-template-columns: minmax(0, 5.6fr) minmax(0, 6.4fr); }
+  body.home-page .hero-intro { padding-right: clamp(32px, 4vw, 56px); }
 }
 
-/* ---------------------------------------------------------
-   HERO VISUAL — REBUILT WITH DESIGN-SYSTEM COLOURS
-   --------------------------------------------------------- */
-
+/* Hero visual: Carbon blue / graphite, not green */
 body.home-page .architecture-panel {
   background:
-    radial-gradient(
-      circle at 24% 18%,
-      color-mix(in srgb, var(--ds-white) 90%, transparent),
-      transparent 31%
-    ),
-    linear-gradient(
-      135deg,
-      var(--ds-surface) 0%,
-      var(--ds-forest-100) 50%,
-      color-mix(in srgb, var(--ds-forest-500) 62%, var(--ds-surface)) 100%
-    );
+    radial-gradient(circle at 24% 18%, color-mix(in srgb, var(--ds-white) 92%, transparent), transparent 31%),
+    linear-gradient(135deg, var(--ds-surface) 0%, var(--ds-blue-100) 52%, color-mix(in srgb, var(--ds-blue-300) 52%, var(--ds-surface)) 100%);
 }
-
 body.home-page .architecture-panel::before {
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--ds-white) 44%, transparent), transparent 38%),
-    linear-gradient(180deg, transparent 58%, color-mix(in srgb, var(--ds-forest-900) 17%, transparent));
+    linear-gradient(90deg, color-mix(in srgb, var(--ds-white) 46%, transparent), transparent 38%),
+    linear-gradient(180deg, transparent 58%, color-mix(in srgb, var(--ds-graphite-100) 18%, transparent));
 }
-
 body.home-page .architecture-panel .tower {
-  border-color: color-mix(in srgb, var(--ds-light) 30%, transparent);
+  border-color: color-mix(in srgb, var(--ds-light) 28%, transparent);
   background:
-    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light) 17%, transparent) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light) 16%, transparent) 0 1px, transparent 1px 34px),
     repeating-linear-gradient(180deg, color-mix(in srgb, var(--ds-light) 13%, transparent) 0 1px, transparent 1px 30px),
-    linear-gradient(
-      145deg,
-      color-mix(in srgb, var(--ds-forest-500) 68%, var(--ds-forest-100)),
-      color-mix(in srgb, var(--ds-forest-900) 90%, var(--ds-forest-800))
-    );
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--ds-white) 4%, transparent),
-    inset -35px 0 70px color-mix(in srgb, var(--ds-forest-900) 20%, transparent);
+    linear-gradient(145deg, color-mix(in srgb, var(--ds-blue-300) 58%, var(--ds-graphite-70)), var(--ds-graphite-100));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ds-white) 4%, transparent), inset -35px 0 70px color-mix(in srgb, var(--ds-graphite-100) 24%, transparent);
 }
-
 body.home-page .architecture-panel .tower-b {
   background:
-    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light) 17%, transparent) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light) 16%, transparent) 0 1px, transparent 1px 32px),
     repeating-linear-gradient(180deg, color-mix(in srgb, var(--ds-light) 13%, transparent) 0 1px, transparent 1px 27px),
-    linear-gradient(
-      160deg,
-      color-mix(in srgb, var(--ds-forest-500) 72%, var(--ds-forest-100)),
-      color-mix(in srgb, var(--ds-forest-800) 82%, var(--ds-forest-900))
-    );
+    linear-gradient(160deg, color-mix(in srgb, var(--ds-blue-300) 68%, var(--ds-graphite-70)), color-mix(in srgb, var(--ds-blue-800) 42%, var(--ds-graphite-100)));
 }
-
 body.home-page .architecture-panel .tower-c {
   background:
     repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light) 18%, transparent) 0 1px, transparent 1px 28px),
     repeating-linear-gradient(180deg, color-mix(in srgb, var(--ds-light) 13%, transparent) 0 1px, transparent 1px 26px),
-    linear-gradient(
-      145deg,
-      color-mix(in srgb, var(--ds-forest-500) 58%, var(--ds-forest-100)),
-      color-mix(in srgb, var(--ds-forest-800) 78%, var(--ds-forest-900))
-    );
+    linear-gradient(145deg, color-mix(in srgb, var(--ds-blue-300) 52%, var(--ds-data-context)), color-mix(in srgb, var(--ds-blue-800) 34%, var(--ds-graphite-100)));
 }
-
 body.home-page .architecture-panel .bridge {
   background:
     repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light) 9%, transparent) 0 1px, transparent 1px 30px),
-    linear-gradient(180deg, var(--ds-forest-800), var(--ds-forest-900));
+    linear-gradient(180deg, var(--ds-blue-800), var(--ds-graphite-100));
 }
-
 body.home-page .architecture-panel .terrace {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--ds-forest-100) 76%, transparent),
-    color-mix(in srgb, var(--ds-forest-500) 68%, var(--ds-forest-900))
-  );
+  background: linear-gradient(180deg, color-mix(in srgb, var(--ds-blue-100) 62%, var(--ds-surface)), color-mix(in srgb, var(--ds-graphite-70) 70%, var(--ds-blue-300)));
 }
+body.home-page .architecture-panel .architecture-copy { color: var(--ds-blue-800); }
+body.home-page .architecture-panel .architecture-copy::after { background: color-mix(in srgb, var(--ds-blue-800) 46%, transparent); }
+body.home-page .architecture-panel .architecture-note { color: color-mix(in srgb, var(--ds-white) 90%, transparent); }
 
-body.home-page .architecture-panel .architecture-copy {
-  color: color-mix(in srgb, var(--ds-forest-900) 76%, transparent);
-}
-
-body.home-page .architecture-panel .architecture-copy::after {
-  background: color-mix(in srgb, var(--ds-forest-900) 40%, transparent);
-}
-
-body.home-page .architecture-panel .architecture-note {
-  color: color-mix(in srgb, var(--ds-light) 90%, transparent);
-}
-
-/* ---------------------------------------------------------
-   PROJECT CARDS / TAGS / LINKS
-   --------------------------------------------------------- */
-
+/* Cards / tags / links */
 body.home-page .project-card {
-  border-color: var(--ds-border-light);
+  border-color: var(--ds-border);
   border-radius: var(--ds-radius-md);
   background: var(--ds-surface);
   box-shadow: none;
 }
-
-body.home-page .project-featured {
-  border-color: var(--ds-border);
-}
-
-body.home-page .featured-map {
-  background: color-mix(in srgb, var(--ds-surface) 82%, var(--ds-forest-100));
-}
-
-body.home-page .project-stat-panel {
-  border-color: var(--ds-border-light);
-  background: var(--ds-surface-soft);
-}
-
-body.home-page .project-index {
-  color: var(--ds-subtle);
-}
-
-body.home-page .primary-stat strong,
-body.home-page .compact-stats strong {
-  color: var(--ds-forest-900);
-}
-
-body.home-page .stat-note {
-  color: var(--ds-muted);
-}
-
-body.home-page .tag-list {
-  gap: var(--ds-space-2);
-}
-
+body.home-page .project-featured { border-color: var(--ds-border); }
+body.home-page .project-stat-panel { border-color: var(--ds-border-light); background: var(--ds-surface); }
+body.home-page .tag-list { gap: var(--ds-space-2); }
 body.home-page .tag-list span {
   padding: 7px 12px;
   border: 1px solid transparent;
@@ -272,16 +145,10 @@ body.home-page .tag-list span {
   letter-spacing: .005em;
   line-height: 1.15;
 }
-
-body.home-page .project-link,
-body.home-page .experience-link {
-  position: relative;
-  color: var(--ds-ink);
-  padding-bottom: 3px;
-}
-
-body.home-page .project-link::after,
-body.home-page .experience-link::after {
+body.home-page .project-link { position: relative; padding-bottom: 3px; color: var(--ds-ink); }
+body.home-page .project-link:hover,
+body.home-page .project-link:focus-visible { color: var(--ds-accent); }
+body.home-page .project-link::after {
   content: "";
   position: absolute;
   right: 0;
@@ -294,301 +161,114 @@ body.home-page .experience-link::after {
   transform-origin: left;
   transition: opacity var(--ds-motion-fast) ease, transform var(--ds-motion-fast) var(--ds-ease);
 }
-
-body.home-page .project-link:hover,
-body.home-page .project-link:focus-visible,
-body.home-page .experience-link:hover,
-body.home-page .experience-link:focus-visible {
-  color: var(--ds-forest-800);
-}
-
 body.home-page .project-link:hover::after,
-body.home-page .project-link:focus-visible::after,
-body.home-page .experience-link:hover::after,
-body.home-page .experience-link:focus-visible::after {
-  opacity: .42;
-  transform: scaleX(1);
-}
-
-body.home-page .project-link:focus-visible,
-body.home-page .experience-link:focus-visible {
-  outline-color: var(--ds-focus-ring);
-}
-
-body.home-page .compact-stats > div {
-  border-color: var(--ds-border-light);
-}
-
+body.home-page .project-link:focus-visible::after { opacity: .34; transform: scaleX(1); }
+body.home-page .project-link:focus-visible { outline-color: var(--ds-focus-ring); }
+body.home-page .compact-stats > div { border-color: var(--ds-border-light); }
+body.home-page .compact-stats strong,
+body.home-page .primary-stat strong { color: var(--ds-ink); }
 body.home-page .legend-dot.high { background: var(--ds-data-focus); }
 body.home-page .legend-dot.medium { background: var(--ds-data-secondary); }
 body.home-page .legend-dot.low { background: var(--ds-data-context); }
+body.home-page .stat-note { color: var(--ds-muted); }
 
-/* ---------------------------------------------------------
-   FEATURED OPPORTUNITY MAP
-   --------------------------------------------------------- */
-
+/* Featured map */
 body.home-page .home-opportunity-map .country-shape path {
-  fill: var(--ds-forest-100);
-  stroke: color-mix(in srgb, var(--ds-forest-800) 42%, transparent);
+  fill: var(--ds-blue-100);
+  stroke: color-mix(in srgb, var(--ds-blue-600) 38%, var(--ds-border));
   stroke-width: 1.4;
 }
-
-body.home-page .home-opportunity-map .network-dot.low { fill: var(--ds-data-context); opacity: .38; }
-body.home-page .home-opportunity-map .network-dot.medium { fill: var(--ds-data-secondary); opacity: .66; }
-body.home-page .home-opportunity-map .network-dot.high { fill: var(--ds-data-focus); opacity: .82; }
-
-body.home-page .home-opportunity-map .city-labels text {
-  fill: color-mix(in srgb, var(--ds-ink) 80%, transparent);
-  font-weight: 500;
-}
-
-body.home-page .home-opportunity-map .city-marker.is-active .marker-core {
-  filter: saturate(1.08);
-}
-
+body.home-page .home-opportunity-map .network-dot.low { fill: var(--ds-data-context); opacity: .5; }
+body.home-page .home-opportunity-map .network-dot.medium { fill: var(--ds-blue-300); opacity: .72; }
+body.home-page .home-opportunity-map .network-dot.high { fill: var(--ds-blue-600); opacity: .9; }
+body.home-page .home-opportunity-map .city-marker .marker-core { fill: var(--ds-blue-600); }
+body.home-page .home-opportunity-map .city-marker.medium .marker-core { fill: var(--ds-blue-300); }
+body.home-page .home-opportunity-map .city-labels text { fill: var(--ds-muted); font-weight: 500; }
 body.home-page .home-opportunity-map .map-callout {
-  border-color: var(--ds-border-light);
+  border-color: var(--ds-border);
   background: color-mix(in srgb, var(--ds-surface) 96%, transparent);
-  color: var(--ds-ink);
 }
+body.home-page .home-opportunity-map .map-callout em { color: var(--ds-blue-700); }
+body.home-page .home-opportunity-map .map-caption { color: var(--ds-subtle); }
 
-body.home-page .home-opportunity-map .map-caption {
-  color: var(--ds-subtle);
-}
-
-/* ---------------------------------------------------------
-   RETAIL DATA VISUALISATION
-   --------------------------------------------------------- */
-
-body.home-page .retail-card {
-  background: var(--ds-surface);
-}
-
-body.home-page .retail-report {
-  border-color: var(--ds-border-light);
-}
-
-body.home-page .retail-report .viz-panel {
-  border-color: var(--ds-border-light);
-}
-
-body.home-page .retail-report .viz-panel header span {
-  color: var(--ds-subtle);
-  font-size: .59rem;
-}
-
-body.home-page .retail-report .viz-panel header strong {
-  color: var(--ds-muted);
-  font-size: .74rem;
-}
-
-body.home-page .retail-report .viz-panel > p {
-  color: var(--ds-subtle);
-  font-size: .61rem;
-  line-height: 1.42;
-}
-
-body.home-page .retail-report .viz-panel > p b {
-  color: var(--ds-ink);
-}
-
+/* Retail: Carbon-style blue hierarchy */
+body.home-page .retail-report { border-color: var(--ds-border-light); }
+body.home-page .retail-report .viz-panel { border-color: var(--ds-border-light); }
+body.home-page .retail-report .viz-panel header span { color: var(--ds-subtle); font-size: .59rem; }
+body.home-page .retail-report .viz-panel header strong { color: var(--ds-muted); font-size: .74rem; }
+body.home-page .retail-report .viz-panel > p { color: var(--ds-subtle); font-size: .61rem; line-height: 1.42; }
+body.home-page .retail-report .viz-panel > p b { color: var(--ds-ink); }
+body.home-page .retail-report .histogram i { background: var(--ds-data-context); }
+body.home-page .retail-report .histogram i:nth-child(4),
+body.home-page .retail-report .histogram i:nth-child(5),
+body.home-page .retail-report .histogram i:nth-child(6) { background: color-mix(in srgb, var(--ds-blue-300) 55%, var(--ds-data-context)); }
+body.home-page .retail-report .histogram i.focus { background: var(--ds-blue-300); }
+body.home-page .retail-report .histogram i.focus-strong { background: var(--ds-blue-600); }
 body.home-page .retail-report .distribution-axis,
-body.home-page .retail-report .dotplot-axis {
-  color: var(--ds-subtle);
-  font-size: .56rem;
-}
+body.home-page .retail-report .dotplot-axis { color: var(--ds-subtle); font-size: .56rem; }
+body.home-page .retail-report .hbar-row > span,
+body.home-page .retail-report .hbar-row > strong { font-size: .58rem; }
+body.home-page .retail-report .hbar-row > i { background: var(--ds-surface-soft); }
+body.home-page .retail-report .hbar-row > i > b { background: var(--ds-data-context); }
+body.home-page .retail-report .hbar-row > i > b.accent { background: var(--ds-blue-300); }
+body.home-page .retail-report .hbar-row > i > b.focus { background: var(--ds-blue-600); }
+body.home-page .retail-report .grid-lines line { stroke: var(--ds-border-light); }
+body.home-page .retail-report .trend-line { stroke: var(--ds-blue-300); }
+body.home-page .retail-report .dot.neutral { fill: var(--ds-data-context); }
+body.home-page .retail-report .dot.accent { fill: var(--ds-blue-300); }
+body.home-page .retail-report .dot.focus { fill: var(--ds-blue-600); }
+body.home-page .retail-report .dotplot-wrap text { fill: var(--ds-ink); font-size: 10.5px; }
+body.home-page .retail-report .report-note { color: var(--ds-subtle); border-color: var(--ds-border-light); font-size: .58rem; }
 
-body.home-page .retail-report .hbar-row > span {
-  color: var(--ds-subtle);
-  font-size: .58rem;
-}
-
-body.home-page .retail-report .hbar-row > strong {
-  color: var(--ds-ink);
-  font-size: .58rem;
-}
-
-body.home-page .retail-report .hbar-row > i {
-  background: var(--ds-surface-soft);
-}
-
-body.home-page .retail-report .histogram i,
-body.home-page .retail-report .hbar-row > i > b,
-body.home-page .retail-report .dot.neutral {
-  background: var(--ds-data-context);
-  fill: var(--ds-data-context);
-}
-
-body.home-page .retail-report .histogram i.focus,
-body.home-page .retail-report .hbar-row > i > b.accent,
-body.home-page .retail-report .dot.accent {
-  background: var(--ds-data-secondary);
-  fill: var(--ds-data-secondary);
-}
-
-body.home-page .retail-report .histogram i.focus-strong,
-body.home-page .retail-report .hbar-row > i > b.focus,
-body.home-page .retail-report .dot.focus {
-  background: var(--ds-data-focus);
-  fill: var(--ds-data-focus);
-}
-
-body.home-page .retail-report .trend-line {
-  stroke: var(--ds-data-secondary);
-}
-
-body.home-page .retail-report .grid-lines line {
-  stroke: var(--ds-border-light);
-}
-
-body.home-page .retail-report .dotplot-wrap text {
-  fill: var(--ds-ink);
-  font-size: 10.5px;
-}
-
-body.home-page .retail-report .report-note {
-  border-color: var(--ds-border-light);
-  color: var(--ds-subtle);
-  font-size: .58rem;
-}
-
-/* ---------------------------------------------------------
-   AI CARD — ONLY DARK SURFACE IN THE HOMEPAGE SYSTEM
-   --------------------------------------------------------- */
-
+/* AI card: Carbon graphite + blue analytical focus */
 body.home-page .ai-card {
-  border-color: color-mix(in srgb, var(--ds-light) 14%, transparent);
-  background:
-    radial-gradient(circle at 83% 78%, color-mix(in srgb, var(--ds-forest-500) 16%, transparent), transparent 30%),
-    var(--ds-forest-900);
-  color: var(--ds-light);
+  border-color: var(--ds-graphite-70);
+  background: radial-gradient(circle at 83% 78%, color-mix(in srgb, var(--ds-blue-600) 18%, transparent), transparent 31%), var(--ds-graphite-100);
 }
-
-body.home-page .ai-card .eyebrow {
-  color: var(--ds-forest-100);
-}
-
 body.home-page .ai-card h2,
-body.home-page .ai-card .project-link-light {
-  color: var(--ds-light);
-}
-
+body.home-page .ai-card .project-link-light { color: var(--ds-white); }
+body.home-page .ai-card .eyebrow { color: var(--ds-blue-300); }
 body.home-page .ai-card .project-client,
-body.home-page .ai-card .project-description {
-  color: color-mix(in srgb, var(--ds-light) 74%, transparent);
-}
-
-body.home-page .ai-card .workflow-step {
-  border-color: color-mix(in srgb, var(--ds-light) 23%, transparent);
-  background: color-mix(in srgb, var(--ds-white) 3.5%, transparent);
-}
-
-body.home-page .ai-card .workflow-step span {
-  color: color-mix(in srgb, var(--ds-light) 58%, transparent);
-}
-
-body.home-page .ai-card .workflow-step strong {
-  color: var(--ds-light);
-}
-
-body.home-page .ai-card .workflow-step small {
-  color: color-mix(in srgb, var(--ds-light) 68%, transparent);
-}
-
+body.home-page .ai-card .project-description { color: color-mix(in srgb, var(--ds-white) 72%, var(--ds-graphite-70)); }
+body.home-page .ai-card .workflow-step { border-color: var(--ds-graphite-70); background: var(--ds-graphite-90); }
+body.home-page .ai-card .workflow-step span { color: var(--ds-data-context); }
+body.home-page .ai-card .workflow-step strong { color: var(--ds-white); }
+body.home-page .ai-card .workflow-step small { color: #c6c6c6; }
 body.home-page .ai-card .workflow-step-accent {
-  border-color: color-mix(in srgb, var(--ds-forest-500) 78%, var(--ds-light));
-  background: color-mix(in srgb, var(--ds-forest-500) 17%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ds-forest-100) 9%, transparent);
+  border-color: var(--ds-blue-300);
+  background: color-mix(in srgb, var(--ds-blue-800) 42%, var(--ds-graphite-90));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ds-blue-300) 18%, transparent);
 }
+body.home-page .ai-card .workflow-arrow { color: var(--ds-blue-300); }
+body.home-page .ai-card .ai-card-footer { color: #c6c6c6; }
+body.home-page .ai-card .project-link-light:hover,
+body.home-page .ai-card .project-link-light:focus-visible { color: var(--ds-blue-300); }
 
-body.home-page .ai-card .workflow-arrow {
-  color: color-mix(in srgb, var(--ds-light) 82%, transparent);
-}
-
-body.home-page .ai-card .ai-card-footer {
-  color: color-mix(in srgb, var(--ds-light) 76%, transparent);
-}
-
-body.home-page .ai-card .project-link:hover,
-body.home-page .ai-card .project-link:focus-visible {
-  color: var(--ds-white);
-}
-
-/* ---------------------------------------------------------
-   EXPERIENCE + FOOTER
-   --------------------------------------------------------- */
-
+/* Experience + footer */
 body.home-page .experience-strip {
-  border-color: var(--ds-border-light);
+  border-color: var(--ds-border);
   background: var(--ds-surface);
 }
-
-body.home-page .experience-label .eyebrow {
-  color: var(--ds-forest-800);
-}
-
-body.home-page .experience-label strong {
-  color: var(--ds-forest-900);
-}
-
 body.home-page .experience-role,
-body.home-page .experience-summary {
-  border-color: var(--ds-border-light);
-}
-
-body.home-page .experience-role strong {
-  color: var(--ds-ink);
-}
-
+body.home-page .experience-summary { border-color: var(--ds-border-light); }
 body.home-page .experience-role span,
-body.home-page .experience-summary {
-  color: var(--ds-muted);
-}
-
-body.home-page .site-footer .footer-row {
-  border-color: var(--ds-border-light);
-}
-
-body.home-page .site-footer .footer-brand > span {
-  color: var(--ds-ink);
-}
-
-body.home-page .site-footer .footer-brand i {
-  background: var(--ds-data-context);
-}
-
+body.home-page .experience-summary { color: var(--ds-muted); }
+body.home-page .experience-link:hover,
+body.home-page .experience-link:focus-visible { color: var(--ds-accent); }
+body.home-page .site-footer .footer-row { border-color: var(--ds-border-light); }
+body.home-page .site-footer .footer-brand i { background: var(--ds-data-context); }
 body.home-page .site-footer .footer-brand small,
-body.home-page .site-footer nav a {
-  color: var(--ds-subtle);
-}
-
+body.home-page .site-footer nav a { color: var(--ds-subtle); }
 body.home-page .site-footer nav a:hover,
-body.home-page .site-footer nav a:focus-visible {
-  color: var(--ds-forest-800);
-}
+body.home-page .site-footer nav a:focus-visible { color: var(--ds-accent); }
 
 @media (max-width: 760px) {
-  body.home-page {
-    --page-x: var(--ds-page-x);
-    --radius: var(--ds-radius-md);
-  }
-
-  body.home-page .tag-list span {
-    padding: 6px 10px;
-  }
-
-  body.home-page .retail-report .viz-panel header strong {
-    font-size: .78rem;
-  }
-
-  body.home-page .retail-report .viz-panel > p {
-    font-size: .66rem;
-  }
+  body.home-page { --page-x: var(--ds-page-x); --radius: var(--ds-radius-md); }
+  body.home-page .tag-list span { padding: 6px 10px; }
+  body.home-page .retail-report .viz-panel header strong { font-size: .78rem; }
+  body.home-page .retail-report .viz-panel > p { font-size: .66rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.home-page .project-link::after,
-  body.home-page .experience-link::after {
-    transition: none;
-  }
+  body.home-page .project-link::after { transition: none; }
 }

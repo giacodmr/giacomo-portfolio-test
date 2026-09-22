@@ -38,7 +38,28 @@ const description = 'Business strategy, analytics and applied AI for structured 
 
       <section id="work" class="selected-work">
         <div class="container">
-          <article class="project-card project-featured">
+          <header class="work-intro" data-reveal>
+            <div class="work-intro-primary">
+              <p class="eyebrow">Selected projects</p>
+              <h2>My Work</h2>
+              <p>Turning complex data into clear insights and measurable impact.</p>
+            </div>
+
+            <div class="work-intro-secondary">
+              <p>
+                A selection of projects across strategy, analytics and AI,
+                delivering real business value in global and complex environments.
+              </p>
+              <div class="work-capabilities" aria-label="Project capability areas">
+                <span>Strategy</span><i aria-hidden="true">/</i>
+                <span>Analytics</span><i aria-hidden="true">/</i>
+                <span>AI</span><i aria-hidden="true">/</i>
+                <span>Impact</span>
+              </div>
+            </div>
+          </header>
+
+          <article class="project-card project-featured" data-reveal>
             <div class="project-copy project-copy-featured">
               <p class="eyebrow">Featured work · 01 / 03</p>
               <h2>Commercial Opportunity Prioritisation</h2>
@@ -65,12 +86,20 @@ const description = 'Business strategy, analytics and applied AI for structured 
 
             <aside class="project-stat-panel" aria-label="Project evidence">
               <p class="project-index">01 / 03</p>
+
               <div class="primary-stat">
-                <strong>12k+</strong>
-                <span>locations analysed</span>
+                <strong>500k+</strong>
+                <span>points of consumption analysed</span>
               </div>
 
-              <div class="legend">
+              <div class="selected-market-card" aria-live="polite">
+                <span class="selected-market-kicker">Selected market</span>
+                <strong data-feature-market>Milan</strong>
+                <p>Priority score <b data-feature-score>92</b></p>
+                <em data-feature-priority>High opportunity</em>
+              </div>
+
+              <div class="legend" aria-label="Opportunity priority legend">
                 <span><i class="legend-dot high"></i>High priority</span>
                 <span><i class="legend-dot medium"></i>Medium priority</span>
                 <span><i class="legend-dot low"></i>Lower priority</span>
@@ -81,7 +110,7 @@ const description = 'Business strategy, analytics and applied AI for structured 
           </article>
 
           <div class="secondary-projects">
-            <article class="project-card retail-card">
+            <article class="project-card retail-card" data-reveal>
               <div class="project-card-head">
                 <div>
                   <p class="eyebrow">02 / 03 · Retail Analytics</p>
@@ -89,7 +118,7 @@ const description = 'Business strategy, analytics and applied AI for structured 
                   <p class="project-client">Leading consumer brand</p>
                 </div>
 
-                <div class="compact-stats">
+                <div class="compact-stats" aria-label="Retail project evidence">
                   <div><strong>700k+</strong><span>records analysed</span></div>
                   <div><strong>150+</strong><span>stores</span></div>
                 </div>
@@ -114,7 +143,7 @@ const description = 'Business strategy, analytics and applied AI for structured 
               </div>
             </article>
 
-            <article class="project-card ai-card">
+            <article class="project-card ai-card" data-reveal>
               <div>
                 <p class="eyebrow">03 / 03 · Applied AI</p>
                 <h2>AI-enabled Consulting Workflows</h2>
@@ -141,5 +170,40 @@ const description = 'Business strategy, analytics and applied AI for structured 
     </main>
 
     <Footer />
+
+    <script>
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealItems = document.querySelectorAll('[data-reveal]');
+
+      if (reduceMotion) {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+      } else {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.12 });
+
+        revealItems.forEach((item, index) => {
+          item.style.setProperty('--reveal-delay', `${Math.min(index * 70, 180)}ms`);
+          observer.observe(item);
+        });
+      }
+
+      document.addEventListener('portfolio:map-selection', (event) => {
+        const detail = event.detail;
+        if (!detail) return;
+
+        const market = document.querySelector('[data-feature-market]');
+        const score = document.querySelector('[data-feature-score]');
+        const priority = document.querySelector('[data-feature-priority]');
+
+        if (market) market.textContent = detail.city || '';
+        if (score) score.textContent = detail.score || '';
+        if (priority) priority.textContent = detail.priority || '';
+      });
+    </script>
   </body>
 </html>

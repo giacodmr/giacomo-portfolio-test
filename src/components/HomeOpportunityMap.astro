@@ -107,13 +107,6 @@
         <text x="112" y="352">Cagliari</text>
       </g>
     </svg>
-
-    <div class="map-callout" data-map-callout aria-live="polite">
-      <span class="callout-kicker">Selected market</span>
-      <strong data-map-city>Milan</strong>
-      <p>Priority score <b data-map-score>92</b></p>
-      <em data-map-priority>High opportunity</em>
-    </div>
   </div>
 
   <p class="map-caption">Synthetic opportunity data · geographic proportions preserved</p>
@@ -122,16 +115,17 @@
 <script>
   document.querySelectorAll('[data-home-opportunity-map]').forEach((map) => {
     const markers = map.querySelectorAll('.city-marker');
-    const city = map.querySelector('[data-map-city]');
-    const score = map.querySelector('[data-map-score]');
-    const priority = map.querySelector('[data-map-priority]');
-
     const activate = (marker) => {
       markers.forEach((item) => item.classList.remove('is-active'));
       marker.classList.add('is-active');
-      if (city) city.textContent = marker.dataset.city || '';
-      if (score) score.textContent = marker.dataset.score || '';
-      if (priority) priority.textContent = marker.dataset.priority || '';
+
+      document.dispatchEvent(new CustomEvent('portfolio:map-selection', {
+        detail: {
+          city: marker.dataset.city || '',
+          score: marker.dataset.score || '',
+          priority: marker.dataset.priority || ''
+        }
+      }));
     };
 
     markers.forEach((marker) => {
@@ -153,7 +147,7 @@
   .map-stage { position: relative; width: min(100%, 590px); margin-inline: auto; }
   svg { display: block; width: 100%; height: auto; overflow: visible; }
   .country-shape path { fill: var(--ds-blue-100, #d0e2ff); stroke: color-mix(in srgb, var(--ds-blue-600, #0f62fe) 34%, var(--ds-border, #d0d7de)); stroke-width: 1.15; vector-effect: non-scaling-stroke; }
-  .network-dot { transition: opacity var(--ds-motion-fast, 160ms) ease, transform var(--ds-motion-fast, 160ms) ease; transform-box: fill-box; transform-origin: center; }
+  .home-opportunity-map:hover .network-dot.high { opacity: 1; }\n  .network-dot { transition: opacity var(--ds-motion-fast, 160ms) ease, transform var(--ds-motion-fast, 160ms) ease; transform-box: fill-box; transform-origin: center; }
   .network-dot.low { fill: var(--ds-data-context, #c1c7cd); opacity: .55; }
   .network-dot.medium { fill: var(--ds-data-secondary, #78a9ff); opacity: .82; }
   .network-dot.high { fill: var(--ds-data-focus, #0f62fe); opacity: .96; }
@@ -161,16 +155,11 @@
   .city-marker > circle:first-child { fill: var(--ds-surface, #fff); stroke: var(--ds-surface, #fff); stroke-width: 3; transition: transform var(--ds-motion-base, 220ms) var(--ds-ease, ease); transform-box: fill-box; transform-origin: center; }
   .city-marker .marker-core { fill: var(--ds-blue-300, #78a9ff); transition: fill var(--ds-motion-fast, 160ms) ease, transform var(--ds-motion-base, 220ms) var(--ds-ease, ease); transform-box: fill-box; transform-origin: center; }
   .city-marker.high .marker-core { fill: var(--ds-blue-600, #0f62fe); }
-  .city-marker.is-active > circle:first-child { transform: scale(1.12); }
-  .city-marker.is-active .marker-core { fill: var(--ds-blue-700, #0043ce); transform: scale(1.08); }
+  .city-marker.is-active > circle:first-child { transform: scale(1.18); }
+  .city-marker.is-active .marker-core { fill: var(--ds-blue-700, #0043ce); transform: scale(1.16); }
   .city-marker:focus-visible > circle:first-child { stroke: var(--ds-blue-600, #0f62fe); }
   .city-labels text { fill: var(--ds-muted, #57606a); font: 500 10px/1 var(--ds-font-sans, 'IBM Plex Sans', sans-serif); paint-order: stroke; stroke: var(--ds-surface, #fff); stroke-width: 3px; }
-  .map-callout { position: absolute; top: 6%; right: 3%; display: grid; gap: 6px; min-width: 150px; padding: 14px 15px; border: 1px solid var(--ds-border, #d0d7de); border-radius: var(--ds-radius-sm, 8px); background: color-mix(in srgb, var(--ds-surface, #fff) 96%, transparent); box-shadow: 0 12px 32px rgba(31,35,40,.08); }
-  .callout-kicker { color: var(--ds-subtle, #6e7781); font: 600 .52rem/1.2 var(--ds-font-sans, 'IBM Plex Sans', sans-serif); letter-spacing: .14em; text-transform: uppercase; }
-  .map-callout strong { color: var(--ds-ink, #1f2328); font: 600 .88rem/1.15 var(--ds-font-sans, 'IBM Plex Sans', sans-serif); }
-  .map-callout p { margin: 0; color: var(--ds-muted, #57606a); font: 400 .61rem/1.3 var(--ds-font-sans, 'IBM Plex Sans', sans-serif); }
-  .map-callout em { color: var(--ds-blue-700, #0043ce); font: 600 .61rem/1.2 var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-style: normal; }
   .map-caption { margin: 10px 0 0; color: var(--ds-subtle, #6e7781); font: 400 .52rem/1.3 var(--ds-font-sans, 'IBM Plex Sans', sans-serif); text-align: center; }
-  @media (max-width: 640px) { .map-callout { position: static; margin-top: 12px; } .city-labels text { font-size: 9px; } }
+  @media (max-width: 640px) { .city-labels text { font-size: 9px; } }
   @media (prefers-reduced-motion: reduce) { .network-dot, .city-marker > circle, .city-marker .marker-core { transition: none; } }
 </style>

@@ -1,5 +1,5 @@
-<div class="retail-report" role="img" aria-label="Synthetic retail performance report card combining a store distribution histogram, horizontal average-ticket bars, and a purchase-frequency dot plot">
-  <section class="viz-panel distribution-panel">
+<div class="retail-report" data-retail-report role="group" aria-label="Synthetic retail performance report combining a store distribution histogram, horizontal average-ticket bars, and a purchase-frequency trend">
+  <section class="viz-panel distribution-panel" tabindex="0" data-viz-panel>
     <header><span>01</span><strong>Store performance distribution</strong></header>
     <div class="histogram" aria-hidden="true">
       <i style="--h: 27%"></i><i style="--h: 46%"></i><i style="--h: 69%"></i><i style="--h: 88%"></i><i style="--h: 100%"></i><i style="--h: 82%"></i><i style="--h: 61%"></i><i class="focus" style="--h: 39%"></i><i class="focus-strong" style="--h: 22%"></i>
@@ -8,7 +8,7 @@
     <p><b>Top 20%</b> of stores separated from the network baseline.</p>
   </section>
 
-  <section class="viz-panel ticket-panel">
+  <section class="viz-panel ticket-panel" tabindex="0" data-viz-panel>
     <header><span>02</span><strong>Average ticket index</strong></header>
     <div class="horizontal-bars" aria-hidden="true">
       <div class="hbar-row"><span>Low</span><i><b style="--w: 68%"></b></i><strong>82</strong></div>
@@ -19,7 +19,7 @@
     <p>Index increases consistently across performance clusters.</p>
   </section>
 
-  <section class="viz-panel frequency-panel">
+  <section class="viz-panel frequency-panel" tabindex="0" data-viz-panel>
     <header><span>03</span><strong>Purchase frequency index</strong></header>
     <div class="dotplot-wrap" aria-hidden="true">
       <svg viewBox="0 0 260 112" preserveAspectRatio="none">
@@ -36,38 +36,159 @@
   <p class="report-note">Illustrative reconstruction with synthetic values.</p>
 </div>
 
+<script>
+  document.querySelectorAll('[data-retail-report]').forEach((report) => {
+    const panels = report.querySelectorAll('[data-viz-panel]');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const setActive = (panel) => {
+      report.classList.add('has-active');
+      panels.forEach((item) => item.classList.toggle('is-active', item === panel));
+    };
+
+    const clearActive = () => {
+      report.classList.remove('has-active');
+      panels.forEach((item) => item.classList.remove('is-active'));
+    };
+
+    panels.forEach((panel) => {
+      panel.addEventListener('mouseenter', () => setActive(panel));
+      panel.addEventListener('mouseleave', clearActive);
+      panel.addEventListener('focus', () => setActive(panel));
+      panel.addEventListener('blur', clearActive);
+    });
+
+    if (reduceMotion) {
+      report.classList.add('is-ready');
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          report.classList.add('is-ready');
+          observer.disconnect();
+        });
+      }, { threshold: 0.25 });
+      observer.observe(report);
+    }
+  });
+</script>
+
 <style>
-  .retail-report { display: grid; grid-template-columns: 1.05fr 1fr 1.05fr; gap: 0; margin-top: 22px; border-top: 1px solid var(--ds-border-light, #eaeef2); border-bottom: 1px solid var(--ds-border-light, #eaeef2); }
-  .viz-panel { min-width: 0; padding: 18px 20px 17px; border-right: 1px solid var(--ds-border-light, #eaeef2); }
+  .retail-report {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr 1.05fr;
+    gap: 0;
+    margin-top: 28px;
+    border-top: 1px solid var(--ds-border-light, #eaeef2);
+    border-bottom: 1px solid var(--ds-border-light, #eaeef2);
+  }
+
+  .viz-panel {
+    min-width: 0;
+    padding: 24px 22px 22px;
+    border-right: 1px solid var(--ds-border-light, #eaeef2);
+    outline: none;
+    opacity: 1;
+    transition:
+      opacity var(--ds-motion-base, 220ms) var(--ds-ease, ease),
+      background var(--ds-motion-base, 220ms) var(--ds-ease, ease);
+  }
+
   .viz-panel:first-child { padding-left: 0; }
   .viz-panel:nth-child(3) { padding-right: 0; border-right: 0; }
-  .viz-panel header { display: flex; align-items: baseline; gap: 8px; min-height: 34px; }
-  .viz-panel header span { color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .55rem; font-weight: 600; letter-spacing: .12em; }
-  .viz-panel header strong { color: var(--ds-muted, #57606a); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .68rem; font-weight: 600; line-height: 1.25; }
-  .viz-panel > p { min-height: 30px; margin: 12px 0 0; color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .55rem; line-height: 1.35; }
+
+  .retail-report.has-active .viz-panel:not(.is-active) { opacity: .46; }
+  .retail-report .viz-panel.is-active { background: color-mix(in srgb, var(--ds-blue-100, #d0e2ff) 18%, transparent); }
+  .viz-panel:focus-visible { box-shadow: inset 0 0 0 2px var(--ds-focus-ring, #0f62fe); }
+
+  .viz-panel header { display: flex; align-items: baseline; gap: 8px; min-height: 42px; }
+  .viz-panel header span { color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .58rem; font-weight: 600; letter-spacing: .12em; }
+  .viz-panel header strong { color: var(--ds-muted, #57606a); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .76rem; font-weight: 600; line-height: 1.25; }
+  .viz-panel > p { min-height: 42px; margin: 15px 0 0; color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .62rem; line-height: 1.42; }
   .viz-panel > p b { color: var(--ds-ink, #1f2328); font-weight: 600; }
-  .histogram { height: 110px; display: flex; align-items: end; gap: 4px; padding-top: 13px; }
-  .histogram i { flex: 1; height: var(--h); min-height: 10px; background: var(--ds-data-context, #c1c7cd); border-radius: 2px 2px 0 0; }
+
+  .histogram { height: 156px; display: flex; align-items: end; gap: 5px; padding-top: 16px; }
+  .histogram i {
+    flex: 1;
+    height: var(--h);
+    min-height: 10px;
+    background: var(--ds-data-context, #c1c7cd);
+    border-radius: 2px 2px 0 0;
+    transform: scaleY(.04);
+    transform-origin: bottom;
+    transition:
+      transform 520ms var(--ds-ease, ease),
+      filter var(--ds-motion-fast, 160ms) ease;
+  }
+  .retail-report.is-ready .histogram i { transform: scaleY(1); }
+  .distribution-panel.is-active .histogram i.focus,
+  .distribution-panel.is-active .histogram i.focus-strong { filter: saturate(1.18) brightness(.96); }
+
   .histogram i:nth-child(4), .histogram i:nth-child(5), .histogram i:nth-child(6) { background: color-mix(in srgb, var(--ds-data-secondary, #78a9ff) 55%, var(--ds-data-context, #c1c7cd)); }
   .histogram i.focus { background: var(--ds-data-secondary, #78a9ff); }
   .histogram i.focus-strong { background: var(--ds-data-focus, #0f62fe); }
-  .distribution-axis, .dotplot-axis { display: flex; justify-content: space-between; margin-top: 7px; color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .5rem; }
-  .horizontal-bars { display: grid; gap: 9px; padding-top: 16px; min-height: 117px; }
-  .hbar-row { display: grid; grid-template-columns: 29px 1fr 24px; align-items: center; gap: 7px; min-width: 0; }
-  .hbar-row > span, .hbar-row > strong { color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .52rem; font-weight: 500; }
+
+  .distribution-axis, .dotplot-axis { display: flex; justify-content: space-between; margin-top: 8px; color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .54rem; }
+
+  .horizontal-bars { display: grid; gap: 13px; padding-top: 20px; min-height: 165px; }
+  .hbar-row { display: grid; grid-template-columns: 34px 1fr 29px; align-items: center; gap: 8px; min-width: 0; }
+  .hbar-row > span, .hbar-row > strong { color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .58rem; font-weight: 500; }
   .hbar-row > strong { color: var(--ds-ink, #1f2328); text-align: right; font-weight: 600; }
-  .hbar-row > i { position: relative; height: 8px; overflow: hidden; border-radius: 2px; background: var(--ds-surface-soft, #f4f4f4); }
-  .hbar-row > i > b { display: block; width: var(--w); height: 100%; border-radius: inherit; background: var(--ds-data-context, #c1c7cd); }
+  .hbar-row > i { position: relative; height: 9px; overflow: hidden; border-radius: 2px; background: var(--ds-surface-soft, #f4f4f4); }
+  .hbar-row > i > b {
+    display: block;
+    width: var(--w);
+    height: 100%;
+    border-radius: inherit;
+    background: var(--ds-data-context, #c1c7cd);
+    transform: scaleX(.02);
+    transform-origin: left;
+    transition: transform 560ms var(--ds-ease, ease);
+  }
+  .retail-report.is-ready .hbar-row > i > b { transform: scaleX(1); }
   .hbar-row > i > b.accent { background: var(--ds-data-secondary, #78a9ff); }
   .hbar-row > i > b.focus { background: var(--ds-data-focus, #0f62fe); }
-  .dotplot-wrap { padding-top: 8px; }
-  .dotplot-wrap svg { display: block; width: 100%; height: 112px; overflow: visible; }
+
+  .dotplot-wrap { padding-top: 13px; }
+  .dotplot-wrap svg { display: block; width: 100%; height: 148px; overflow: visible; }
   .grid-lines line { stroke: var(--ds-border-light, #eaeef2); stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .trend-line { fill: none; stroke: var(--ds-data-secondary, #78a9ff); stroke-width: 1.7; vector-effect: non-scaling-stroke; }
-  .dot { stroke: var(--ds-surface, #ffffff); stroke-width: 2; vector-effect: non-scaling-stroke; }
-  .dot.neutral { fill: var(--ds-data-context, #c1c7cd); } .dot.accent { fill: var(--ds-data-secondary, #78a9ff); } .dot.focus { fill: var(--ds-data-focus, #0f62fe); }
+  .trend-line {
+    fill: none;
+    stroke: var(--ds-data-secondary, #78a9ff);
+    stroke-width: 1.7;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 310;
+    stroke-dashoffset: 310;
+    transition: stroke-dashoffset 650ms var(--ds-ease, ease);
+  }
+  .retail-report.is-ready .trend-line { stroke-dashoffset: 0; }
+  .dot {
+    stroke: var(--ds-surface, #ffffff);
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform var(--ds-motion-fast, 160ms) var(--ds-ease, ease);
+  }
+  .frequency-panel.is-active .dot { transform: scale(1.13); }
+  .dot.neutral { fill: var(--ds-data-context, #c1c7cd); }
+  .dot.accent { fill: var(--ds-data-secondary, #78a9ff); }
+  .dot.focus { fill: var(--ds-data-focus, #0f62fe); }
   .dotplot-wrap text { fill: var(--ds-ink, #1f2328); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: 9px; font-weight: 600; text-anchor: middle; }
   .dotplot-axis { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; margin-top: 0; }
-  .report-note { grid-column: 1 / -1; margin: 0; padding: 9px 0; border-top: 1px solid var(--ds-border-light, #eaeef2); color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .53rem; }
-  @media (max-width: 760px) { .retail-report { grid-template-columns: 1fr; border-bottom: 0; } .viz-panel, .viz-panel:first-child, .viz-panel:nth-child(3) { padding: 18px 0; border-right: 0; border-bottom: 1px solid var(--ds-border-light, #eaeef2); } .report-note { padding-block: 10px; } }
+
+  .report-note { grid-column: 1 / -1; margin: 0; padding: 11px 0; border-top: 1px solid var(--ds-border-light, #eaeef2); color: var(--ds-subtle, #6e7781); font-family: var(--ds-font-sans, 'IBM Plex Sans', sans-serif); font-size: .56rem; }
+
+  @media (max-width: 760px) {
+    .retail-report { grid-template-columns: 1fr; border-bottom: 0; }
+    .viz-panel, .viz-panel:first-child, .viz-panel:nth-child(3) { padding: 20px 0; border-right: 0; border-bottom: 1px solid var(--ds-border-light, #eaeef2); }
+    .retail-report.has-active .viz-panel:not(.is-active) { opacity: 1; }
+    .report-note { padding-block: 10px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .viz-panel, .histogram i, .hbar-row > i > b, .trend-line, .dot { transition: none; }
+    .histogram i, .hbar-row > i > b { transform: none; }
+    .trend-line { stroke-dashoffset: 0; }
+  }
 </style>

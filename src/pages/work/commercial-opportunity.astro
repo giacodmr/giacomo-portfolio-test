@@ -1,16 +1,17 @@
 ---
-import '../../styles/global.css';
 import '../../styles/design-tokens.css';
+import '../../styles/global.css';
+import '../../styles/commercial-opportunity.css';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 import CommercialOpportunityMap from '../../components/CommercialOpportunityMap.astro';
 
 const approach = [
-  { number: '01', title: 'Frame the network', copy: 'Define the scope and create a consistent view of the commercial universe.' },
-  { number: '02', title: 'Read market signals', copy: 'Bring together market, commercial and competitive information across locations.' },
-  { number: '03', title: 'Assess potential', copy: 'Translate multiple signals into a structured view of relative opportunity.' },
-  { number: '04', title: 'Compare opportunities', copy: 'Prioritise locations through a consistent commercial comparison logic.' },
-  { number: '05', title: 'Translate into action', copy: 'Turn the analysis into decision-support outputs and go-to-market priorities.' },
+  { number: '01', icon: '◎', title: 'Frame the network', copy: 'Define the scope and create a consistent view of the commercial universe.' },
+  { number: '02', icon: '▥', title: 'Read market signals', copy: 'Bring together market, commercial and competitive information across locations.' },
+  { number: '03', icon: '◫', title: 'Assess potential', copy: 'Translate multiple signals into a structured view of relative opportunity.' },
+  { number: '04', icon: '⇄', title: 'Compare opportunities', copy: 'Prioritise locations through a consistent commercial comparison logic.' },
+  { number: '05', icon: '→', title: 'Translate into action', copy: 'Turn the analysis into decision-support outputs and go-to-market priorities.' },
 ];
 
 const contribution = [
@@ -38,61 +39,62 @@ const decisions = [
     <title>Commercial Opportunity Prioritisation — Giacomo Di Muro</title>
   </head>
 
-  <body>
+  <body class="commercial-page">
     <Navigation />
 
     <main class="co-page">
-      <section class="container hero">
-        <div class="hero-main">
-          <p class="eyebrow ds-eyebrow">01 / 03 · Commercial Strategy</p>
+      <section class="container case-hero">
+        <div class="hero-copy">
+          <p class="co-kicker">01 / 03 · Commercial Strategy</p>
           <h1>Commercial Opportunity Prioritisation</h1>
-          <p class="client">Global beverage company</p>
+          <p class="hero-client">Global beverage company</p>
           <p class="hero-summary">
             A data-driven approach to structure and prioritise commercial opportunities across Italy,
             combining market, commercial, competitive and contextual signals into a clearer basis for action.
           </p>
+
+          <div class="hero-tags" aria-label="Capabilities">
+            <span>Commercial strategy</span>
+            <span>Market analytics</span>
+            <span>GTM</span>
+            <span>Prioritisation</span>
+          </div>
         </div>
 
-        <aside class="hero-meta" aria-label="Project overview">
+        <aside class="hero-evidence" aria-label="Project evidence">
           <div class="hero-kpi">
             <strong>12k+</strong>
             <span>locations analysed</span>
           </div>
 
-          <div class="meta-row">
-            <span class="meta-label">Market</span>
-            <b>Italy · 9 markets</b>
-          </div>
-
-          <div class="meta-row capability-row">
-            <span class="meta-label">Capabilities</span>
-            <div class="capabilities">
-              <span>Commercial strategy</span>
-              <span>Market analytics</span>
-              <span>GTM</span>
-              <span>Prioritisation</span>
+          <dl class="fact-list">
+            <div>
+              <dt>Market</dt>
+              <dd>Italy · 9 markets</dd>
             </div>
-          </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>Commercial opportunity prioritisation</dd>
+            </div>
+            <div>
+              <dt>Output</dt>
+              <dd>Decision-support view for commercial focus</dd>
+            </div>
+          </dl>
 
-          <p class="meta-note">Client identity, scoring values and visual details are adapted for confidentiality.</p>
+          <p class="hero-note">Client identity and visual scoring values are adapted for confidentiality.</p>
         </aside>
       </section>
 
-      <section class="container statement-section">
-        <div class="section-label"><span>01</span> Business question</div>
-        <div class="statement-grid">
+      <section class="container challenge-section">
+        <div class="challenge-question">
+          <p class="section-kicker">Business question</p>
           <h2>Which commercial opportunities should be prioritised?</h2>
-          <p>
-            A large commercial network creates a focus problem: thousands of locations may be relevant,
-            but they do not carry the same market potential, commercial attractiveness or strategic relevance.
-          </p>
         </div>
-      </section>
 
-      <section class="container statement-section context-section">
-        <div class="section-label"><span>02</span> Context</div>
-        <div class="statement-grid">
-          <h2>Not every location represents the same strategic or commercial opportunity.</h2>
+        <div class="challenge-context">
+          <p class="section-kicker">Context</p>
+          <h3>Not every location represents the same strategic or commercial opportunity.</h3>
           <p>
             The work brought together market, territorial, competitive and commercial information to create
             a more structured way to compare locations and decide where commercial attention should go first.
@@ -101,8 +103,8 @@ const decisions = [
       </section>
 
       <section class="container approach-section">
-        <div class="approach-intro">
-          <div class="section-label"><span>03</span> Approach</div>
+        <div class="section-head">
+          <p class="section-kicker">Approach</p>
           <p>A five-step logic moved the work from a fragmented location universe to comparable commercial priorities.</p>
         </div>
 
@@ -110,7 +112,7 @@ const decisions = [
           {approach.map((step) => (
             <article class="approach-step">
               <span class="step-number">{step.number}</span>
-              <div class="step-mark" aria-hidden="true"><i></i><i></i><i></i></div>
+              <span class="step-icon" aria-hidden="true">{step.icon}</span>
               <h3>{step.title}</h3>
               <p>{step.copy}</p>
             </article>
@@ -118,23 +120,23 @@ const decisions = [
         </div>
       </section>
 
-      <section class="container analytical-section">
-        <div class="analytical-head">
+      <section class="container analysis-section">
+        <div class="analysis-heading">
           <div>
-            <div class="section-label"><span>04</span> Analytical work</div>
-            <h2>From locations to a comparable opportunity view.</h2>
+            <p class="section-kicker">Analytical work</p>
+            <h2>From thousands of locations to a comparable opportunity view.</h2>
           </div>
           <p>
-            The analytical logic combines different commercial signals into one consistent comparison layer,
-            making it easier to identify where deeper attention and field action may be most valuable.
+            The analysis combined commercial signals into one consistent comparison layer, helping surface
+            where deeper attention and field action could be most valuable.
           </p>
         </div>
 
         <CommercialOpportunityMap />
 
         <div class="artifact-grid">
-          <article class="matrix-card">
-            <div class="artifact-head">
+          <article class="artifact-card">
+            <div class="artifact-header">
               <div>
                 <span>Opportunity matrix</span>
                 <h3>Compare markets on two commercial dimensions.</h3>
@@ -175,8 +177,8 @@ const decisions = [
             </svg>
           </article>
 
-          <article class="logic-card">
-            <div class="artifact-head dark">
+          <article class="artifact-card dark">
+            <div class="artifact-header">
               <div>
                 <span>Prioritisation logic</span>
                 <h3>Multiple signals, one decision-support view.</h3>
@@ -186,15 +188,15 @@ const decisions = [
 
             <div class="logic-flow">
               <div class="logic-signals">
-                <div><i>01</i><p><strong>Commercial</strong><span>Sales potential · profitability thinking</span></p></div>
-                <div><i>02</i><p><strong>Market</strong><span>Local attractiveness · demand signals</span></p></div>
-                <div><i>03</i><p><strong>Context</strong><span>Competition · territory · execution factors</span></p></div>
+                <div class="logic-signal"><span>01</span><p><strong>Commercial</strong><small>Sales potential · profitability thinking</small></p></div>
+                <div class="logic-signal"><span>02</span><p><strong>Market</strong><small>Local attractiveness · demand signals</small></p></div>
+                <div class="logic-signal"><span>03</span><p><strong>Context</strong><small>Competition · territory · execution factors</small></p></div>
               </div>
-              <div class="logic-connector" aria-hidden="true"><span></span><b>→</b></div>
+              <div class="logic-arrow" aria-hidden="true"><span>→</span></div>
               <div class="logic-output">
-                <span>Comparable</span>
-                <strong>commercial priorities</strong>
-                <p>A clear, repeatable basis for focused action.</p>
+                <span>Decision view</span>
+                <strong>Comparable commercial priorities</strong>
+                <p>A clearer, repeatable basis for focused action.</p>
               </div>
             </div>
           </article>
@@ -203,7 +205,7 @@ const decisions = [
 
       <section class="container contribution-section">
         <div class="contribution-copy">
-          <div class="section-label"><span>05</span> My contribution</div>
+          <p class="section-kicker">My contribution</p>
           <h2>Turning analysis into commercial decision support.</h2>
           <p>My role focused on analytical structure, commercial interpretation and management-ready outputs within the broader project team.</p>
         </div>
@@ -218,7 +220,7 @@ const decisions = [
       <section class="decision-band">
         <div class="container decision-inner">
           <div class="decision-copy">
-            <div class="section-label light"><span>06</span> Decision enabled</div>
+            <p class="section-kicker">Decision enabled</p>
             <h2>A clearer basis for deciding where commercial attention should go first.</h2>
             <p>The analysis created a structured way to move from thousands of locations to a more focused set of commercial priorities.</p>
           </div>
@@ -233,7 +235,7 @@ const decisions = [
 
       <section class="container evidence-section">
         <div class="evidence-head">
-          <div class="section-label"><span>07</span> Evidence</div>
+          <p class="section-kicker">Evidence</p>
           <p>Selected factual indicators that can be shared publicly.</p>
         </div>
 
@@ -259,515 +261,3 @@ const decisions = [
     <Footer />
   </body>
 </html>
-
-<style>
-  .co-page {
-    padding-bottom: var(--ds-space-8);
-    background: var(--ds-canvas);
-  }
-
-  .ds-eyebrow { color: var(--ds-forest-800); }
-
-  .hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1.45fr) minmax(360px, .7fr);
-    gap: var(--ds-space-9);
-    align-items: start;
-    padding-top: var(--ds-space-8);
-    padding-bottom: var(--ds-space-8);
-    border-bottom: 1px solid var(--ds-border-light);
-  }
-
-  .hero-main { max-width: 850px; }
-
-  .hero h1 {
-    max-width: 800px;
-    margin: var(--ds-space-4) 0 0;
-    font: 400 clamp(3.6rem, 6vw, 5.6rem)/.92 var(--ds-font-serif);
-    letter-spacing: -.045em;
-  }
-
-  .client {
-    margin: var(--ds-space-4) 0 0;
-    color: var(--ds-ink);
-    font: 400 17px/1.35 var(--ds-font-serif);
-  }
-
-  .hero-summary {
-    max-width: 720px;
-    margin: var(--ds-space-5) 0 0;
-    color: var(--ds-muted);
-    font: 400 17px/1.58 var(--ds-font-sans);
-  }
-
-  .hero-meta {
-    padding: var(--ds-space-6);
-    border: 1px solid var(--ds-border);
-    border-radius: var(--ds-radius-sm);
-    background: var(--ds-surface);
-  }
-
-  .hero-kpi {
-    display: grid;
-    gap: var(--ds-space-2);
-    padding-bottom: var(--ds-space-6);
-    border-bottom: 1px solid var(--ds-border-light);
-  }
-
-  .hero-kpi strong {
-    color: var(--ds-forest-800);
-    font: 500 clamp(3.6rem, 5.4vw, 5rem)/.82 var(--ds-font-sans);
-    letter-spacing: -.065em;
-  }
-
-  .hero-kpi span {
-    color: var(--ds-subtle);
-    font: 600 10px/1.2 var(--ds-font-sans);
-    letter-spacing: .14em;
-    text-transform: uppercase;
-  }
-
-  .meta-row {
-    display: grid;
-    grid-template-columns: 92px 1fr;
-    gap: var(--ds-space-4);
-    padding: var(--ds-space-5) 0;
-    border-bottom: 1px solid var(--ds-border-light);
-  }
-
-  .meta-label {
-    color: var(--ds-subtle);
-    font: 600 10px/1.35 var(--ds-font-sans);
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
-
-  .meta-row b {
-    color: var(--ds-ink);
-    font: 500 13px/1.4 var(--ds-font-sans);
-  }
-
-  .capabilities { display: flex; flex-wrap: wrap; gap: 7px; }
-  .capabilities span {
-    padding: 7px 11px;
-    border-radius: var(--ds-radius-pill);
-    background: var(--ds-tag-bg);
-    color: var(--ds-tag-text);
-    font: 500 11px/1 var(--ds-font-sans);
-  }
-
-  .meta-note {
-    margin: var(--ds-space-5) 0 0;
-    color: var(--ds-subtle);
-    font: 400 11px/1.5 var(--ds-font-sans);
-  }
-
-  .statement-section {
-    padding-top: var(--ds-space-8);
-    padding-bottom: var(--ds-space-8);
-    border-bottom: 1px solid var(--ds-border-light);
-  }
-
-  .section-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--ds-forest-800);
-    font: 600 10px/1 var(--ds-font-sans);
-    letter-spacing: .14em;
-    text-transform: uppercase;
-  }
-
-  .section-label span { color: var(--ds-subtle); }
-
-  .statement-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
-    gap: var(--ds-space-9);
-    align-items: start;
-    margin-top: var(--ds-space-5);
-  }
-
-  .statement-grid h2,
-  .analytical-head h2,
-  .contribution-copy h2,
-  .decision-copy h2 {
-    margin: 0;
-    font: 400 clamp(2.6rem, 4vw, 4rem)/.98 var(--ds-font-serif);
-    letter-spacing: -.035em;
-  }
-
-  .statement-grid h2 { max-width: 780px; }
-
-  .statement-grid p,
-  .analytical-head > p,
-  .contribution-copy > p,
-  .decision-copy > p {
-    margin: var(--ds-space-2) 0 0;
-    color: var(--ds-muted);
-    font: 400 15px/1.6 var(--ds-font-sans);
-  }
-
-  .statement-grid > p {
-    padding-left: var(--ds-space-7);
-    border-left: 1px solid var(--ds-border-light);
-  }
-
-  .approach-section {
-    padding-top: var(--ds-space-8);
-    padding-bottom: var(--ds-space-9);
-  }
-
-  .approach-intro {
-    display: grid;
-    grid-template-columns: minmax(180px, .34fr) minmax(0, 1fr);
-    gap: var(--ds-space-7);
-    align-items: start;
-    margin-bottom: var(--ds-space-6);
-  }
-
-  .approach-intro p {
-    max-width: 640px;
-    margin: 0;
-    color: var(--ds-muted);
-    font: 400 14px/1.55 var(--ds-font-sans);
-  }
-
-  .approach-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    border-top: 1px solid var(--ds-border);
-    border-bottom: 1px solid var(--ds-border);
-  }
-
-  .approach-step {
-    min-height: 230px;
-    padding: var(--ds-space-5);
-  }
-
-  .approach-step + .approach-step { border-left: 1px solid var(--ds-border-light); }
-  .step-number { color: var(--ds-forest-800); font: 600 11px/1 var(--ds-font-sans); }
-
-  .step-mark {
-    display: flex;
-    align-items: end;
-    gap: 3px;
-    height: 26px;
-    margin: var(--ds-space-5) 0;
-  }
-
-  .step-mark i { width: 5px; background: var(--ds-forest-800); }
-  .step-mark i:nth-child(1) { height: 9px; }
-  .step-mark i:nth-child(2) { height: 17px; }
-  .step-mark i:nth-child(3) { height: 25px; }
-
-  .approach-step:nth-child(1) .step-mark i:nth-child(1),
-  .approach-step:nth-child(1) .step-mark i:nth-child(3) { height: 17px; }
-  .approach-step:nth-child(1) .step-mark i:nth-child(2) { height: 17px; border-radius: 50%; }
-  .approach-step:nth-child(3) .step-mark { align-items: center; }
-  .approach-step:nth-child(3) .step-mark i { width: 24px; height: 5px; border-radius: var(--ds-radius-pill); }
-  .approach-step:nth-child(4) .step-mark i:nth-child(1) { height: 25px; }
-  .approach-step:nth-child(4) .step-mark i:nth-child(2) { height: 14px; }
-  .approach-step:nth-child(4) .step-mark i:nth-child(3) { height: 21px; }
-  .approach-step:nth-child(5) .step-mark { align-items: center; }
-  .approach-step:nth-child(5) .step-mark i { width: 24px; height: 2px; }
-
-  .approach-step h3 {
-    margin: 0;
-    font: 400 21px/1.1 var(--ds-font-serif);
-    letter-spacing: -.025em;
-  }
-
-  .approach-step p {
-    margin: var(--ds-space-3) 0 0;
-    color: var(--ds-muted);
-    font: 400 12px/1.55 var(--ds-font-sans);
-  }
-
-  .analytical-section { padding-bottom: var(--ds-space-9); }
-
-  .analytical-head {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
-    gap: var(--ds-space-9);
-    align-items: end;
-    margin-bottom: var(--ds-space-6);
-  }
-
-  .analytical-head h2 {
-    max-width: 700px;
-    margin-top: var(--ds-space-4);
-  }
-
-  .artifact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--ds-space-4);
-    margin-top: var(--ds-space-4);
-  }
-
-  .matrix-card,
-  .logic-card {
-    min-width: 0;
-    padding: var(--ds-space-6);
-    border: 1px solid var(--ds-border);
-    border-radius: var(--ds-radius-sm);
-    overflow: hidden;
-  }
-
-  .matrix-card { background: var(--ds-surface); }
-  .logic-card { background: var(--ds-forest-900); color: var(--ds-light); }
-
-  .artifact-head {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--ds-space-5);
-    align-items: start;
-  }
-
-  .artifact-head span {
-    color: var(--ds-subtle);
-    font: 600 10px/1 var(--ds-font-sans);
-    letter-spacing: .14em;
-    text-transform: uppercase;
-  }
-
-  .artifact-head h3 {
-    max-width: 460px;
-    margin: var(--ds-space-3) 0 0;
-    font: 400 clamp(1.8rem, 2.6vw, 2.7rem)/1 var(--ds-font-serif);
-    letter-spacing: -.035em;
-  }
-
-  .artifact-head small { color: var(--ds-subtle); font: 400 10px/1.3 var(--ds-font-sans); }
-  .artifact-head.dark span,
-  .artifact-head.dark small { color: var(--ds-forest-500); }
-
-  .matrix { width: 100%; height: auto; margin-top: var(--ds-space-6); }
-  .priority-zone { fill: var(--ds-forest-100); opacity: .72; }
-  .axis { stroke: var(--ds-ink); stroke-width: 1; opacity: .5; }
-  .gridline { stroke: var(--ds-border); stroke-width: 1; stroke-dasharray: 3 4; }
-  .zone-label { fill: var(--ds-forest-800); font: 600 9px/1 var(--ds-font-sans); letter-spacing: .1em; }
-  .matrix-context circle { fill: var(--ds-data-low); }
-  .matrix-focus circle { fill: var(--ds-forest-800); }
-  .matrix-focus circle.secondary { fill: var(--ds-forest-500); }
-  .matrix-focus circle.context { fill: var(--ds-data-low); }
-  .matrix-focus text { fill: var(--ds-ink); font: 500 11px/1 var(--ds-font-sans); }
-  .axis-label { fill: var(--ds-muted); font: 500 10px/1 var(--ds-font-sans); }
-  .axis-end { fill: var(--ds-subtle); font: 400 9px/1 var(--ds-font-sans); }
-
-  .logic-flow {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 44px minmax(190px, .72fr);
-    gap: var(--ds-space-5);
-    align-items: center;
-    margin-top: var(--ds-space-7);
-  }
-
-  .logic-signals { display: grid; gap: 0; }
-  .logic-signals > div {
-    display: grid;
-    grid-template-columns: 34px 1fr;
-    gap: var(--ds-space-4);
-    align-items: center;
-    padding: var(--ds-space-4) 0;
-    border-bottom: 1px solid rgba(244,247,243,.13);
-  }
-
-  .logic-signals i { color: var(--ds-forest-500); font: 600 10px/1 var(--ds-font-sans); font-style: normal; }
-  .logic-signals p { display: grid; gap: 4px; margin: 0; }
-  .logic-signals strong { color: var(--ds-light); font: 500 13px/1.2 var(--ds-font-sans); }
-  .logic-signals span { color: rgba(244,247,243,.58); font: 400 11px/1.35 var(--ds-font-sans); }
-
-  .logic-connector { display: flex; align-items: center; }
-  .logic-connector span { width: 100%; height: 1px; background: var(--ds-forest-500); opacity: .55; }
-  .logic-connector b { color: var(--ds-forest-500); font: 400 19px/1 var(--ds-font-sans); }
-
-  .logic-output {
-    padding: var(--ds-space-5);
-    border: 1px solid rgba(244,247,243,.28);
-    border-radius: var(--ds-radius-xs);
-  }
-
-  .logic-output > span { color: var(--ds-forest-500); font: 600 9px/1 var(--ds-font-sans); letter-spacing: .12em; text-transform: uppercase; }
-  .logic-output strong { display: block; margin-top: var(--ds-space-3); color: var(--ds-light); font: 400 27px/1 var(--ds-font-serif); letter-spacing: -.03em; }
-  .logic-output p { margin: var(--ds-space-4) 0 0; color: rgba(244,247,243,.6); font: 400 11px/1.5 var(--ds-font-sans); }
-
-  .contribution-section {
-    display: grid;
-    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-    gap: var(--ds-space-9);
-    align-items: start;
-    padding-top: var(--ds-space-8);
-    padding-bottom: var(--ds-space-9);
-    border-top: 1px solid var(--ds-border-light);
-  }
-
-  .contribution-copy h2 { max-width: 600px; margin-top: var(--ds-space-4); }
-  .contribution-copy > p { max-width: 600px; margin-top: var(--ds-space-5); }
-
-  .contribution-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    border-top: 1px solid var(--ds-border);
-  }
-
-  .contribution-list li {
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    gap: var(--ds-space-4);
-    padding: var(--ds-space-5) 0;
-    border-bottom: 1px solid var(--ds-border-light);
-  }
-
-  .contribution-list li > span { color: var(--ds-forest-800); font: 600 10px/1.6 var(--ds-font-sans); }
-  .contribution-list p { margin: 0; color: var(--ds-muted); font: 400 14px/1.55 var(--ds-font-sans); }
-
-  .decision-band {
-    background: var(--ds-forest-900);
-    color: var(--ds-light);
-  }
-
-  .decision-inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, .72fr);
-    gap: var(--ds-space-9);
-    align-items: center;
-    padding-top: var(--ds-space-8);
-    padding-bottom: var(--ds-space-8);
-  }
-
-  .section-label.light { color: var(--ds-forest-500); }
-  .section-label.light span { color: rgba(244,247,243,.42); }
-  .decision-copy h2 { max-width: 760px; margin-top: var(--ds-space-4); }
-  .decision-copy > p { max-width: 680px; color: rgba(244,247,243,.6); margin-top: var(--ds-space-5); }
-
-  .decision-list {
-    margin: 0;
-    padding: 0 0 0 var(--ds-space-7);
-    border-left: 1px solid rgba(244,247,243,.16);
-    list-style: none;
-  }
-
-  .decision-list li {
-    display: grid;
-    grid-template-columns: 22px 1fr;
-    gap: var(--ds-space-3);
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(244,247,243,.1);
-    color: rgba(244,247,243,.78);
-    font: 400 13px/1.4 var(--ds-font-sans);
-  }
-
-  .decision-list li span { color: var(--ds-forest-500); font-weight: 600; }
-
-  .evidence-section { padding-top: var(--ds-space-8); padding-bottom: var(--ds-space-9); }
-
-  .evidence-head {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--ds-space-6);
-    align-items: center;
-    margin-bottom: var(--ds-space-6);
-  }
-
-  .evidence-head p { margin: 0; color: var(--ds-subtle); font: 400 12px/1.5 var(--ds-font-sans); }
-
-  .evidence-grid {
-    display: grid;
-    grid-template-columns: 1.1fr .7fr .9fr 1.3fr;
-    border-top: 1px solid var(--ds-border);
-    border-bottom: 1px solid var(--ds-border);
-  }
-
-  .evidence-item {
-    display: flex;
-    min-height: 160px;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--ds-space-5) var(--ds-space-6);
-  }
-
-  .evidence-item + .evidence-item { border-left: 1px solid var(--ds-border-light); }
-  .evidence-item strong { font: 500 clamp(2.8rem, 4vw, 4.2rem)/.9 var(--ds-font-sans); letter-spacing: -.055em; }
-  .evidence-item.key strong { color: var(--ds-forest-800); }
-  .evidence-item span { margin-top: var(--ds-space-3); color: var(--ds-muted); font: 400 12px/1.35 var(--ds-font-sans); }
-  .evidence-item small { margin-top: var(--ds-space-3); color: var(--ds-subtle); font: 400 10px/1.45 var(--ds-font-sans); }
-  .evidence-item.text strong { font: 400 clamp(1.7rem, 2.5vw, 2.5rem)/1 var(--ds-font-serif); letter-spacing: -.035em; }
-  .confidentiality { max-width: 760px; margin: var(--ds-space-5) 0 0 auto; color: var(--ds-subtle); font: 400 10px/1.5 var(--ds-font-sans); }
-
-  .next-project {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: var(--ds-space-6);
-    align-items: center;
-    padding-top: var(--ds-space-6);
-    padding-bottom: var(--ds-space-8);
-    border-top: 1px solid var(--ds-border-light);
-  }
-
-  .next-project > span { color: var(--ds-subtle); font: 600 10px/1 var(--ds-font-sans); letter-spacing: .14em; text-transform: uppercase; }
-  .next-project a { display: flex; align-items: center; justify-content: space-between; gap: var(--ds-space-6); }
-  .next-project strong { font: 400 clamp(2rem, 3vw, 3rem)/1 var(--ds-font-serif); letter-spacing: -.03em; }
-  .next-project i { font: 400 24px/1 var(--ds-font-sans); font-style: normal; transition: transform var(--ds-motion-fast) var(--ds-ease); }
-  .next-project a:hover i { transform: translateX(4px); }
-
-  @media (max-width: 1080px) {
-    .hero,
-    .statement-grid,
-    .analytical-head,
-    .contribution-section,
-    .decision-inner { grid-template-columns: 1fr; gap: var(--ds-space-7); }
-
-    .hero-meta { max-width: 620px; }
-    .statement-grid > p { padding-left: 0; border-left: 0; max-width: 760px; }
-    .approach-grid { grid-template-columns: repeat(2, 1fr); }
-    .approach-step + .approach-step { border-left: 0; }
-    .approach-step:nth-child(even) { border-left: 1px solid var(--ds-border-light); }
-    .approach-step:nth-child(n+3) { border-top: 1px solid var(--ds-border-light); }
-    .approach-step:last-child { grid-column: 1 / -1; min-height: 190px; }
-    .artifact-grid { grid-template-columns: 1fr; }
-    .decision-list { padding-left: 0; border-left: 0; }
-    .evidence-grid { grid-template-columns: repeat(2, 1fr); }
-    .evidence-item:nth-child(3) { border-left: 0; border-top: 1px solid var(--ds-border-light); }
-    .evidence-item:nth-child(4) { border-top: 1px solid var(--ds-border-light); }
-  }
-
-  @media (max-width: 700px) {
-    .hero { padding-top: var(--ds-space-7); padding-bottom: var(--ds-space-7); }
-    .hero h1 { font-size: clamp(3rem, 15vw, 4.5rem); }
-    .hero-summary { font-size: 15px; }
-    .hero-meta { padding: var(--ds-space-5); }
-    .meta-row { grid-template-columns: 1fr; gap: var(--ds-space-3); }
-    .statement-section,
-    .approach-section,
-    .analytical-section,
-    .contribution-section,
-    .evidence-section { padding-top: var(--ds-space-7); padding-bottom: var(--ds-space-7); }
-    .statement-grid,
-    .analytical-head,
-    .contribution-section { gap: var(--ds-space-5); }
-    .approach-intro { grid-template-columns: 1fr; gap: var(--ds-space-4); }
-    .approach-grid { grid-template-columns: 1fr; }
-    .approach-step,
-    .approach-step:last-child { min-height: auto; grid-column: auto; }
-    .approach-step:nth-child(even) { border-left: 0; }
-    .approach-step + .approach-step { border-top: 1px solid var(--ds-border-light); }
-    .matrix-card,
-    .logic-card { padding: var(--ds-space-5); }
-    .artifact-head { flex-direction: column; }
-    .logic-flow { grid-template-columns: 1fr; }
-    .logic-connector { transform: rotate(90deg); width: 38px; margin: 0 auto; }
-    .decision-inner { padding-top: var(--ds-space-7); padding-bottom: var(--ds-space-7); }
-    .evidence-head { align-items: flex-start; flex-direction: column; }
-    .evidence-grid { grid-template-columns: 1fr; }
-    .evidence-item + .evidence-item { border-left: 0; border-top: 1px solid var(--ds-border-light); }
-    .next-project { grid-template-columns: 1fr; gap: var(--ds-space-4); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .next-project i { transition: none; }
-  }
-</style>

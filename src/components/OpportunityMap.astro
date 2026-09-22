@@ -134,108 +134,36 @@
     const activate = (marker) => {
       markers.forEach((item) => item.classList.toggle('is-muted', item !== marker));
       marker.classList.add('is-active');
-      if (city) city.textContent = marker.getAttribute('data-city') || '';
-      if (score) score.textContent = marker.getAttribute('data-score') || '';
-      if (priority) priority.textContent = marker.getAttribute('data-priority') || '';
-      tooltip?.classList.add('is-active');
-    };
-
-    const reset = () => {
-      markers.forEach((item) => item.classList.remove('is-muted', 'is-active'));
-      tooltip?.classList.remove('is-active');
+      if (city) city.textContent = marker.dataset.city || '';
+      if (score) score.textContent = marker.dataset.score || '';
+      if (priority) priority.textContent = marker.dataset.priority || '';
+      if (tooltip) tooltip.classList.add('is-visible');
     };
 
     markers.forEach((marker) => {
       marker.addEventListener('mouseenter', () => activate(marker));
       marker.addEventListener('focus', () => activate(marker));
-      marker.addEventListener('mouseleave', reset);
-      marker.addEventListener('blur', reset);
+      marker.addEventListener('click', () => activate(marker));
     });
   });
 </script>
 
 <style>
-  .italy-map {
-    position: relative;
-    width: 100%;
-    min-height: 360px;
-    display: grid;
-    place-items: center;
-  }
-
-  svg {
-    width: min(100%, 390px);
-    height: auto;
-    overflow: visible;
-  }
-
-  .italy-shape path {
-    fill: #e2ebe3;
-    stroke: #cad7cd;
-    stroke-width: 1.2;
-  }
-
-  .dot { opacity: .76; }
-  .dot.low { fill: #bfcac2; }
-  .dot.medium { fill: #6f9a82; }
-  .dot.high { fill: #0e563f; }
-
-  .city {
-    transform-box: fill-box;
-    transform-origin: center;
-    stroke: #fbfaf6;
-    stroke-width: 3;
-    cursor: pointer;
-    transition: transform .2s ease, opacity .2s ease, filter .2s ease;
-  }
-
-  .city.high { fill: #0e563f; }
-  .city.medium { fill: #6f9a82; }
-
-  .city:hover,
-  .city:focus,
-  .city.is-active {
-    transform: scale(1.28);
-    filter: drop-shadow(0 5px 8px rgba(14,86,63,.22));
-  }
-
-  .city.is-muted { opacity: .28; }
-
-  .city-labels text {
-    fill: #566359;
-    font-family: var(--font-sans);
-    font-size: 10px;
-    font-weight: 500;
-  }
-
-  .map-tooltip {
-    position: absolute;
-    top: 20px;
-    right: 0;
-    width: 150px;
-    display: grid;
-    gap: 2px;
-    padding: 13px 14px;
-    border: 1px solid var(--border-light);
-    border-radius: 12px;
-    background: rgba(251,250,246,.9);
-    box-shadow: 0 12px 32px rgba(24,34,28,.07);
-    backdrop-filter: blur(12px);
-    transition: transform .2s ease, box-shadow .2s ease;
-  }
-
-  .map-tooltip.is-active {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 38px rgba(24,34,28,.11);
-  }
-
-  .map-tooltip strong { font-size: .82rem; }
-  .map-tooltip span { color: var(--text-secondary); font-size: .7rem; }
-  .map-tooltip em { color: var(--accent); font-size: .7rem; font-style: normal; font-weight: 600; }
-
-  @media (max-width: 760px) {
-    .italy-map { min-height: 320px; }
-    .map-tooltip { width: 138px; right: 4px; top: 4px; }
-    .city-labels { display: none; }
-  }
+  .italy-map { position: relative; width: 100%; }
+  svg { display: block; width: 100%; height: auto; }
+  .italy-shape path { fill: var(--ds-blue-100, #d0e2ff); stroke: color-mix(in srgb, var(--ds-blue-600, #0f62fe) 34%, var(--ds-border, #d0d7de)); stroke-width: 1.2; }
+  .dot.low { fill: var(--ds-data-context, #c1c7cd); }
+  .dot.medium { fill: var(--ds-data-secondary, #78a9ff); }
+  .dot.high { fill: var(--ds-data-focus, #0f62fe); }
+  .city { stroke: var(--ds-surface, #fff); stroke-width: 4; transition: opacity .18s ease, transform .18s ease; transform-box: fill-box; transform-origin: center; }
+  .city.high { fill: var(--ds-blue-600, #0f62fe); }
+  .city.medium { fill: var(--ds-blue-300, #78a9ff); }
+  .city.is-muted { opacity: .55; }
+  .city.is-active { transform: scale(1.12); }
+  .city-labels text { fill: var(--ds-muted, #57606a); font: 500 12px/1 var(--ds-font-sans, 'IBM Plex Sans', sans-serif); }
+  .map-tooltip { position: absolute; top: 7%; right: 3%; display: grid; gap: 7px; min-width: 170px; padding: 16px; border: 1px solid var(--ds-border, #d0d7de); border-radius: var(--ds-radius-sm, 8px); background: color-mix(in srgb, var(--ds-surface, #fff) 96%, transparent); box-shadow: 0 14px 35px rgba(31,35,40,.08); }
+  .map-tooltip strong { color: var(--ds-ink, #1f2328); font-size: .95rem; }
+  .map-tooltip span { color: var(--ds-muted, #57606a); font-size: .7rem; }
+  .map-tooltip em { color: var(--ds-blue-700, #0043ce); font-size: .7rem; font-style: normal; font-weight: 600; }
+  @media (max-width: 640px) { .map-tooltip { position: static; margin-top: 12px; } .city-labels text { font-size: 10px; } }
 </style>

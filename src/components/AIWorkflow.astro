@@ -1,108 +1,101 @@
-<div class="ai-stage" data-ai-stage role="img" aria-label="AI-enabled consulting workflow from business question through data and analysis to human review and decision">
-  <div class="stage-label">Controlled AI workflow</div>
-
-  <div class="node node-question" data-node>
+<div class="workflow-preview" role="img" aria-label="AI-enabled consulting workflow preview">
+  <div class="workflow-step">
     <span>01</span>
     <strong>Business question</strong>
     <small>Objectives · Context · Constraints</small>
   </div>
-
-  <div class="branch branch-left" data-node>
-    <div class="mini-node">Data</div>
-    <div class="mini-node">Documents</div>
-    <div class="mini-node">Context</div>
-  </div>
-
-  <div class="flow-line line-a" aria-hidden="true"></div>
-  <div class="flow-line line-b" aria-hidden="true"></div>
-
-  <div class="node node-ai" data-node>
+  <div class="workflow-arrow" aria-hidden="true">→</div>
+  <div class="workflow-step">
     <span>02</span>
+    <strong>Data & documents</strong>
+    <small>Internal data · Reports · Materials</small>
+  </div>
+  <div class="workflow-arrow" aria-hidden="true">→</div>
+  <div class="workflow-step workflow-step-accent">
+    <span>03</span>
     <strong>AI-supported analysis</strong>
     <small>Structure · Analyse · Synthesise</small>
-    <i aria-hidden="true"></i>
   </div>
-
-  <div class="flow-line line-c" aria-hidden="true"></div>
-
-  <div class="node node-review" data-node>
-    <span>03</span>
-    <strong>Consultant review</strong>
-    <small>Validate · Refine · Apply business context</small>
-  </div>
-
-  <div class="flow-line line-d" aria-hidden="true"></div>
-
-  <div class="node node-output" data-node>
+  <div class="workflow-arrow" aria-hidden="true">→</div>
+  <div class="workflow-step">
     <span>04</span>
-    <strong>Decision / output</strong>
-    <small>Insights · Recommendations · Action plan</small>
+    <strong>Consultant review</strong>
+    <small>Validate · Refine · Apply context</small>
   </div>
-
-  <p class="human-note">Human judgement remains explicit at the decision boundary.</p>
+  <div class="workflow-arrow" aria-hidden="true">→</div>
+  <div class="workflow-step">
+    <span>05</span>
+    <strong>Output / decision</strong>
+    <small>Insights · Recommendations · Action</small>
+  </div>
 </div>
 
-<script>
-  document.querySelectorAll('[data-ai-stage]').forEach((stage) => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) stage.classList.add('is-visible');
-      });
-    }, { threshold: 0.3 });
-    observer.observe(stage);
-  });
-</script>
-
 <style>
-  .ai-stage {
-    position:relative;
-    min-height:720px;
-    overflow:hidden;
-    border:1px solid rgba(239,242,236,.1);
-    border-radius:28px;
-    background:
-      radial-gradient(circle at 47% 43%, rgba(115,171,137,.16), transparent 24%),
-      radial-gradient(circle at 80% 75%, rgba(255,255,255,.05), transparent 28%),
-      #101b16;
+  .workflow-preview {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr;
+    gap: 8px;
+    align-items: stretch;
+    margin-top: 22px;
   }
-  .stage-label { position:absolute; top:28px; left:30px; color:rgba(239,242,236,.45); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
-  .node { position:absolute; display:grid; gap:8px; padding:20px 22px; border:1px solid rgba(239,242,236,.13); border-radius:16px; background:rgba(239,242,236,.035); backdrop-filter:blur(8px); opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .7s cubic-bezier(.22,1,.36,1), border-color .25s ease; }
-  .node:hover { border-color:rgba(151,206,170,.48); }
-  .node span { color:rgba(239,242,236,.38); font-size:10px; letter-spacing:.12em; }
-  .node strong { color:#f1f3ef; font-size:17px; font-weight:500; }
-  .node small { color:rgba(239,242,236,.5); font-size:11px; line-height:1.45; }
-  .node-question { left:7%; top:17%; width:210px; }
-  .branch { position:absolute; left:8%; top:49%; display:grid; gap:10px; opacity:0; transform:translateY(16px); transition:opacity .6s .15s ease, transform .7s .15s cubic-bezier(.22,1,.36,1); }
-  .mini-node { min-width:130px; padding:10px 13px; border-left:1px solid rgba(151,206,170,.45); color:rgba(239,242,236,.65); font-size:12px; }
-  .node-ai { left:38%; top:34%; width:230px; border-color:rgba(151,206,170,.38); background:rgba(87,145,109,.1); }
-  .node-ai i { position:absolute; inset:-10px; border:1px solid rgba(151,206,170,.12); border-radius:22px; animation:pulse 3s ease-in-out infinite; }
-  .node-review { right:8%; top:27%; width:230px; }
-  .node-output { right:8%; bottom:14%; width:230px; background:#edf1eb; }
-  .node-output span, .node-output small { color:#657066; }
-  .node-output strong { color:#101b16; }
-  .flow-line { position:absolute; height:1px; background:linear-gradient(90deg, rgba(151,206,170,.08), rgba(151,206,170,.55), rgba(151,206,170,.08)); transform-origin:left; transform:scaleX(0); transition:transform 1s cubic-bezier(.22,1,.36,1); }
-  .line-a { left:27%; top:30%; width:15%; transform:rotate(18deg) scaleX(0); }
-  .line-b { left:24%; top:55%; width:19%; transform:rotate(-14deg) scaleX(0); }
-  .line-c { left:61%; top:43%; width:18%; transform:rotate(-8deg) scaleX(0); }
-  .line-d { right:18%; top:50%; width:18%; transform:rotate(90deg) scaleX(0); }
-  .human-note { position:absolute; left:38%; bottom:8%; max-width:260px; margin:0; color:rgba(239,242,236,.42); font-family:'Instrument Serif',Georgia,serif; font-size:20px; line-height:1.12; }
-  .is-visible .node, .is-visible .branch { opacity:1; transform:translateY(0); }
-  .is-visible .node-ai { transition-delay:.25s; }
-  .is-visible .node-review { transition-delay:.48s; }
-  .is-visible .node-output { transition-delay:.72s; }
-  .is-visible .line-a { transform:rotate(18deg) scaleX(1); transition-delay:.22s; }
-  .is-visible .line-b { transform:rotate(-14deg) scaleX(1); transition-delay:.32s; }
-  .is-visible .line-c { transform:rotate(-8deg) scaleX(1); transition-delay:.52s; }
-  .is-visible .line-d { transform:rotate(90deg) scaleX(1); transition-delay:.75s; }
-  @keyframes pulse { 0%,100%{opacity:.35; transform:scale(.985)} 50%{opacity:.8; transform:scale(1.015)} }
-  @media (max-width:780px) {
-    .ai-stage { min-height:760px; }
-    .node-question { left:7%; top:12%; width:86%; }
-    .branch { left:7%; top:28%; grid-template-columns:repeat(3,1fr); width:86%; }
-    .mini-node { min-width:0; }
-    .node-ai { left:7%; top:43%; width:86%; }
-    .node-review { left:7%; right:auto; top:61%; width:86%; }
-    .node-output { left:7%; right:auto; bottom:7%; width:86%; }
-    .flow-line, .human-note { display:none; }
+
+  .workflow-step {
+    min-width: 0;
+    min-height: 148px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px;
+    border: 1px solid rgba(241,246,242,.15);
+    border-radius: 10px;
+    background: rgba(255,255,255,.025);
+  }
+
+  .workflow-step span {
+    color: rgba(240,245,241,.42);
+    font-size: .57rem;
+    letter-spacing: .12em;
+  }
+
+  .workflow-step strong {
+    color: #f5f7f3;
+    font-size: .78rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .workflow-step small {
+    color: rgba(240,245,241,.52);
+    font-size: .58rem;
+    line-height: 1.4;
+  }
+
+  .workflow-step-accent {
+    border-color: rgba(151,206,170,.66);
+    background: rgba(91,145,111,.13);
+    box-shadow: inset 0 0 0 1px rgba(151,206,170,.08);
+  }
+
+  .workflow-arrow {
+    display: grid;
+    place-items: center;
+    color: rgba(240,245,241,.7);
+    font-size: .9rem;
+  }
+
+  @media (max-width: 860px) {
+    .workflow-preview {
+      grid-template-columns: 1fr;
+    }
+
+    .workflow-step {
+      min-height: 112px;
+    }
+
+    .workflow-arrow {
+      transform: rotate(90deg);
+      min-height: 16px;
+    }
   }
 </style>

@@ -86,16 +86,16 @@
     min-height: 20px;
     display: block;
     border-radius: 4px 4px 0 0;
-    background: #c8d2ca;
+    background: var(--ds-data-context, #c1c7cd);
     transition: height .22s ease, background .22s ease, transform .22s ease;
   }
 
-  .bar.accent { background: #7b9d89; }
-  .bar.dark { background: #1a5843; }
+  .bar.accent { background: var(--ds-blue-300, #78a9ff); }
+  .bar.dark { background: var(--ds-blue-600, #0f62fe); }
 
   .bar:hover {
     transform: translateY(-3px);
-    background: #5f8972;
+    background: var(--ds-blue-700, #0043ce);
   }
 
   .bar b {

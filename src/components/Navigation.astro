@@ -1,13 +1,12 @@
 <header class="site-header">
   <div class="container nav-inner">
-    <a class="wordmark" href="/" aria-label="Giacomo Di Muro home">
-      <span class="wordmark-mark" aria-hidden="true">G</span>
-      <span>Giacomo Di Muro</span>
-    </a>
+    <a class="wordmark" href="/">Giacomo Di Muro</a>
 
     <nav aria-label="Primary navigation">
       <a href="/#work">Work</a>
-      <a href="/about">About</a>
+      <a href="/#experience">About</a>
+      <a href="#" aria-label="CV link placeholder">CV</a>
+      <a href="#" aria-label="LinkedIn link placeholder">LinkedIn</a>
     </nav>
   </div>
 </header>
@@ -17,49 +16,77 @@
     position: sticky;
     z-index: 50;
     top: 0;
-    min-height: 66px;
-    border-bottom: 1px solid var(--border);
-    background: color-mix(in srgb, var(--surface) 94%, transparent);
-    backdrop-filter: blur(12px);
+    height: 68px;
+    border-bottom: 1px solid var(--border-light);
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    backdrop-filter: blur(16px);
   }
+
   .nav-inner {
-    min-height: 66px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 28px;
+    gap: 32px;
   }
+
   .wordmark {
-    display: inline-flex;
+    font-family: var(--font-serif);
+    font-size: 1.08rem;
+    font-weight: 500;
+    letter-spacing: -.025em;
+  }
+
+  nav {
+    display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: .98rem;
-    font-weight: 650;
-    letter-spacing: -.015em;
+    gap: clamp(18px, 2.7vw, 38px);
   }
-  .wordmark-mark {
-    display: grid;
-    place-items: center;
-    width: 29px;
-    height: 29px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    background: var(--surface-soft);
-    font-size: .78rem;
-  }
-  nav { display: flex; align-items: center; gap: clamp(20px, 2.6vw, 36px); }
+
   nav a {
-    color: var(--text-secondary);
-    font-size: .9rem;
-    font-weight: 560;
-    transition: color var(--ds-motion-fast) ease;
+    position: relative;
+    color: var(--text);
+    font-size: .75rem;
+    font-weight: 500;
+    transition: color .16s ease;
   }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -5px;
+    height: 1px;
+    background: var(--accent);
+    transition: right .18s ease;
+  }
+
   nav a:hover,
-  nav a:focus-visible { color: var(--text); }
+  nav a:focus-visible {
+    color: var(--accent);
+  }
+
+  nav a:hover::after,
+  nav a:focus-visible::after {
+    right: 0;
+  }
 
   @media (max-width: 620px) {
-    .site-header { position: relative; }
-    .nav-inner { min-height: auto; padding-top: 15px; padding-bottom: 15px; }
-    .wordmark > span:last-child { display: none; }
+    .site-header {
+      height: auto;
+      padding: 15px 0;
+    }
+
+    .nav-inner {
+      align-items: flex-start;
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 8px 18px;
+      justify-items: end;
+    }
   }
 </style>

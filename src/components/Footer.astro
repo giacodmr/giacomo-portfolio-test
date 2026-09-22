@@ -1,28 +1,82 @@
 <footer class="site-footer">
   <div class="container footer-row">
     <div class="footer-brand">
-      <strong>Giacomo Di Muro</strong>
-      <span>Business Strategy &amp; Analytics · Milan</span>
+      <span>Giacomo Di Muro</span>
+      <i aria-hidden="true"></i>
+      <small>Business ideas. Greater impact.</small>
     </div>
 
     <nav aria-label="Footer navigation">
       <a href="/#work">Work</a>
-      <a href="/about">About</a>
+      <a href="/#experience">About</a>
+      <a href="#">CV</a>
+      <a href="#">LinkedIn</a>
     </nav>
   </div>
 </footer>
 
 <style>
-  .site-footer { padding: 30px 0 36px; border-top: 1px solid var(--border); background: var(--surface); }
-  .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
-  .footer-brand { display: grid; gap: 5px; }
-  .footer-brand strong { font-size: .9rem; }
-  .footer-brand span { color: var(--text-tertiary); font-size: .72rem; }
-  nav { display: flex; flex-wrap: wrap; gap: 24px; }
-  nav a { color: var(--text-secondary); font-size: .78rem; font-weight: 550; }
+  .site-footer {
+    padding: 4px 0 28px;
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-brand > span {
+    font-family: var(--font-serif);
+    font-size: .92rem;
+    font-weight: 500;
+  }
+
+  .footer-brand i {
+    width: 30px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .footer-brand small {
+    color: var(--text-tertiary);
+    font-size: .6rem;
+  }
+
+  nav {
+    display: flex;
+    gap: 26px;
+  }
+
+  nav a {
+    color: var(--text-secondary);
+    font-size: .66rem;
+    transition: color .16s ease;
+  }
+
   nav a:hover,
-  nav a:focus-visible { color: var(--text); }
+  nav a:focus-visible {
+    color: var(--accent);
+  }
+
   @media (max-width: 700px) {
-    .footer-row { align-items: flex-start; flex-direction: column; }
+    .footer-row,
+    .footer-brand {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    nav {
+      flex-wrap: wrap;
+    }
   }
 </style>

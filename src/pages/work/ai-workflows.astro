@@ -1,214 +1,36 @@
 ---
 import '../../styles/design-tokens.css';
-import '../../styles/global.css';
-import '../../styles/ai-workflows.css';
-import Navigation from '../../components/Navigation.astro';
-import Footer from '../../components/Footer.astro';
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
 import AIWorkflow from '../../components/AIWorkflow.astro';
-
-const approach = [
-  { number: '01', icon: '◇', title: 'Frame the business task', copy: 'Clarify the objective, context and quality bar before introducing AI into the workflow.' },
-  { number: '02', icon: '▦', title: 'Structure the inputs', copy: 'Organise questions, documents and data so the system receives clear, relevant context.' },
-  { number: '03', icon: '✦', title: 'Use AI selectively', copy: 'Apply AI where it can accelerate structure, analysis or synthesis rather than automating judgement.' },
-  { number: '04', icon: '✓', title: 'Keep consultant review explicit', copy: 'Validate outputs, challenge assumptions and reintroduce business context before anything is used.' },
-  { number: '05', icon: '→', title: 'Standardise the output', copy: 'Translate the workflow into a repeatable path toward decision-ready insights and recommendations.' },
-];
-
-const contribution = [
-  'Structured recurring consulting use cases around business relevance, expected benefit, feasibility and adoption.',
-  'Tested AI-supported approaches for structuring, analysis and synthesis across knowledge-work tasks.',
-  'Contributed to workflow redesign by making review, validation and business context explicit parts of the process.',
-  'Supported internal knowledge sharing and practical adoption as AI Champion for the Consumer practice.',
-];
-
-const decisions = [
-  'Where AI adds meaningful support versus unnecessary complexity',
-  'Which inputs and review steps are required for reliable use',
-  'How human judgement remains part of the operating model',
-  'How recurring work can become more structured and repeatable',
-];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="AI-enabled consulting workflow case study by Giacomo Di Muro." />
-    <title>AI-enabled Consulting Workflows — Giacomo Di Muro</title>
-  </head>
+<CaseStudyLayout
+  title="AI-enabled Consulting Workflows"
+  eyebrow="03 / 03 · Applied AI"
+  client="Internal transformation / Consulting organisation"
+  question="How can recurring consulting workflows be redesigned using AI without losing business judgement?"
+  summary="The approach positions AI as one layer in a controlled workflow: structured inputs, AI-supported analysis, consultant validation and decision-ready output."
+>
+  <div slot="visual" style="padding:22px;border:1px solid var(--ds-graphite-70);border-radius:12px;background:var(--ds-graphite-100);">
+    <AIWorkflow />
+  </div>
 
-  <body class="ai-page">
-    <Navigation />
+  <section class="case-block">
+    <h3>Approach</h3>
+    <p>Identify recurring tasks suitable for AI support, structure the input and review logic, then keep human validation explicit before business decisions.</p>
+  </section>
 
-    <main>
-      <section class="container case-hero">
-        <div class="hero-copy">
-          <p class="ai-kicker">03 / 03 · Applied AI</p>
-          <h1>AI-enabled Consulting Workflows</h1>
-          <p class="hero-client">Internal transformation / Consulting organisation</p>
-          <p class="hero-summary">
-            A practical approach to redesigning recurring consulting workflows so AI can support structure,
-            analysis and synthesis while keeping business judgement and human validation explicit.
-          </p>
+  <section class="case-block">
+    <h3>My contribution</h3>
+    <ul>
+      <li>Structured use cases and business requirements.</li>
+      <li>Tested AI-supported analysis and synthesis approaches.</li>
+      <li>Contributed to workflow redesign and practical adoption.</li>
+    </ul>
+  </section>
 
-          <div class="hero-tags" aria-label="Capabilities">
-            <span>Applied AI</span>
-            <span>Process redesign</span>
-            <span>Transformation</span>
-            <span>AI adoption</span>
-          </div>
-        </div>
-
-        <aside class="hero-evidence" aria-label="Project evidence">
-          <div class="hero-kpi">
-            <strong>AI Champion</strong>
-            <span>Consumer practice</span>
-          </div>
-
-          <dl class="fact-list">
-            <div><dt>Focus</dt><dd>Recurring consulting workflows</dd></div>
-            <div><dt>Principle</dt><dd>AI support with explicit human review</dd></div>
-            <div><dt>Output</dt><dd>More structured, repeatable knowledge workflows</dd></div>
-          </dl>
-
-          <p class="hero-note">No confidential prompts, client documents or proprietary internal workflows are shown.</p>
-        </aside>
-      </section>
-
-      <section class="container challenge-section">
-        <div class="challenge-question">
-          <p class="section-kicker">Business question</p>
-          <h2>How can recurring consulting workflows use AI without outsourcing business judgement?</h2>
-        </div>
-
-        <div class="challenge-context">
-          <p class="section-kicker">Context</p>
-          <h3>Speed is useful only when the workflow still produces reliable, context-aware output.</h3>
-          <p>
-            The goal was not to add AI everywhere. It was to identify where it could genuinely improve recurring knowledge work,
-            then design the process around clear inputs, validation and a decision-ready output standard.
-          </p>
-        </div>
-      </section>
-
-      <section class="container approach-section">
-        <div class="section-head">
-          <p class="section-kicker">Approach</p>
-          <p>A five-step logic keeps AI inside a controlled business process rather than treating model output as the final answer.</p>
-        </div>
-
-        <div class="approach-grid">
-          {approach.map((step) => (
-            <article class="approach-step">
-              <span class="step-number">{step.number}</span>
-              <div class="step-icon" aria-hidden="true">{step.icon}</div>
-              <h3>{step.title}</h3>
-              <p>{step.copy}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section class="container analysis-section">
-        <div class="analysis-heading">
-          <div>
-            <p class="section-kicker">Workflow design</p>
-            <h2>AI as one layer in a decision process — not the decision maker.</h2>
-          </div>
-          <p>
-            The workflow separates business framing, source material, AI-supported analysis, consultant validation and final output so responsibility remains clear throughout the process.
-          </p>
-        </div>
-
-        <div class="workflow-shell">
-          <AIWorkflow />
-        </div>
-        <p class="workflow-note">Conceptual reconstruction of the workflow logic. No proprietary internal implementation is shown.</p>
-
-        <div class="control-grid">
-          <article>
-            <span>01 / Input quality</span>
-            <h3>Start from a defined business question.</h3>
-            <p>Clear objectives and relevant context matter more than simply increasing prompt complexity.</p>
-          </article>
-          <article>
-            <span>02 / Source discipline</span>
-            <h3>Use the right evidence base.</h3>
-            <p>Documents, data and assumptions should be explicit so analysis can be checked and challenged.</p>
-          </article>
-          <article>
-            <span>03 / Human review</span>
-            <h3>Validation stays inside the workflow.</h3>
-            <p>Consultant judgement is required to test relevance, consistency and business interpretation.</p>
-          </article>
-          <article>
-            <span>04 / Output standard</span>
-            <h3>Design for a decision-ready result.</h3>
-            <p>The workflow ends with a usable structure: insight, recommendation, action or management-ready material.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="container contribution-section">
-        <div class="contribution-copy">
-          <p class="section-kicker">My contribution</p>
-          <h2>Connecting AI capability to business relevance and adoption.</h2>
-          <p>
-            My role focused on identifying practical use cases, testing how AI could improve recurring work and helping translate experimentation into a more structured way of working.
-          </p>
-        </div>
-
-        <ol class="contribution-list">
-          {contribution.map((item, index) => (
-            <li><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>
-          ))}
-        </ol>
-      </section>
-
-      <section class="decision-band">
-        <div class="container decision-inner">
-          <div class="decision-copy">
-            <p class="section-kicker">Decision enabled</p>
-            <h2>A clearer operating logic for deciding where — and how — AI should support consulting work.</h2>
-            <p>
-              The value is not a single automated task. It is a repeatable framework for evaluating AI use through business relevance, process design and controlled review.
-            </p>
-          </div>
-
-          <div class="decision-list">
-            {decisions.map((item, index) => (
-              <div><span>0{index + 1}</span><p>{item}</p></div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section class="container evidence-section">
-        <div class="evidence-head">
-          <p class="section-kicker">Evidence</p>
-          <p>Publicly shareable indicators of the role and operating principles behind the work.</p>
-        </div>
-
-        <div class="evidence-grid">
-          <div><strong>AI Champion</strong><span>Selected within the Consumer practice to support practical AI adoption.</span></div>
-          <div><strong>Human review</strong><span>Validation and business context remain explicit parts of the workflow.</span></div>
-          <div><strong>Business first</strong><span>Use cases are assessed around relevance, benefit, feasibility and adoption.</span></div>
-        </div>
-
-        <p class="confidentiality">Conceptual reconstruction only. Confidential prompts, source materials, internal data and proprietary workflow details are withheld.</p>
-      </section>
-
-      <section class="container next-project">
-        <span>Back to the first project</span>
-        <a href="/work/commercial-opportunity">
-          <strong>Commercial Opportunity Prioritisation</strong>
-          <i aria-hidden="true">→</i>
-        </a>
-      </section>
-    </main>
-
-    <Footer />
-  </body>
-</html>
+  <section class="case-block">
+    <h3>Evidence</h3>
+    <p>Selected as AI Champion — Consumer. No confidential client prompts, documents or proprietary workflows are shown.</p>
+  </section>
+</CaseStudyLayout>

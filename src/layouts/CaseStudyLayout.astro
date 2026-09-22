@@ -1,7 +1,16 @@
 ---
+import '../styles/design-tokens.css';
 import '../styles/global.css';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  client: string;
+  question: string;
+  summary: string;
+}
 
 const { title, eyebrow, client, question, summary } = Astro.props;
 ---
@@ -11,7 +20,7 @@ const { title, eyebrow, client, question, summary } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f4f1e9" />
+    <meta name="theme-color" content="#f6f8fa" />
     <title>{title} — Giacomo Di Muro</title>
   </head>
 
@@ -24,20 +33,19 @@ const { title, eyebrow, client, question, summary } = Astro.props;
         <p class="eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
         <p class="case-client">{client}</p>
-
-        <div class="case-question-grid">
-          <span>Business question</span>
-          <h2>{question}</h2>
-        </div>
-
-        <p class="case-summary">{summary}</p>
       </section>
 
-      <section class="container case-visual-shell">
+      <section class="container case-question">
+        <p class="eyebrow">Business question</p>
+        <h2>{question}</h2>
+        <p>{summary}</p>
+      </section>
+
+      <section class="container case-visual">
         <slot name="visual" />
       </section>
 
-      <section class="container case-body">
+      <section class="container case-content">
         <slot />
       </section>
     </main>
@@ -47,118 +55,24 @@ const { title, eyebrow, client, question, summary } = Astro.props;
 </html>
 
 <style>
-  .case-page {
-    padding-bottom: 60px;
-  }
-
-  .case-hero {
-    padding-top: clamp(56px, 7vw, 100px);
-  }
-
-  .case-back {
-    display: inline-block;
-    margin-bottom: 48px;
-    color: var(--text-secondary);
-    font-size: .72rem;
-  }
-
-  .case-hero h1 {
-    max-width: 960px;
-    margin: 14px 0 0;
-    font-family: var(--font-serif);
-    font-size: clamp(3.2rem, 7vw, 7.2rem);
-    font-weight: 400;
-    letter-spacing: -.055em;
-    line-height: .92;
-  }
-
-  .case-client {
-    margin: 18px 0 0;
-    color: var(--text-secondary);
-  }
-
-  .case-question-grid {
-    display: grid;
-    grid-template-columns: 2fr 8fr;
-    gap: 40px;
-    margin-top: clamp(64px, 9vw, 120px);
-    padding-top: 24px;
-    border-top: 1px solid var(--border-light);
-  }
-
-  .case-question-grid span {
-    color: var(--text-tertiary);
-    font-size: .65rem;
-    font-weight: 600;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-  }
-
-  .case-question-grid h2 {
-    max-width: 860px;
-    margin: 0;
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 4.2rem);
-    font-weight: 400;
-    letter-spacing: -.035em;
-    line-height: 1;
-  }
-
-  .case-summary {
-    max-width: 720px;
-    margin: 28px 0 0 auto;
-    color: var(--text-secondary);
-    font-size: .95rem;
-  }
-
-  .case-visual-shell {
-    margin-top: clamp(56px, 7vw, 90px);
-    padding: clamp(22px, 4vw, 52px);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    background: rgba(251,250,246,.72);
-  }
-
-  .case-body {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
-    margin-top: clamp(64px, 8vw, 110px);
-  }
-
-  :global(.case-block) {
-    padding-top: 18px;
-    border-top: 1px solid var(--border-light);
-  }
-
-  :global(.case-block h3) {
-    margin: 0;
-    font-size: .72rem;
-    font-weight: 600;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
-
-  :global(.case-block p),
-  :global(.case-block li) {
-    color: var(--text-secondary);
-    font-size: .86rem;
-    line-height: 1.55;
-  }
-
-  :global(.case-block ul) {
-    margin: 15px 0 0;
-    padding-left: 18px;
-  }
-
-  @media (max-width: 760px) {
-    .case-question-grid,
-    .case-body {
-      grid-template-columns: 1fr;
-    }
-
-    .case-summary {
-      margin-left: 0;
-    }
+  .case-page { padding: 54px 0 78px; background: var(--ds-canvas); }
+  .case-hero { padding-top: 26px; padding-bottom: 70px; border-bottom: 1px solid var(--ds-border-light); }
+  .case-back { display: inline-block; margin-bottom: 38px; color: var(--ds-muted); font-size: .72rem; font-weight: 500; transition: color var(--ds-motion-fast) ease; }
+  .case-back:hover, .case-back:focus-visible { color: var(--ds-blue-600); }
+  .case-hero h1 { max-width: 980px; margin: 18px 0 0; font: 400 clamp(3.4rem, 7vw, 6.8rem)/.9 var(--ds-font-serif); letter-spacing: -.055em; color: var(--ds-ink); }
+  .case-client { margin: 22px 0 0; color: var(--ds-muted); font-size: .9rem; }
+  .case-question { display: grid; grid-template-columns: .7fr 2fr; gap: 42px; padding-top: 66px; padding-bottom: 66px; }
+  .case-question h2 { margin: 0; font: 400 clamp(2rem, 4vw, 3.6rem)/1 var(--ds-font-serif); letter-spacing: -.04em; color: var(--ds-ink); }
+  .case-question > p:last-child { grid-column: 2; max-width: 760px; margin: 0; color: var(--ds-muted); font-size: .92rem; line-height: 1.65; }
+  .case-visual { padding-bottom: 68px; }
+  .case-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  :global(.case-block) { min-height: 220px; padding: 28px; border: 1px solid var(--ds-border); border-radius: var(--ds-radius-md); background: var(--ds-surface); }
+  :global(.case-block h3) { margin: 0 0 16px; color: var(--ds-ink); font: 500 1rem/1.25 var(--ds-font-sans); }
+  :global(.case-block p), :global(.case-block li) { color: var(--ds-muted); font-size: .78rem; line-height: 1.6; }
+  :global(.case-block ul) { margin: 0; padding-left: 18px; }
+  @media (max-width: 800px) {
+    .case-question { grid-template-columns: 1fr; }
+    .case-question > p:last-child { grid-column: 1; }
+    .case-content { grid-template-columns: 1fr; }
   }
 </style>

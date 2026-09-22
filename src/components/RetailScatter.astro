@@ -22,22 +22,11 @@
     </g>
 
     <g class="points context-points">
-      <circle cx="164" cy="420" r="10" />
-      <circle cx="205" cy="395" r="13" />
-      <circle cx="252" cy="448" r="8" />
-      <circle cx="294" cy="370" r="12" />
-      <circle cx="335" cy="335" r="9" />
-      <circle cx="384" cy="398" r="11" />
-      <circle cx="430" cy="350" r="9" />
-      <circle cx="544" cy="408" r="12" />
-      <circle cx="596" cy="365" r="9" />
-      <circle cx="648" cy="393" r="15" />
-      <circle cx="702" cy="340" r="10" />
-      <circle cx="760" cy="376" r="8" />
-      <circle cx="229" cy="255" r="9" />
-      <circle cx="280" cy="218" r="12" />
-      <circle cx="352" cy="194" r="8" />
-      <circle cx="408" cy="242" r="11" />
+      <circle cx="164" cy="420" r="10" /><circle cx="205" cy="395" r="13" /><circle cx="252" cy="448" r="8" />
+      <circle cx="294" cy="370" r="12" /><circle cx="335" cy="335" r="9" /><circle cx="384" cy="398" r="11" />
+      <circle cx="430" cy="350" r="9" /><circle cx="544" cy="408" r="12" /><circle cx="596" cy="365" r="9" />
+      <circle cx="648" cy="393" r="15" /><circle cx="702" cy="340" r="10" /><circle cx="760" cy="376" r="8" />
+      <circle cx="229" cy="255" r="9" /><circle cx="280" cy="218" r="12" /><circle cx="352" cy="194" r="8" /><circle cx="408" cy="242" r="11" />
     </g>
 
     <g class="points growth-points">
@@ -58,12 +47,12 @@
   </svg>
 
   <div class="scatter-tooltip" data-scatter-tooltip aria-live="polite">
-    <span data-store>Store 112</span>
+    <span data-tooltip-store>Store 112</span>
     <div class="tooltip-grid">
-      <div><b data-performance>94</b><small>Performance index</small></div>
-      <div><b data-profitability>88</b><small>Profitability index</small></div>
+      <div><b data-tooltip-performance>94</b><small>Performance index</small></div>
+      <div><b data-tooltip-profitability>88</b><small>Profitability index</small></div>
     </div>
-    <em data-cluster>Scale leader</em>
+    <em data-tooltip-cluster>Scale leader</em>
   </div>
 </div>
 
@@ -72,10 +61,10 @@
     const dots = chart.querySelectorAll('.interactive');
     const allPoints = chart.querySelectorAll('.points circle');
     const tooltip = chart.querySelector('[data-scatter-tooltip]');
-    const store = chart.querySelector('[data-store]');
-    const performance = chart.querySelector('[data-performance]');
-    const profitability = chart.querySelector('[data-profitability]');
-    const cluster = chart.querySelector('[data-cluster]');
+    const store = tooltip?.querySelector('[data-tooltip-store]');
+    const performance = tooltip?.querySelector('[data-tooltip-performance]');
+    const profitability = tooltip?.querySelector('[data-tooltip-profitability]');
+    const cluster = tooltip?.querySelector('[data-tooltip-cluster]');
 
     const activate = (dot) => {
       allPoints.forEach((point) => point.classList.toggle('is-dimmed', point !== dot));
@@ -102,43 +91,26 @@
 </script>
 
 <style>
-  .scatter-experience {
-    position: relative;
-    min-height: 650px;
-    overflow: hidden;
-    border-radius: 28px;
-    background:
-      radial-gradient(circle at 77% 20%, rgba(23,63,48,.12), transparent 28%),
-      linear-gradient(180deg, #efede5 0%, #f7f4ed 100%);
-  }
+  .scatter-experience { position:relative; min-height:650px; overflow:hidden; border-radius:28px; background:radial-gradient(circle at 77% 20%,rgba(23,63,48,.12),transparent 28%),linear-gradient(180deg,#efede5 0%,#f7f4ed 100%); }
   svg { width:100%; height:auto; display:block; padding:26px 18px 8px; }
   .quadrant-lines line { stroke:rgba(16,20,16,.1); stroke-width:1; stroke-dasharray:4 8; }
-  .quadrant-labels text, .axis-labels text { fill:#81887f; font:600 10px Inter,sans-serif; letter-spacing:.12em; }
-  .points circle { transform-box:fill-box; transform-origin:center; transition:opacity .22s ease, transform .22s ease, filter .22s ease; }
+  .quadrant-labels text,.axis-labels text { fill:#81887f; font:600 10px Inter,sans-serif; letter-spacing:.12em; }
+  .points circle { transform-box:fill-box; transform-origin:center; transition:opacity .22s ease,transform .22s ease,filter .22s ease; }
   .context-points circle { fill:#c3c8c1; opacity:.65; }
   .growth-points circle { fill:#6d9980; stroke:#f7f4ed; stroke-width:3; }
   .leader-points circle { fill:#173f30; stroke:#f7f4ed; stroke-width:3; }
   .interactive { cursor:pointer; }
-  .interactive:hover, .interactive:focus, .interactive.is-active { transform:scale(1.22); filter:drop-shadow(0 8px 14px rgba(23,63,48,.18)); }
+  .interactive:hover,.interactive:focus,.interactive.is-active { transform:scale(1.22); filter:drop-shadow(0 8px 14px rgba(23,63,48,.18)); }
   .points circle.is-dimmed { opacity:.12; }
   .scatter-legend { position:absolute; z-index:4; left:28px; top:24px; display:flex; flex-wrap:wrap; gap:14px; color:#6d756d; font-size:10px; }
   .scatter-legend span { display:flex; align-items:center; gap:7px; }
   .scatter-legend i { width:8px; height:8px; border-radius:50%; display:block; }
-  .scatter-legend .leader { background:#173f30; }
-  .scatter-legend .potential { background:#6d9980; }
-  .scatter-legend .context { background:#c3c8c1; }
-  .scatter-tooltip { position:absolute; z-index:5; right:28px; bottom:28px; width:min(270px,calc(100% - 56px)); padding:20px; border:1px solid rgba(16,20,16,.1); border-radius:16px; background:rgba(248,246,240,.9); backdrop-filter:blur(15px); box-shadow:0 20px 60px rgba(16,20,16,.08); transition:transform .2s ease, opacity .2s ease; }
+  .scatter-legend .leader { background:#173f30; }.scatter-legend .potential { background:#6d9980; }.scatter-legend .context { background:#c3c8c1; }
+  .scatter-tooltip { position:absolute; z-index:5; right:28px; bottom:28px; width:min(270px,calc(100% - 56px)); padding:20px; border:1px solid rgba(16,20,16,.1); border-radius:16px; background:rgba(248,246,240,.9); backdrop-filter:blur(15px); box-shadow:0 20px 60px rgba(16,20,16,.08); transition:transform .2s ease,opacity .2s ease; }
   .scatter-tooltip.is-visible { transform:translateY(-4px); }
-  .scatter-tooltip > span { display:block; margin-bottom:14px; font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6a726a; }
-  .tooltip-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-  .tooltip-grid div { display:grid; gap:4px; }
-  .tooltip-grid b { font-size:30px; font-weight:500; letter-spacing:-.05em; }
-  .tooltip-grid small { color:#747b73; font-size:10px; line-height:1.3; }
+  .scatter-tooltip>span { display:block; margin-bottom:14px; font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#6a726a; }
+  .tooltip-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }.tooltip-grid div { display:grid; gap:4px; }
+  .tooltip-grid b { font-size:30px; font-weight:500; letter-spacing:-.05em; }.tooltip-grid small { color:#747b73; font-size:10px; line-height:1.3; }
   .scatter-tooltip em { display:block; margin-top:16px; color:#173f30; font-family:'Instrument Serif',Georgia,serif; font-size:20px; font-style:italic; }
-  @media (max-width:700px) {
-    .scatter-experience { min-height:470px; border-radius:20px; }
-    .scatter-legend { left:18px; top:18px; }
-    .scatter-tooltip { right:18px; bottom:18px; width:220px; }
-    .quadrant-labels { display:none; }
-  }
+  @media (max-width:700px) { .scatter-experience{min-height:470px;border-radius:20px}.scatter-legend{left:18px;top:18px}.scatter-tooltip{right:18px;bottom:18px;width:220px}.quadrant-labels{display:none} }
 </style>

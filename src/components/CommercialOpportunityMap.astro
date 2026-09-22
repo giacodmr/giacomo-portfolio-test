@@ -153,8 +153,8 @@ const network = [
 <style>
   .co-map {
     display: grid;
-    grid-template-columns: minmax(0, 1.65fr) minmax(320px, .75fr);
-    min-height: 610px;
+    grid-template-columns: minmax(0, 1.82fr) minmax(300px, .66fr);
+    min-height: 570px;
     border: 1px solid var(--ds-border);
     border-radius: var(--ds-radius-sm);
     overflow: hidden;
@@ -165,7 +165,7 @@ const network = [
     display: flex;
     min-width: 0;
     flex-direction: column;
-    padding: var(--ds-space-5) var(--ds-space-6) var(--ds-space-5);
+    padding: var(--ds-space-5) var(--ds-space-5) var(--ds-space-4);
     border-right: 1px solid var(--ds-border-light);
   }
 
@@ -181,10 +181,12 @@ const network = [
   }
 
   .italy-map {
-    width: min(100%, 630px);
+    width: min(100%, 760px);
     height: 500px;
-    margin: 8px auto 0;
+    margin: 0 auto;
     overflow: visible;
+    transform: scale(1.08);
+    transform-origin: center;
   }
 
   .territory path {
@@ -215,7 +217,7 @@ const network = [
 
   .city text {
     fill: var(--ds-ink);
-    font: 500 11px/1 var(--ds-font-sans);
+    font: 500 12px/1 var(--ds-font-sans);
     paint-order: stroke;
     stroke: var(--ds-surface);
     stroke-width: 4px;
@@ -233,7 +235,7 @@ const network = [
     display: flex;
     flex-wrap: wrap;
     gap: var(--ds-space-5);
-    margin-top: auto;
+    margin-top: var(--ds-space-3);
     color: var(--ds-muted);
     font: 500 11px/1.2 var(--ds-font-sans);
   }
@@ -247,12 +249,12 @@ const network = [
   .location-panel {
     display: flex;
     flex-direction: column;
-    padding: var(--ds-space-5) var(--ds-space-6);
+    padding: var(--ds-space-5);
     background: var(--ds-surface);
   }
 
   .location-title {
-    padding: var(--ds-space-8) 0 var(--ds-space-6);
+    padding: var(--ds-space-7) 0 var(--ds-space-5);
     border-bottom: 1px solid var(--ds-border-light);
   }
 
@@ -267,7 +269,7 @@ const network = [
   .score-row span { color: var(--ds-subtle); font: 500 12px/1 var(--ds-font-sans); }
   .location-title p { margin: 8px 0 0; color: var(--ds-forest-800); font: 600 12px/1.2 var(--ds-font-sans); }
 
-  .signal-list { display: grid; gap: var(--ds-space-4); padding: var(--ds-space-6) 0; }
+  .signal-list { display: grid; gap: 14px; padding: var(--ds-space-5) 0; }
   .signal { display: grid; gap: 7px; }
   .signal > div { display: flex; justify-content: space-between; gap: 12px; color: var(--ds-muted); font: 500 12px/1.2 var(--ds-font-sans); }
   .signal b { color: var(--ds-ink); font-weight: 500; }
@@ -276,7 +278,7 @@ const network = [
 
   .panel-note {
     margin-top: auto;
-    padding: var(--ds-space-5);
+    padding: var(--ds-space-4);
     background: var(--ds-surface-soft);
   }
 
@@ -287,7 +289,8 @@ const network = [
   @media (max-width: 920px) {
     .co-map { grid-template-columns: 1fr; }
     .map-canvas { border-right: 0; border-bottom: 1px solid var(--ds-border-light); }
-    .location-panel { min-height: 520px; }
+    .italy-map { transform: none; width: min(100%, 660px); }
+    .location-panel { min-height: 500px; }
   }
 
   @media (max-width: 620px) {

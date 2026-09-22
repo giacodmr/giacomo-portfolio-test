@@ -12,71 +12,51 @@
 
 <style>
   .site-header {
-    height: 76px;
-    border-bottom: 1px solid var(--border);
+    position: sticky;
+    z-index: 50;
+    top: 0;
+    height: 74px;
+    background: rgba(243, 240, 232, 0.84);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(16,20,16,.07);
   }
-
   .nav-inner {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:32px;
   }
-
   .wordmark {
-    font-size: 0.9rem;
-    font-weight: 650;
-    letter-spacing: -0.015em;
+    font-size:.9rem;
+    font-weight:600;
+    letter-spacing:-.02em;
   }
-
-  nav {
-    display: flex;
-    gap: clamp(16px, 2.5vw, 34px);
-  }
-
+  nav { display:flex; gap:clamp(16px,2.5vw,34px); }
   nav a {
-    position: relative;
-    color: var(--text-secondary);
-    font-size: 0.86rem;
-    font-weight: 520;
-    transition: color 180ms var(--ease-standard);
+    position:relative;
+    color:var(--text-secondary);
+    font-size:.82rem;
+    font-weight:500;
+    transition:color 180ms ease;
   }
-
   nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 100%;
-    bottom: -5px;
-    height: 1px;
-    background: currentColor;
-    transition: right 180ms var(--ease-standard);
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:100%;
+    height:1px;
+    background:currentColor;
+    transform:scaleX(0);
+    transform-origin:right;
+    transition:transform 180ms ease;
   }
-
-  nav a:hover {
-    color: var(--text);
-  }
-
-  nav a:hover::after {
-    right: 0;
-  }
-
-  @media (max-width: 620px) {
-    .site-header {
-      height: auto;
-      padding-block: 18px;
-    }
-
-    .nav-inner {
-      align-items: flex-start;
-    }
-
-    nav {
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      gap: 8px 18px;
-      justify-items: end;
-    }
+  nav a:hover { color:var(--text); }
+  nav a:hover::after { transform:scaleX(1); transform-origin:left; }
+  @media (max-width:620px) {
+    .site-header { height:auto; padding-block:16px; }
+    .nav-inner { align-items:flex-start; }
+    nav { display:grid; grid-template-columns:repeat(2,auto); gap:8px 18px; justify-items:end; }
   }
 </style>

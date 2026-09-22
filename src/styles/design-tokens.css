@@ -1,0 +1,89 @@
+/*
+ * Giacomo Portfolio Design Tokens
+ * Canonical visual token reference for DESIGN_SYSTEM.md.
+ *
+ * NOTE:
+ * - This file is intentionally not imported automatically yet.
+ * - Existing homepage/global styles may still use legacy variable names.
+ * - Future refactors should migrate toward these semantic tokens without
+ *   changing shared files casually while parallel work is in progress.
+ */
+
+:root {
+  /* Core surfaces */
+  --ds-canvas: #f4f1e9;
+  --ds-surface: #fbfaf6;
+  --ds-surface-soft: #f0eee7;
+
+  /* Text */
+  --ds-ink: #141a16;
+  --ds-muted: #626a63;
+  --ds-subtle: #8b928c;
+
+  /* Forest accent */
+  --ds-forest-900: #0d2119;
+  --ds-forest-800: #0e563f;
+  --ds-forest-500: #6f9a82;
+  --ds-forest-100: #dce7de;
+
+  /* Data / neutral */
+  --ds-data-low: #bdc9c0;
+  --ds-light: #f4f7f3;
+  --ds-white: #ffffff;
+
+  /* Borders */
+  --ds-border: rgba(20, 26, 22, 0.14);
+  --ds-border-light: rgba(20, 26, 22, 0.08);
+
+  /* Typography */
+  --ds-font-sans: 'IBM Plex Sans', Arial, sans-serif;
+  --ds-font-serif: 'Source Serif 4', Georgia, serif;
+
+  /* Layout */
+  --ds-max-width: 1440px;
+  --ds-page-x: clamp(20px, 4.4vw, 72px);
+
+  /* Spacing */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 24px;
+  --ds-space-6: 32px;
+  --ds-space-7: 48px;
+  --ds-space-8: 64px;
+  --ds-space-9: 96px;
+  --ds-space-10: 128px;
+
+  /* Radius */
+  --ds-radius-xs: 4px;
+  --ds-radius-sm: 8px;
+  --ds-radius-md: 12px;
+  --ds-radius-lg: 18px;
+  --ds-radius-pill: 999px;
+
+  /* Motion */
+  --ds-ease: cubic-bezier(.22, 1, .36, 1);
+  --ds-motion-fast: 160ms;
+  --ds-motion-base: 220ms;
+  --ds-motion-reveal: 360ms;
+
+  /* Data visualisation semantic aliases */
+  --ds-data-focus: var(--ds-forest-800);
+  --ds-data-secondary: var(--ds-forest-500);
+  --ds-data-context: var(--ds-data-low);
+  --ds-data-fill-soft: var(--ds-forest-100);
+
+  /* Component semantic aliases */
+  --ds-tag-bg: var(--ds-forest-800);
+  --ds-tag-text: var(--ds-white);
+  --ds-tag-neutral-bg: var(--ds-surface-soft);
+  --ds-tag-neutral-text: var(--ds-muted);
+  --ds-focus-ring: var(--ds-forest-800);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --ds-page-x: 16px;
+  }
+}

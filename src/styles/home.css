@@ -1,7 +1,7 @@
 /*
  * Homepage implementation layer for DESIGN_SYSTEM.md.
- * Keeps the shared global stylesheet untouched while applying portfolio tokens
- * to homepage-only components and patterns.
+ * Carbon analytical discipline + Primer web polish, expressed only through
+ * the canonical portfolio design tokens. Shared component files stay untouched.
  */
 
 body.home-page {
@@ -28,23 +28,93 @@ body.home-page {
   color: var(--ds-ink);
 }
 
-/* Core homepage surfaces */
-.home-page .project-card { border-color: var(--ds-border-light); border-radius: var(--ds-radius-md); background: var(--ds-surface); box-shadow: none; }
-.home-page .project-stat-panel { border-color: var(--ds-border-light); }
-.home-page .tag-list { gap: var(--ds-space-2); }
-.home-page .tag-list span { padding: 7px 12px; border: 1px solid transparent; border-radius: var(--ds-radius-pill); background: var(--ds-tag-bg); color: var(--ds-tag-text); font-size: .61rem; font-weight: 600; letter-spacing: .005em; line-height: 1.15; }
-.home-page .project-link { position: relative; padding-bottom: 3px; }
-.home-page .project-link::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: currentColor; opacity: 0; transform: scaleX(.72); transform-origin: left; transition: opacity var(--ds-motion-fast) ease, transform var(--ds-motion-fast) var(--ds-ease); }
-.home-page .project-link:hover::after, .home-page .project-link:focus-visible::after { opacity: .34; transform: scaleX(1); }
-.home-page .project-link:focus-visible { outline-color: var(--ds-focus-ring); }
-.home-page .compact-stats > div { border-color: var(--ds-border-light); }
-.home-page .legend-dot.high { background: var(--ds-data-focus); }
-.home-page .legend-dot.medium { background: var(--ds-data-secondary); }
-.home-page .legend-dot.low { background: var(--ds-data-context); }
+body.home-page ::selection {
+  background: var(--ds-forest-100);
+  color: var(--ds-forest-900);
+}
+
+/* ---------------------------------------------------------
+   GLOBAL HOMEPAGE COLOUR ARCHITECTURE
+   canvas -> soft analytical band -> surface cards -> dark AI
+   --------------------------------------------------------- */
+
+body.home-page .site-header {
+  border-color: var(--ds-border-light);
+  background: color-mix(in srgb, var(--ds-canvas) 94%, transparent);
+}
+
+body.home-page .site-header .wordmark,
+body.home-page .site-header nav a {
+  color: var(--ds-ink);
+}
+
+body.home-page .site-header nav a:hover,
+body.home-page .site-header nav a:focus-visible {
+  color: var(--ds-forest-800);
+}
+
+body.home-page .hero-section {
+  border-color: var(--ds-border-light);
+  background: var(--ds-canvas);
+}
+
+body.home-page .selected-work {
+  border-top: 1px solid var(--ds-border-light);
+  border-bottom: 1px solid var(--ds-border-light);
+  background: var(--ds-surface-soft);
+}
+
+body.home-page .experience-section,
+body.home-page .site-footer {
+  background: var(--ds-canvas);
+}
+
+/* ---------------------------------------------------------
+   TYPOGRAPHIC COLOUR HIERARCHY
+   --------------------------------------------------------- */
+
+body.home-page .eyebrow {
+  color: var(--ds-forest-800);
+}
+
+body.home-page .hero-copy,
+body.home-page .project-client,
+body.home-page .project-description,
+body.home-page .legend,
+body.home-page .primary-stat span {
+  color: var(--ds-muted);
+}
+
+body.home-page .hero-principles {
+  color: var(--ds-subtle);
+}
+
+body.home-page .hero-principles i {
+  color: var(--ds-data-context);
+}
+
+body.home-page .primary-cta {
+  background: var(--ds-forest-800);
+  color: var(--ds-white);
+}
+
+body.home-page .primary-cta:hover,
+body.home-page .primary-cta:focus-visible {
+  background: var(--ds-forest-900);
+}
+
+body.home-page .text-cta {
+  color: var(--ds-muted);
+}
+
+body.home-page .text-cta:hover,
+body.home-page .text-cta:focus-visible {
+  color: var(--ds-forest-800);
+}
 
 /* Hero refinement: less poster-like, more business/editorial. */
 @media (min-width: 761px) {
-  .home-page .hero-title {
+  body.home-page .hero-title {
     max-width: 690px;
     font-size: clamp(3.35rem, 5.15vw, 5.45rem);
     line-height: .95;
@@ -53,69 +123,472 @@ body.home-page {
 }
 
 @media (min-width: 1121px) {
-  .home-page .hero-grid {
+  body.home-page .hero-grid {
     grid-template-columns: minmax(0, 5.6fr) minmax(0, 6.4fr);
   }
 
-  .home-page .hero-intro {
+  body.home-page .hero-intro {
     padding-right: clamp(32px, 4vw, 56px);
   }
 }
 
-/* Featured opportunity map: stronger geography, quieter background network. */
-.home-page .home-opportunity-map .country-shape path {
-  stroke: color-mix(in srgb, var(--ds-forest-800) 40%, transparent);
+/* ---------------------------------------------------------
+   HERO VISUAL — REBUILT WITH DESIGN-SYSTEM COLOURS
+   --------------------------------------------------------- */
+
+body.home-page .architecture-panel {
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      color-mix(in srgb, var(--ds-white) 90%, transparent),
+      transparent 31%
+    ),
+    linear-gradient(
+      135deg,
+      var(--ds-surface) 0%,
+      var(--ds-forest-100) 50%,
+      color-mix(in srgb, var(--ds-forest-500) 62%, var(--ds-surface)) 100%
+    );
+}
+
+body.home-page .architecture-panel::before {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--ds-white) 44%, transparent), transparent 38%),
+    linear-gradient(180deg, transparent 58%, color-mix(in srgb, var(--ds-forest-900) 17%, transparent));
+}
+
+body.home-page .architecture-panel .tower {
+  border-color: color-mix(in srgb, var(--ds-light) 30%, transparent);
+  background:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light) 17%, transparent) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(180deg, color-mix(in srgb, var(--ds-light) 13%, transparent) 0 1px, transparent 1px 30px),
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--ds-forest-500) 68%, var(--ds-forest-100)),
+      color-mix(in srgb, var(--ds-forest-900) 90%, var(--ds-forest-800))
+    );
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--ds-white) 4%, transparent),
+    inset -35px 0 70px color-mix(in srgb, var(--ds-forest-900) 20%, transparent);
+}
+
+body.home-page .architecture-panel .tower-b {
+  background:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light) 17%, transparent) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(180deg, color-mix(in srgb, var(--ds-light) 13%, transparent) 0 1px, transparent 1px 27px),
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--ds-forest-500) 72%, var(--ds-forest-100)),
+      color-mix(in srgb, var(--ds-forest-800) 82%, var(--ds-forest-900))
+    );
+}
+
+body.home-page .architecture-panel .tower-c {
+  background:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light) 18%, transparent) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(180deg, color-mix(in srgb, var(--ds-light) 13%, transparent) 0 1px, transparent 1px 26px),
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--ds-forest-500) 58%, var(--ds-forest-100)),
+      color-mix(in srgb, var(--ds-forest-800) 78%, var(--ds-forest-900))
+    );
+}
+
+body.home-page .architecture-panel .bridge {
+  background:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--ds-light) 9%, transparent) 0 1px, transparent 1px 30px),
+    linear-gradient(180deg, var(--ds-forest-800), var(--ds-forest-900));
+}
+
+body.home-page .architecture-panel .terrace {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ds-forest-100) 76%, transparent),
+    color-mix(in srgb, var(--ds-forest-500) 68%, var(--ds-forest-900))
+  );
+}
+
+body.home-page .architecture-panel .architecture-copy {
+  color: color-mix(in srgb, var(--ds-forest-900) 76%, transparent);
+}
+
+body.home-page .architecture-panel .architecture-copy::after {
+  background: color-mix(in srgb, var(--ds-forest-900) 40%, transparent);
+}
+
+body.home-page .architecture-panel .architecture-note {
+  color: color-mix(in srgb, var(--ds-light) 90%, transparent);
+}
+
+/* ---------------------------------------------------------
+   PROJECT CARDS / TAGS / LINKS
+   --------------------------------------------------------- */
+
+body.home-page .project-card {
+  border-color: var(--ds-border-light);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-surface);
+  box-shadow: none;
+}
+
+body.home-page .project-featured {
+  border-color: var(--ds-border);
+}
+
+body.home-page .featured-map {
+  background: color-mix(in srgb, var(--ds-surface) 82%, var(--ds-forest-100));
+}
+
+body.home-page .project-stat-panel {
+  border-color: var(--ds-border-light);
+  background: var(--ds-surface-soft);
+}
+
+body.home-page .project-index {
+  color: var(--ds-subtle);
+}
+
+body.home-page .primary-stat strong,
+body.home-page .compact-stats strong {
+  color: var(--ds-forest-900);
+}
+
+body.home-page .stat-note {
+  color: var(--ds-muted);
+}
+
+body.home-page .tag-list {
+  gap: var(--ds-space-2);
+}
+
+body.home-page .tag-list span {
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-pill);
+  background: var(--ds-tag-bg);
+  color: var(--ds-tag-text);
+  font-size: .61rem;
+  font-weight: 600;
+  letter-spacing: .005em;
+  line-height: 1.15;
+}
+
+body.home-page .project-link,
+body.home-page .experience-link {
+  position: relative;
+  color: var(--ds-ink);
+  padding-bottom: 3px;
+}
+
+body.home-page .project-link::after,
+body.home-page .experience-link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(.72);
+  transform-origin: left;
+  transition: opacity var(--ds-motion-fast) ease, transform var(--ds-motion-fast) var(--ds-ease);
+}
+
+body.home-page .project-link:hover,
+body.home-page .project-link:focus-visible,
+body.home-page .experience-link:hover,
+body.home-page .experience-link:focus-visible {
+  color: var(--ds-forest-800);
+}
+
+body.home-page .project-link:hover::after,
+body.home-page .project-link:focus-visible::after,
+body.home-page .experience-link:hover::after,
+body.home-page .experience-link:focus-visible::after {
+  opacity: .42;
+  transform: scaleX(1);
+}
+
+body.home-page .project-link:focus-visible,
+body.home-page .experience-link:focus-visible {
+  outline-color: var(--ds-focus-ring);
+}
+
+body.home-page .compact-stats > div {
+  border-color: var(--ds-border-light);
+}
+
+body.home-page .legend-dot.high { background: var(--ds-data-focus); }
+body.home-page .legend-dot.medium { background: var(--ds-data-secondary); }
+body.home-page .legend-dot.low { background: var(--ds-data-context); }
+
+/* ---------------------------------------------------------
+   FEATURED OPPORTUNITY MAP
+   --------------------------------------------------------- */
+
+body.home-page .home-opportunity-map .country-shape path {
+  fill: var(--ds-forest-100);
+  stroke: color-mix(in srgb, var(--ds-forest-800) 42%, transparent);
   stroke-width: 1.4;
 }
 
-.home-page .home-opportunity-map .network-dot.low { opacity: .42; }
-.home-page .home-opportunity-map .network-dot.medium { opacity: .68; }
-.home-page .home-opportunity-map .network-dot.high { opacity: .8; }
-.home-page .home-opportunity-map .city-labels text {
-  fill: color-mix(in srgb, var(--ds-ink) 78%, transparent);
+body.home-page .home-opportunity-map .network-dot.low { fill: var(--ds-data-context); opacity: .38; }
+body.home-page .home-opportunity-map .network-dot.medium { fill: var(--ds-data-secondary); opacity: .66; }
+body.home-page .home-opportunity-map .network-dot.high { fill: var(--ds-data-focus); opacity: .82; }
+
+body.home-page .home-opportunity-map .city-labels text {
+  fill: color-mix(in srgb, var(--ds-ink) 80%, transparent);
   font-weight: 500;
 }
-.home-page .home-opportunity-map .city-marker.is-active .marker-core { filter: saturate(1.08); }
 
-/* Retail preview: keep Carbon-like density but improve recruiter-readable labels. */
-.home-page .retail-report .viz-panel header span { font-size: .59rem; }
-.home-page .retail-report .viz-panel header strong { font-size: .74rem; }
-.home-page .retail-report .viz-panel > p { font-size: .61rem; line-height: 1.42; }
-.home-page .retail-report .distribution-axis,
-.home-page .retail-report .dotplot-axis { font-size: .56rem; }
-.home-page .retail-report .hbar-row > span,
-.home-page .retail-report .hbar-row > strong { font-size: .58rem; }
-.home-page .retail-report .dotplot-wrap text { font-size: 10.5px; }
-.home-page .retail-report .report-note { font-size: .58rem; }
+body.home-page .home-opportunity-map .city-marker.is-active .marker-core {
+  filter: saturate(1.08);
+}
 
-/* AI preview: preserve the dark contrast card while improving secondary-text legibility. */
-.home-page .ai-card {
+body.home-page .home-opportunity-map .map-callout {
+  border-color: var(--ds-border-light);
+  background: color-mix(in srgb, var(--ds-surface) 96%, transparent);
+  color: var(--ds-ink);
+}
+
+body.home-page .home-opportunity-map .map-caption {
+  color: var(--ds-subtle);
+}
+
+/* ---------------------------------------------------------
+   RETAIL DATA VISUALISATION
+   --------------------------------------------------------- */
+
+body.home-page .retail-card {
+  background: var(--ds-surface);
+}
+
+body.home-page .retail-report {
+  border-color: var(--ds-border-light);
+}
+
+body.home-page .retail-report .viz-panel {
+  border-color: var(--ds-border-light);
+}
+
+body.home-page .retail-report .viz-panel header span {
+  color: var(--ds-subtle);
+  font-size: .59rem;
+}
+
+body.home-page .retail-report .viz-panel header strong {
+  color: var(--ds-muted);
+  font-size: .74rem;
+}
+
+body.home-page .retail-report .viz-panel > p {
+  color: var(--ds-subtle);
+  font-size: .61rem;
+  line-height: 1.42;
+}
+
+body.home-page .retail-report .viz-panel > p b {
+  color: var(--ds-ink);
+}
+
+body.home-page .retail-report .distribution-axis,
+body.home-page .retail-report .dotplot-axis {
+  color: var(--ds-subtle);
+  font-size: .56rem;
+}
+
+body.home-page .retail-report .hbar-row > span {
+  color: var(--ds-subtle);
+  font-size: .58rem;
+}
+
+body.home-page .retail-report .hbar-row > strong {
+  color: var(--ds-ink);
+  font-size: .58rem;
+}
+
+body.home-page .retail-report .hbar-row > i {
+  background: var(--ds-surface-soft);
+}
+
+body.home-page .retail-report .histogram i,
+body.home-page .retail-report .hbar-row > i > b,
+body.home-page .retail-report .dot.neutral {
+  background: var(--ds-data-context);
+  fill: var(--ds-data-context);
+}
+
+body.home-page .retail-report .histogram i.focus,
+body.home-page .retail-report .hbar-row > i > b.accent,
+body.home-page .retail-report .dot.accent {
+  background: var(--ds-data-secondary);
+  fill: var(--ds-data-secondary);
+}
+
+body.home-page .retail-report .histogram i.focus-strong,
+body.home-page .retail-report .hbar-row > i > b.focus,
+body.home-page .retail-report .dot.focus {
+  background: var(--ds-data-focus);
+  fill: var(--ds-data-focus);
+}
+
+body.home-page .retail-report .trend-line {
+  stroke: var(--ds-data-secondary);
+}
+
+body.home-page .retail-report .grid-lines line {
+  stroke: var(--ds-border-light);
+}
+
+body.home-page .retail-report .dotplot-wrap text {
+  fill: var(--ds-ink);
+  font-size: 10.5px;
+}
+
+body.home-page .retail-report .report-note {
+  border-color: var(--ds-border-light);
+  color: var(--ds-subtle);
+  font-size: .58rem;
+}
+
+/* ---------------------------------------------------------
+   AI CARD — ONLY DARK SURFACE IN THE HOMEPAGE SYSTEM
+   --------------------------------------------------------- */
+
+body.home-page .ai-card {
   border-color: color-mix(in srgb, var(--ds-light) 14%, transparent);
-  background: radial-gradient(circle at 83% 78%, rgba(111, 154, 130, .14), transparent 30%), var(--ds-forest-900);
+  background:
+    radial-gradient(circle at 83% 78%, color-mix(in srgb, var(--ds-forest-500) 16%, transparent), transparent 30%),
+    var(--ds-forest-900);
+  color: var(--ds-light);
 }
-.home-page .ai-card .project-client,
-.home-page .ai-card .project-description { color: rgba(244, 247, 243, .72); }
-.home-page .ai-card .workflow-step {
-  border-color: rgba(241, 246, 242, .23);
-  background: rgba(255, 255, 255, .035);
+
+body.home-page .ai-card .eyebrow {
+  color: var(--ds-forest-100);
 }
-.home-page .ai-card .workflow-step span { color: rgba(240, 245, 241, .58); }
-.home-page .ai-card .workflow-step small { color: rgba(240, 245, 241, .68); }
-.home-page .ai-card .workflow-step-accent {
-  border-color: rgba(151, 206, 170, .76);
-  background: rgba(91, 145, 111, .17);
+
+body.home-page .ai-card h2,
+body.home-page .ai-card .project-link-light {
+  color: var(--ds-light);
 }
-.home-page .ai-card .workflow-arrow { color: rgba(240, 245, 241, .82); }
-.home-page .ai-card .ai-card-footer { color: rgba(244, 247, 243, .76); }
+
+body.home-page .ai-card .project-client,
+body.home-page .ai-card .project-description {
+  color: color-mix(in srgb, var(--ds-light) 74%, transparent);
+}
+
+body.home-page .ai-card .workflow-step {
+  border-color: color-mix(in srgb, var(--ds-light) 23%, transparent);
+  background: color-mix(in srgb, var(--ds-white) 3.5%, transparent);
+}
+
+body.home-page .ai-card .workflow-step span {
+  color: color-mix(in srgb, var(--ds-light) 58%, transparent);
+}
+
+body.home-page .ai-card .workflow-step strong {
+  color: var(--ds-light);
+}
+
+body.home-page .ai-card .workflow-step small {
+  color: color-mix(in srgb, var(--ds-light) 68%, transparent);
+}
+
+body.home-page .ai-card .workflow-step-accent {
+  border-color: color-mix(in srgb, var(--ds-forest-500) 78%, var(--ds-light));
+  background: color-mix(in srgb, var(--ds-forest-500) 17%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ds-forest-100) 9%, transparent);
+}
+
+body.home-page .ai-card .workflow-arrow {
+  color: color-mix(in srgb, var(--ds-light) 82%, transparent);
+}
+
+body.home-page .ai-card .ai-card-footer {
+  color: color-mix(in srgb, var(--ds-light) 76%, transparent);
+}
+
+body.home-page .ai-card .project-link:hover,
+body.home-page .ai-card .project-link:focus-visible {
+  color: var(--ds-white);
+}
+
+/* ---------------------------------------------------------
+   EXPERIENCE + FOOTER
+   --------------------------------------------------------- */
+
+body.home-page .experience-strip {
+  border-color: var(--ds-border-light);
+  background: var(--ds-surface);
+}
+
+body.home-page .experience-label .eyebrow {
+  color: var(--ds-forest-800);
+}
+
+body.home-page .experience-label strong {
+  color: var(--ds-forest-900);
+}
+
+body.home-page .experience-role,
+body.home-page .experience-summary {
+  border-color: var(--ds-border-light);
+}
+
+body.home-page .experience-role strong {
+  color: var(--ds-ink);
+}
+
+body.home-page .experience-role span,
+body.home-page .experience-summary {
+  color: var(--ds-muted);
+}
+
+body.home-page .site-footer .footer-row {
+  border-color: var(--ds-border-light);
+}
+
+body.home-page .site-footer .footer-brand > span {
+  color: var(--ds-ink);
+}
+
+body.home-page .site-footer .footer-brand i {
+  background: var(--ds-data-context);
+}
+
+body.home-page .site-footer .footer-brand small,
+body.home-page .site-footer nav a {
+  color: var(--ds-subtle);
+}
+
+body.home-page .site-footer nav a:hover,
+body.home-page .site-footer nav a:focus-visible {
+  color: var(--ds-forest-800);
+}
 
 @media (max-width: 760px) {
-  body.home-page { --page-x: var(--ds-page-x); --radius: var(--ds-radius-md); }
-  .home-page .tag-list span { padding: 6px 10px; }
+  body.home-page {
+    --page-x: var(--ds-page-x);
+    --radius: var(--ds-radius-md);
+  }
 
-  .home-page .retail-report .viz-panel header strong { font-size: .78rem; }
-  .home-page .retail-report .viz-panel > p { font-size: .66rem; }
+  body.home-page .tag-list span {
+    padding: 6px 10px;
+  }
+
+  body.home-page .retail-report .viz-panel header strong {
+    font-size: .78rem;
+  }
+
+  body.home-page .retail-report .viz-panel > p {
+    font-size: .66rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-page .project-link::after { transition: none; }
+  body.home-page .project-link::after,
+  body.home-page .experience-link::after {
+    transition: none;
+  }
 }

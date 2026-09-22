@@ -1,91 +1,149 @@
 ---
-const title = 'Giacomo Portfolio Test';
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import HeroIntro from '../components/HeroIntro.astro';
+import OpportunityMap from '../components/OpportunityMap.astro';
+import RetailScatter from '../components/RetailScatter.astro';
+import AIWorkflow from '../components/AIWorkflow.astro';
+import ExperienceStrip from '../components/ExperienceStrip.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Giacomo Di Muro — Business Strategy & Analytics';
+const description = 'Business strategy, analytics and technology applied to structured decisions and execution.';
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Giacomo Portfolio deployment test" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F7F7F3" />
     <title>{title}</title>
   </head>
   <body>
+    <Navigation />
+
     <main>
-      <section class="card">
-        <p class="eyebrow">Astro + GitHub + Vercel</p>
-        <h1>Hello World</h1>
-        <h2>Giacomo Portfolio Test</h2>
-        <p class="status">Static deployment test</p>
+      <div class="container hero-shell">
+        <HeroIntro />
+
+        <section class="featured-case" aria-labelledby="featured-title">
+          <div class="case-heading">
+            <p class="eyebrow">01 / 03 · Commercial Strategy</p>
+            <h2 id="featured-title" class="case-title">Commercial Opportunity Prioritisation</h2>
+            <p class="case-client">Global beverage company</p>
+            <p class="case-tags">Commercial Strategy / Market Analytics / GTM / Prioritisation</p>
+          </div>
+
+          <div class="visual-frame">
+            <OpportunityMap />
+          </div>
+
+          <div class="case-evidence">
+            <div>
+              <span class="metric-value">12k+</span>
+              <span class="metric-label">locations analysed</span>
+            </div>
+
+            <div class="business-copy">
+              <div>
+                <strong>Business question</strong>
+                <p>Which commercial opportunities should be prioritised?</p>
+              </div>
+              <div>
+                <strong>Output / decision</strong>
+                <p>Created a structured basis to identify and prioritise commercially attractive opportunities.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="confidentiality-note">Visual reconstruction using synthetic data for confidentiality.</p>
+
+          <div class="case-cta">
+            <a class="editorial-link" href="#commercial-opportunity">
+              View case study <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <section id="work" class="work-section">
+        <div class="container">
+          <div class="section-label">
+            <p class="eyebrow">Selected Work</p>
+            <p class="eyebrow">02 — 03</p>
+          </div>
+
+          <article id="retail-performance" class="project-grid" aria-labelledby="retail-title">
+            <div class="project-copy">
+              <p class="eyebrow">02 / 03 · Commercial Analytics</p>
+              <h2 id="retail-title" class="case-title">Retail Performance Intelligence</h2>
+              <p class="case-client">Leading consumer brand</p>
+              <p class="case-tags">Commercial Analytics / Retail Strategy / Profitability / Customer Analytics</p>
+
+              <p class="project-question">How can retail performance patterns inform better network and commercial decisions?</p>
+              <p class="project-output">
+                Translated store- and customer-level performance patterns into structured commercial and network insights.
+              </p>
+
+              <div class="case-cta" style="justify-content:flex-start">
+                <a class="editorial-link" href="#retail-performance">
+                  View case study <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-visual">
+              <RetailScatter />
+              <div class="metric-strip">
+                <div>
+                  <span class="metric-value">700k+</span>
+                  <span class="metric-label">records analysed</span>
+                </div>
+                <div>
+                  <span class="metric-value">150+</span>
+                  <span class="metric-label">stores</span>
+                </div>
+              </div>
+              <p class="confidentiality-note">Visual reconstruction using synthetic data for confidentiality.</p>
+            </div>
+          </article>
+        </div>
       </section>
+
+      <section id="ai-workflows" class="work-section">
+        <div class="container">
+          <div class="project-grid">
+            <div class="project-copy">
+              <p class="eyebrow">03 / 03 · Applied AI</p>
+              <h2 class="case-title">AI-enabled Consulting Workflows</h2>
+              <p class="case-client">Internal transformation / Consulting organisation</p>
+              <p class="case-tags">Applied AI / Process Redesign / Automation / Transformation</p>
+
+              <p class="project-question">How can recurring consulting workflows be redesigned using AI to increase structure and quality?</p>
+              <p class="project-output">
+                Designed AI-supported workflows that combine automated analysis with structured consultant review and business context.
+              </p>
+              <p class="confidentiality-note">Selected as AI Champion — Consumer</p>
+
+              <div class="case-cta" style="justify-content:flex-start">
+                <a class="editorial-link" href="#ai-workflows">
+                  View case study <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-visual">
+              <AIWorkflow />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ExperienceStrip />
     </main>
+
+    <Footer />
   </body>
 </html>
-
-<style>
-  :global(*) {
-    box-sizing: border-box;
-  }
-
-  :global(html) {
-    font-family:
-      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      sans-serif;
-    background: #f7f8fb;
-    color: #111827;
-  }
-
-  :global(body) {
-    margin: 0;
-  }
-
-  main {
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 24px;
-  }
-
-  .card {
-    width: min(620px, 100%);
-    padding: 56px 40px;
-    text-align: center;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 24px;
-    box-shadow: 0 18px 50px rgba(17, 24, 39, 0.08);
-  }
-
-  .eyebrow {
-    margin: 0 0 18px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #64748b;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: clamp(3rem, 10vw, 5.5rem);
-    line-height: 0.95;
-    letter-spacing: -0.055em;
-  }
-
-  h2 {
-    margin: 18px 0 0;
-    font-size: clamp(1.25rem, 4vw, 2rem);
-    font-weight: 500;
-    color: #475569;
-  }
-
-  .status {
-    display: inline-block;
-    margin: 32px 0 0;
-    padding: 8px 12px;
-    border-radius: 999px;
-    background: #f1f5f9;
-    font-size: 0.85rem;
-    color: #475569;
-  }
-</style>

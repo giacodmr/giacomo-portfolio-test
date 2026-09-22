@@ -369,12 +369,7 @@ body.home-page .project-copy-featured .project-link {
 body.home-page .featured-map {
   min-width: 0;
   padding: 26px 8px 14px;
-  background:
-    linear-gradient(var(--ds-border-light) 1px, transparent 1px),
-    linear-gradient(90deg, var(--ds-border-light) 1px, transparent 1px),
-    var(--ds-surface);
-  background-size: 64px 64px;
-  background-position: center;
+  background: var(--ds-surface);
 }
 
 body.home-page .featured-map .home-opportunity-map {
@@ -630,7 +625,6 @@ body.home-page [data-reveal].is-visible {
 
   body.home-page .featured-map {
     padding-inline: 4px;
-    background-size: 48px 48px;
   }
 
   body.home-page .project-stat-panel {

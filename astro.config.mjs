@@ -3,5 +3,10 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   output: 'static',
-  integrations: [react()]
+  integrations: [react()],
+  vite: {
+    ssr: {
+      noExternal: [/^@primer\/react-brand/]
+    }
+  }
 });

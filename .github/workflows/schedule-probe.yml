@@ -1,0 +1,30 @@
+name: GitHub Schedule Probe
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 1 9 10 *"
+      timezone: "Europe/Rome"
+    - cron: "50 1 9 10 *"
+      timezone: "Europe/Rome"
+    - cron: "0 2 9 10 *"
+      timezone: "Europe/Rome"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Record scheduler evidence
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          SHA: ${{ github.sha }}
+        run: |
+          echo "event=$EVENT_NAME"
+          echo "schedule=$SCHEDULE"
+          echo "sha=$SHA"
+          echo "utc=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"

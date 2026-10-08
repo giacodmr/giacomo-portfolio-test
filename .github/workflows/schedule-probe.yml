@@ -3,6 +3,8 @@ name: GitHub Schedule Probe
 on:
   workflow_dispatch:
   schedule:
+    - cron: "30 1 9 10 *"
+      timezone: "Europe/Rome"
     - cron: "40 1 9 10 *"
       timezone: "Europe/Rome"
     - cron: "50 1 9 10 *"
